@@ -47,7 +47,7 @@
             <i class="fas fa-fw fa-print"></i>
             Cetak
           </a>
-          <a href="?page=eceran&action=tambah" class="btn btn-success float-right mx-2" role="button">
+          <a href="?page=stok&action=tambah" class="btn btn-success float-right mx-2" role="button">
             <i class="fas fa-fw fa-plus"></i>
             Tambah
           </a>
@@ -79,9 +79,108 @@
   </div><!-- /.container-fluid -->
 </section>
 
+<!-- Modal Hapus -->
+<div class="modal fade" id="hapusModal" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hapusModalLabel">Hapus Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah anda ingin menghapus data ini ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="button" onclick="deleteData()" class="btn btn-danger">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Verifikasi -->
+<div class="modal fade" id="verifikasiModal" tabindex="-1" aria-labelledby="verifikasiModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="verifikasiModalLabel">Verifikasi Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah anda ingin verifikasi data ini ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="button" onclick="verifikasiData()" class="btn btn-primary">Verifikasi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  let DELETE_ID = 0;
+  let VERIFIKASI_ID = 0;
+
   const loadData = async () => {
     return await axios.get(`<?= $base_url ?>/api/get-stok.api.php`).then(res => res.data);
+  }
+
+  const selectDeleteData = (delete_id) => {
+    DELETE_ID = delete_id;
+  }
+
+  const doDelete = async (data) => {
+    return await axios.post(`<?= $base_url ?>/api/delete-stok.api.php`, data, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(res => res.data);
+  }
+
+  const deleteData = async () => {
+    
+    const data = {
+      id: DELETE_ID
+    }
+
+    const result = await doDelete(data);
+
+    console.log("delete response :", result);
+
+    if(result) {
+      location.reload();
+    }
+  }
+
+  const selectVerifikasiData = (verifikasi_id) => {
+    VERIFIKASI_ID = verifikasi_id;
+  }
+
+  const doVerifikasi = async (data) => {
+    return await axios.post(`<?= $base_url ?>/api/approve-stok.api.php`, data, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(res => res.data);
+  }
+
+  const verifikasiData = async () => {
+    
+    const data = {
+      id: VERIFIKASI_ID
+    }
+
+    const result = await doVerifikasi(data);
+
+    console.log("verifikasi response :", result);
+
+    if(result) {
+      location.reload();
+    }
   }
 
   const renderTable = (data) => {
@@ -106,7 +205,7 @@
         if(res.approved_at == null) {
           temp += `
                   <td>
-                    <a href="#" class="btn btn-primary float-right mx-2" role="button">
+                    <a href="#" class="btn btn-primary float-right mx-2" role="button" data-toggle="modal" data-target="#verifikasiModal" onclick="selectVerifikasiData(${res.id})">
                       <i class="fas fa-fw fa-book"></i>
                       Verifikasi
                     </a>
@@ -122,7 +221,7 @@
       } else {
         temp += `
                 <td>
-                  <a href="#" class="btn btn-danger float-right" role="button">
+                  <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(${res.id})">
                     <i class="fas fa-fw fa-trash"></i>
                     Hapus
                   </a>
