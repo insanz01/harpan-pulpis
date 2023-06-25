@@ -71,7 +71,7 @@
 <script>
 
   const loadData = async () => {
-    return await axios.get(`<?= $base_url ?>/api/publik-eceran.api.php`).then(res => res.data);
+    return await axios.get(`<?= $base_url ?>/api/publik-nasional.api.php`).then(res => res.data);
   }
 
   const renderTable = (data) => {
