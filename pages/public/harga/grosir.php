@@ -45,21 +45,7 @@
                   <th>Tanggal</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Beras Banjar Super</td>
-                  <td>Kg</td>
-                  <td>14000</td>
-                  <td>2023-02-08</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Telur</td>
-                  <td>Butir</td>
-                  <td>1500</td>
-                  <td>2023-02-06</td>
-                </tr>
+              <tbody id="table-harga">
               </tbody>
             </table>
           </div>
@@ -83,8 +69,41 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+  const loadData = async () => {
+    return await axios.get(`<?= $base_url ?>/api/publik-eceran.api.php`).then(res => res.data);
+  }
 
-  window.addEventListener('load', () => {
+  const renderTable = (data) => {
+    const target = document.getElementById('tabel-harga');
+
+    let temp = ``;
+
+    let role_id = `<?= $role_id ?>`;
+
+    data.forEach((res, index) => {
+      temp += `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${res.nama}</td>
+                <td>${res.satuan}</td>
+                <td>${res.created_at}</td>
+              </tr>
+            `;
+    });
+
+    target.innerHTML = temp;
+  }
+
+  const showData = async () => {
+    const result = await loadData();
+
+    if(result.status) {
+      renderTable(result.data);
+    }
+  }
+
+  window.addEventListener('load', async () => {
+
     const ctx = document.getElementById('hargaChart');
 
     new Chart(ctx, {
@@ -107,6 +126,7 @@
         }
       }
     });
-
+    
+    await showData();
   })
 </script>

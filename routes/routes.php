@@ -26,7 +26,7 @@
     case "harga-grosir-publik":
       include "pages/public/harga/grosir.php";
       break;
-    case "harga-nasional/publik":
+    case "harga-nasional-publik":
       include "pages/public/harga/nasional.php";
       break;
     case "stok-publik":
