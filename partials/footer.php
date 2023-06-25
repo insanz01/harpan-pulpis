@@ -51,5 +51,75 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<script>
+    $(function() {
+      $("#tabel1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+
+      $(".custom-table").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+        "paging": true,
+      });
+
+      $('#tabel-print').DataTable({
+        "lengthChange": false,
+        "responsive": true,
+        "autoWidth": false,
+        "paging": true,
+        "info": true,
+        dom: 'Bfrtip',
+        buttons: [{
+            extend: 'print',
+            text: 'Cetak / Print',
+            title: 'Laporan Dana Masuk',
+          },
+          {
+            extend: 'excel',
+            text: 'Export Excel',
+            messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+          },
+        ]
+      });
+
+      $('#tabel-print-2').DataTable({
+        "lengthChange": false,
+        "responsive": true,
+        "autoWidth": false,
+        "paging": true,
+        "info": true,
+        dom: 'Bfrtip',
+        buttons: [{
+            extend: 'print',
+            text: 'Cetak / Print',
+            title: 'Laporan Dana Keluar',
+          },
+          {
+            extend: 'excel',
+            text: 'Export Excel',
+            messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+          },
+        ]
+      });
+
+      $('#tabel2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 </html>

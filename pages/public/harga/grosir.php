@@ -28,40 +28,48 @@
 
     <div class="row pt-4">
       <div class="col-12">
-        <h3>Harga Grosir</h3>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nama Komoditi</th>
-              <th>Satuan</th>
-              <th>Harga</th>
-              <th>Tanggal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Beras Banjar Super</td>
-              <td>Kg</td>
-              <td>14000</td>
-              <td>2023-02-08</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Telur</td>
-              <td>Butir</td>
-              <td>1500</td>
-              <td>2023-02-06</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="card">
+          <div class="card-body">
+            <h3>Harga Grosir</h3>
+            <table class="table table-striped custom-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nama Komoditi</th>
+                  <th>Satuan</th>
+                  <th>Harga</th>
+                  <th>Tanggal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Beras Banjar Super</td>
+                  <td>Kg</td>
+                  <td>14000</td>
+                  <td>2023-02-08</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Telur</td>
+                  <td>Butir</td>
+                  <td>1500</td>
+                  <td>2023-02-06</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Main row -->
     <div class="row">
       <div class="col-12">
-        <canvas height="100px" id="hargaChart"></canvas>
+        <div class="card">
+          <div class="card-body">
+            <canvas height="100px" id="hargaChart"></canvas>
+          </div>
+        </div>
       </div>
     </div>
     <!-- /.row (main row) -->
