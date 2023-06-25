@@ -120,10 +120,10 @@
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu', ''],
+        labels: ['', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu', ''],
         datasets: [{
           label: '# Harga Pangan',
-          data: [12, 19, 3, 5, 2, 3, 10, 0],
+          data: [0, 12, 19, 3, 5, 2, 3, 10, 0],
           borderWidth: 1,
           borderColor: '#36A2EB',
           backgroundColor: '#9BD0F5',
