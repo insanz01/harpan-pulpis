@@ -57,7 +57,7 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-<script>
+<script defer>
     $(function() {
       $("#tabel1").DataTable({
         "responsive": true,
@@ -120,6 +120,6 @@
         "responsive": true,
       });
     });
-  </script>
+</script>
 </body>
 </html>
