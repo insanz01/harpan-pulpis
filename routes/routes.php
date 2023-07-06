@@ -17,6 +17,9 @@
         include "pages/admin/index.php";
       }
       break;
+    case "kontak-kami":
+      include "pages/public/kontak.php";
+      break;
     case "harga-publik":
       include "pages/public/index.php";
       break;

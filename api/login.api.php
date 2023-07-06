@@ -8,8 +8,9 @@ include "../database/db.php";
 
 $username = validate_input($connection, $_POST["username"]);
 $password = $_POST["password"];
+$loginType = validate_input($connection, $_POST["loginType"]);
 
-$query = "SELECT id, username, id_role, password FROM user WHERE username = '$username'";
+$query = "SELECT id, username, id_role, password FROM user WHERE username = '$username' AND id_role = $loginType";
 
 $result = mysqli_query($connection, $query);
 

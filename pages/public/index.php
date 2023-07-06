@@ -18,13 +18,6 @@
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <div class="jumbrotron">
-        <h3 class="display-4">Selamat Datang di Sistem Informasi Harga Pangan Pokok Pasar Antasari</h3>
-      </div>
-    </div>
-  </div>
 
     <div class="row pt-4">
       <div class="col-12">

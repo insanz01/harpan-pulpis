@@ -50,6 +50,16 @@
               </div>
             </div>
           </div>
+          
+          <div class="row">
+            <div class="col-12 form-group">
+              <select name="login_type" id="login_type" class="form-control">
+                <option value="2">Admin</option>
+                <option value="1">Pegawai</option>
+              </select>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
@@ -82,10 +92,12 @@
 
       bodyFormData.append("username", data.username);
       bodyFormData.append("password", data.password);
+      bodyFormData.append("loginType", data.loginType)
 
       return await axios.post("<?= $base_url ?>api/login.api.php", {
         username: data.username,
-        password: data.password
+        password: data.password,
+        loginType: data.loginType
       }, {
         headers: {
           "Content-Type": "multipart/form-data"
@@ -97,9 +109,12 @@
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
+      const loginType = document.getElementById('login_type').value;
+
       const data = {
         username,
-        password
+        password,
+        loginType
       };
 
       const result = await doLogin(data);
