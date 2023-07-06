@@ -252,6 +252,66 @@
                   </p>
                 </a>
               </li> -->
+
+              <li class="nav-header">LAPORAN</li>
+              <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-print nav-icon"></i>
+                <p>
+                  SEMUA LAPORAN
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="?page=laporan-harga-eceran&type=laporan" class="nav-link" target="_blank">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Eceran</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?page=laporan-harga-grosir&type=laporan" class="nav-link" target="_blank">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Grosir</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?page=laporan-harga-nasional&type=laporan" class="nav-link" target="_blank">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Nasional</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?page=laporan-harga-distributor&type=laporan" class="nav-link" target="_blank">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Distributor</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?page=laporan-harga-produsen&type=laporan" class="nav-link" target="_blank">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Produsen</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?page=laporan-stok&type=laporan" class="nav-link" target="_blank">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Stok</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?page=laporan-permintaan&type=laporan" class="nav-link" target="_blank">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Permintaan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?page=laporan-inflasi&type=laporan" class="nav-link" target="_blank">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Inflasi</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
             <?php endif; ?>
 
             <li class="nav-header">LAINNYA</li>
