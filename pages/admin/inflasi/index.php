@@ -64,16 +64,14 @@
           <div class="card-body">
             <table class="table table-bordered custom-table">
               <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nama Komoditi</th>
-                  <th>Satuan</th>
-                  <th>Harga Eceran Sekarang</th>
-                  <th>Harga Eceran Sebelumnya</th>
-                  <th>Nilai Inflasi</th>
-                  <th>Tanggal</th>
-                  <th>Opsi</th>
-                </tr>
+                <th>#</th>
+                <th>Nama Komoditi</th>
+                <th>Satuan</th>
+                <th>Harga Eceran Sekarang</th>
+                <th>Harga Eceran Sebelumnya</th>
+                <th>Nilai Inflasi</th>
+                <th>Tanggal</th>
+                <th>Opsi</th>
               </thead>
               <tbody id="tabel-inflasi">
     
@@ -206,6 +204,7 @@
                 <td>${res.satuan}</td>
                 <td>${res.harga_baru}</td>
                 <td>${res.harga_lama}</td>
+                <td>${res.nominal}</td>
                 <td>${res.created_at}</td>
                 
             `;
@@ -243,11 +242,15 @@
       }
     });
 
+    console.log(temp);
+
     target.innerHTML = temp;
   }
 
   const showData = async () => {
     const result = await loadData();
+
+    console.log(result.data);
 
     if(result.status) {
       renderTable(result.data);

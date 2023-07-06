@@ -59,7 +59,7 @@
 
 <script>
   const saveData = async (data) => {
-    return await axios.post(`<?= $base_url ?>api/add-permintaan.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/add-inflasi.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
@@ -68,6 +68,10 @@
 
   const loadKomoditas = async () => {
     return await axios.get(`<?= $base_url ?>api/komoditas.api.php`).then(res => res.data);
+  }
+
+  const loadPermintaan = async () => {
+    return await axios.get(`<?= $base_url ?>api/get-permintaan.api.php`).then(res => res.data);
   }
 
   const setNilai = (target) => {
@@ -91,19 +95,21 @@
   const submitData = async () => {
     const nominal = document.getElementById("nominal").value;
     const nilai = document.getElementById("nilai").value;
-    const id_komoditas = document.getElementById("id_komoditas").value;
+    const id_permintaan = document.getElementById("id_komoditas").value;
     const tanggal = document.getElementById("tanggal").value;
 
     const data = {
       nominal,
       nilai,
-      id_komoditas,
+      id_permintaan,
       tanggal
     }
 
     console.log(data);
 
     const result = await saveData(data);
+
+    console.log(result);
 
     if(result.status) {
       window.location.href = "<?= $base_url ?>index.php?page=inflasi"
@@ -123,7 +129,9 @@
   }
 
   window.addEventListener('load', async () => {
-    const komoditiResult = await loadKomoditas();
+    const komoditiResult = await loadPermintaan();
+
+    console.log(komoditiResult);
 
     if(komoditiResult.status) {
       await renderSelectOption('id_komoditas', komoditiResult.data);
