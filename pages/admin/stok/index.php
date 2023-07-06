@@ -30,27 +30,29 @@
 
     <div class="row py-4">
       <div class="col-4">
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="laporan-periode">Laporan Periode</label>
           <input type="date" class="form-control">
-        </div>
+        </div> -->
+      </div>
+      <div class="col-4">
+        <!-- <div class="form-group">
+          <label for="laporan-periode">Laporan Periode</label>
+          <input type="date" class="form-control">
+        </div>  -->
       </div>
       <div class="col-4">
         <div class="form-group">
-          <label for="laporan-periode">Laporan Periode</label>
-          <input type="date" class="form-control">
-        </div>    
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <a href="#" class="btn btn-info float-right" role="button">
+          <!-- <a href="#" class="btn btn-info float-right" role="button">
             <i class="fas fa-fw fa-print"></i>
             Cetak
-          </a>
-          <a href="?page=stok&action=tambah" class="btn btn-success float-right mx-2" role="button">
-            <i class="fas fa-fw fa-plus"></i>
-            Tambah
-          </a>
+          </a> -->
+          <?php if($role_id == 2): ?>
+            <a href="?page=stok&action=tambah" class="btn btn-success float-right mx-2" role="button">
+              <i class="fas fa-fw fa-plus"></i>
+              Tambah
+            </a>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -58,21 +60,25 @@
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-12 mx-auto">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nama Komoditi</th>
-              <th>Satuan</th>
-              <th>Stok</th>
-              <th>Tanggal</th>
-              <th>Opsi</th>
-            </tr>
-          </thead>
-          <tbody id="tabel-stok">
-
-          </tbody>
-        </table>
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-bordered custom-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nama Komoditi</th>
+                  <th>Satuan</th>
+                  <th>Stok</th>
+                  <th>Tanggal</th>
+                  <th>Opsi</th>
+                </tr>
+              </thead>
+              <tbody id="tabel-stok">
+    
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
     <!-- /.row -->

@@ -35,14 +35,16 @@
       </div>
       <div class="col-4">
         <div class="form-group">
-          <a href="#" class="btn btn-info float-right" role="button" data-toggle="modal" data-target="#cetakModal">
+          <!-- <a href="#" class="btn btn-info float-right" role="button" data-toggle="modal" data-target="#cetakModal">
             <i class="fas fa-fw fa-print"></i>
             Cetak
-          </a>
-          <a href="?page=produsen&action=tambah" class="btn btn-success float-right mx-2" role="button">
-            <i class="fas fa-fw fa-plus"></i>
-            Tambah
-          </a>
+          </a> -->
+          <?php if($role_id == 2): ?>
+            <a href="?page=produsen&action=tambah" class="btn btn-success float-right mx-2" role="button">
+              <i class="fas fa-fw fa-plus"></i>
+              Tambah
+            </a>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -50,21 +52,25 @@
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-12 mx-auto">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nama Komoditi</th>
-              <th>Satuan</th>
-              <th>Harga</th>
-              <th>Tanggal</th>
-              <th class="text-right">Opsi</th>
-            </tr>
-          </thead>
-          <tbody id="tabel-harga">
-
-          </tbody>
-        </table>
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-bordered custom-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nama Komoditi</th>
+                  <th>Satuan</th>
+                  <th>Harga</th>
+                  <th>Tanggal</th>
+                  <th class="text-right">Opsi</th>
+                </tr>
+              </thead>
+              <tbody id="tabel-harga">
+    
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
     <!-- /.row -->
