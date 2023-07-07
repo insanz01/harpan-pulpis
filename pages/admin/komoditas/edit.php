@@ -107,7 +107,7 @@
     let temp = `<option value="">- PILIH -</option>`
 
     data.forEach(res => {
-      if(res.id == komoditasData.id_satuan) {
+      if(res.nama == komoditasData[0].satuan) {
         temp += `<option value="${res.id}" selected>${res.nama}</option>`
       } else {
         temp += `<option value="${res.id}">${res.nama}</option>`
@@ -127,11 +127,12 @@
     const komoditasData = await loadData();
 
     console.log(result);
+    console.log(komoditasData);
 
     if(result.status && komoditasData.status) {
       await renderSelectOption('id_satuan', result.data, komoditasData.data);
 
-      setValue("nama", komoditasData.data.nama);
+      setValue("nama", komoditasData.data[0].nama);
     }
   })
 </script>

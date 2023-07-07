@@ -12,12 +12,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Stok Komoditas</h1>
+        <h1 class="m-0">Data Permintaan</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Komoditas</a></li>
-          <li class="breadcrumb-item active">Edit Stok</li>
+          <li class="breadcrumb-item"><a href="#">Permintaan</a></li>
+          <li class="breadcrumb-item active">Edit Permintaan</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -33,8 +33,6 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <input type="hidden" id="id_edit" value="<?= $id_edit ?>">
-
             <div class="form-group">
               <label for="">Nama Komoditi</label>
               <select name="id_komoditas" class="form-control" id="id_komoditas">
@@ -42,15 +40,16 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="">Stok</label>
-              <input type="number" class="form-control" id="stok">
+              <label for="">Jumlah Permintaan</label>
+              <input type="number" class="form-control" id="jumlah">
+              <small>* Satuan jumlah permintaan menyesuaikan satuan komoditas</small>
             </div>
             <div class="form-group">
               <label for="">Tanggal</label>
               <input type="date" class="form-control" value="<?= date('Y-m-d', time()) ?>" readonly id="tanggal">
             </div>
             <div class="form-group">
-              <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Stok</button>
+              <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Permintaan</button>
             </div>
           </div>
         </div>
@@ -62,7 +61,7 @@
 
 <script>
   const saveData = async (data) => {
-    return await axios.post(`<?= $base_url ?>api/edit-stok.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/add-permintaan.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
@@ -70,22 +69,20 @@
   }
 
   const loadKomoditas = async () => {
-    return await axios.get(`<?= $base_url ?>api/get-komoditas.api.php`).then(res => res.data);
+    return await axios.get(`<?= $base_url ?>api/komoditas.api.php`).then(res => res.data);
   }
 
-  const loadStok = async () => {
-    return await axios.get(`<?= $base_url ?>api/get-stok.api.php?id=<?= $id_edit ?>`).then(res => res.data);
+  const loadData = async () => {
+    return await axios.get(`<?= $base_url ?>api/get-permintaan.api.php?id=<?= $id_edit ?>`).then(res => res.data);
   }
 
   const submitData = async () => {
-    const id = document.getElementById("id_edit").value;
-    const stok = document.getElementById("stok").value;
+    const jumlah = document.getElementById("jumlah").value;
     const id_komoditas = document.getElementById("id_komoditas").value;
     const tanggal = document.getElementById("tanggal").value;
 
     const data = {
-      id,
-      stok,
+      jumlah,
       id_komoditas,
       tanggal
     }
@@ -95,17 +92,18 @@
     const result = await saveData(data);
 
     if(result.status) {
-      window.location.href = "<?= $base_url ?>index.php?page=stok"
+      window.location.href = "<?= $base_url ?>index.php?page=permintaan"
     }
   }
 
-  const renderSelectOption = async (target, data, stokData) => {
+  const renderSelectOption = async (target, data, permintaanData) => {
     const listOpt = document.getElementById(target);
 
     let temp = `<option value="">- PILIH -</option>`
 
     data.forEach(res => {
-      if(res.id == stokData[0].id_komoditas) {
+      console.log(permintaanData)
+      if(res.id == permintaanData[0].id_komoditas) {
         temp += `<option value="${res.id}" selected>${res.nama}</option>`
       } else {
         temp += `<option value="${res.id}">${res.nama}</option>`
@@ -121,12 +119,13 @@
 
   window.addEventListener('load', async () => {
     const komoditiResult = await loadKomoditas();
-    const stokResult = await loadStok();
 
-    if(komoditiResult.status && stokResult.status) {
-      await renderSelectOption('id_komoditas', komoditiResult.data, stokResult.data);
+    const permintaanData = await loadData();
 
-      setValue("stok", stokResult.data[0].stok)
+    if(komoditiResult.status && permintaanData.status) {
+      await renderSelectOption('id_komoditas', komoditiResult.data, permintaanData.data);
+    
+      setValue("jumlah", permintaanData.data[0].jumlah)
     }
   })
 </script>

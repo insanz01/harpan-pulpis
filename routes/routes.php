@@ -131,6 +131,10 @@
     case "stok":
       if($action == "tambah") {
         include "pages/admin/stok/tambah.php";
+      } else if($action == "edit") {
+        $id = $_GET["id"];
+
+        include "pages/admin/stok/edit.php";
       } else {
         include "pages/admin/stok/index.php";
       }
@@ -138,6 +142,10 @@
     case "permintaan":
       if($action == "tambah") {
         include "pages/admin/permintaan/tambah.php";
+      } else if($action == "edit") {
+        $id = $_GET["id"];
+
+        include "pages/admin/permintaan/edit.php";
       } else {
         include "pages/admin/permintaan/index.php";
       }
@@ -145,6 +153,10 @@
     case "inflasi":
       if($action == "tambah") {
         include "pages/admin/inflasi/tambah.php";
+      } else if($action == "edit") {
+        $id = $_GET["id"];
+
+        include "pages/admin/inflasi/edit.php";
       } else {
         include "pages/admin/inflasi/index.php";
       }

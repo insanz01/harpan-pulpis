@@ -231,7 +231,7 @@
                     <i class="fas fa-fw fa-trash"></i>
                     Hapus
                   </a>
-                  <a href="#" class="btn btn-primary float-right mx-2" role="button">
+                  <a href="index.php?page=permintaan&action=edit&id=${res.id}" class="btn btn-primary float-right mx-2" role="button">
                     <i class="fas fa-fw fa-edit"></i>
                     Ubah
                   </a>
