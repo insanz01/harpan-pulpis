@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Dashboard</h1>
+        <h1 class="m-0">Kontak Kami</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -27,8 +27,9 @@
       <div class="col-7 mx-auto">
         <div class="card">
           <div class="card-body">
-            <img src="https://ngepop.id/upload/media/entries/2023-05/31/361-entry-0-1685513035.jpg" class="text-center w-100" alt="">
-            <p class="py-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae, iste quidem? Maxime eius, doloremque labore deserunt inventore optio esse, tenetur quos ex quo molestias atque omnis quibusdam nesciunt ut porro.</p>
+            <!-- <img src="https://ngepop.id/upload/media/entries/2023-05/31/361-entry-0-1685513035.jpg" class="text-center w-100" alt=""> -->
+            <img src="./dist/img/logo_banjarmasin.jpg" class="text-center w-100" alt="">
+            <p class="py-3">Dinas Ketahanan Pangan, Pertanian, dan Perikanan (DKP3) Kota Banjarmasin adalah sebuah lembaga pemerintah yang bertanggung jawab atas pengelolaan sektor pertanian, perikanan, dan ketahanan pangan di Kota Banjarmasin, Indonesia.</p>
 
             <button class="btn btn-primary btn-block" role="button"  data-toggle="modal" data-target="#kritikSaranModal">KRITIK DAN SARAN</button>
           </div>
