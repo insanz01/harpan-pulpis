@@ -33,6 +33,8 @@
         <h1></h1>
         <p class="login-box-msg">Masukkan Username dan Password</p>
 
+        <small id="error-msg" class="text-danger text-center"></small>
+
         <form action="#" onsubmit="await login(this)" method="post">
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="12345XX" name="username" id="username">
@@ -124,6 +126,8 @@
       if(result.status == true) {
         console.log(result);
         window.location.href = "<?= $base_url ?>index.php?page=dashboard";
+      } else {
+        document.getElementById("error-msg").innerText = "Username atau Password anda salah";
       }
     }
 
