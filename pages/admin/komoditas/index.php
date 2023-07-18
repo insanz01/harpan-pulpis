@@ -60,7 +60,9 @@
                   <th>#</th>
                   <th>Nama Komoditi</th>
                   <th>Satuan</th>
-                  <th class="text-right">Opsi</th>
+                  <?php if($role_id == 2): ?>
+                    <th class="text-right">Opsi</th>
+                  <?php endif; ?>
                 </tr>
               </thead>
               <tbody id="tabel-harga">
@@ -232,13 +234,15 @@
 
       if(role_id == 1) {
         if(res.approved_at == null) {
+          // temp += `
+          //         <td>
+          //           <a href="#" class="btn btn-primary float-right mx-2" role="button" data-toggle="modal" data-target="#verifikasiModal" onclick="selectVerifikasiData(${res.id})">
+          //             <i class="fas fa-fw fa-book"></i>
+          //             Verifikasi
+          //           </a>
+          //         </td>
+          //       </tr>`;
           temp += `
-                  <td>
-                    <a href="#" class="btn btn-primary float-right mx-2" role="button" data-toggle="modal" data-target="#verifikasiModal" onclick="selectVerifikasiData(${res.id})">
-                      <i class="fas fa-fw fa-book"></i>
-                      Verifikasi
-                    </a>
-                  </td>
                 </tr>`;
         } else {
           temp += `

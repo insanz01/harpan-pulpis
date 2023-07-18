@@ -1,7 +1,7 @@
 <?php
   include "./database/db.php";
 
-  $query = "SELECT harga_nasional.id, harga_nasional.harga, komoditas.id as id_komoditas, komoditas.nama as komoditas, satuan.nama as satuan, harga_nasional.approved_at, harga_nasional.created_at, harga_nasional.updated_at FROM harga_nasional JOIN komoditas ON harga_nasional.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_nasional.deleted_at is NULL";
+  $query = "SELECT harga_nasional.id, harga_nasional.harga, komoditas.id as id_komoditas, komoditas.nama as komoditas, satuan.nama as satuan, harga_nasional.approved_at, harga_nasional.created_at, harga_nasional.updated_at FROM harga_nasional JOIN komoditas ON harga_nasional.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_nasional.deleted_at is NULL AND harga_nasional.approved_at <> NULL";
 
   $result = mysqli_query($connection, $query);
 ?>
@@ -19,21 +19,30 @@
     <title>Laporan Harga Nasional</title>
   </head>
   <body>
-    
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <h3 class="text-center py-3">DATA HARGA NASIONAL</h3>
 
-          <table class="table table-bordered">
-            <thead>
+  <img src="./dist/img/Kayuh_Baimbai.png" width="20%" height="20%" align="left"/>
+        <p align="center"><b>
+
+        <font size="4">PEMERINTAH KOTA BANJARMASIN</font> <br>
+        <font size="4">DINAS KETAHANAN PANGAN, PERTANIAN DAN PERIKANAN</font> </b><br>
+        <font size="2">Jln. Pangeran Hidayatullah/Lingkar Dalam Utara Telp./fax. 0511-3201327</font><br>
+        <font size="2">Komplek Screen House, Banjarmasin Timur 70239 Email: distankan@yahoo.co.id</font> 
+        <br><br>
+        <hr size="2px" color="black">
+        </p>
+	<center>
+		<h4>DATA LAPORAN HARGA NASIONAL</h4>
+	</center>
+
+  <table border="1" style="width: 100%">
+  <thead>
               <th>No</th>
               <th>Nama Komoditas</th>
               <th>Satuan</th>
               <th>Harga</th>
               <th>Tanggal</th>
             </thead>
-            <tbody>
+    <tbody>
               <?php if(mysqli_num_rows($result) > 0): ?>
                 <?php $number = 1; ?>
                 <?php while($row = mysqli_fetch_assoc($result)): ?>
@@ -47,10 +56,23 @@
                 <?php endwhile; ?>
               <?php endif; ?>
             </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+	</table>
+  <br>
+	<div style="text-align: center; display: inline-block; float: right;">
+    <h5>
+            Banjarmasin, <?php echo (date('d M Y')); ?>
+			<br>KEPALA DINAS<br>
+			<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br><u>Ir. M. MAKHMUD, MS</u>
+            <br>Pembina Utama Muda
+            <br>NIP. 19650328 198803 1 009
+    </h5> 
+  </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

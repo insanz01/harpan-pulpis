@@ -1,7 +1,7 @@
 <?php
   include "./database/db.php";
 
-  $query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE stok_komoditas.deleted_at is NULL";
+  $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE permintaan.deleted_at is NULL";
 
   $result = mysqli_query($connection, $query);
 ?>
@@ -16,24 +16,33 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Laporan Permintaan Komoditas</title>
+    <title>Laporan Harga Permintaan Stok</title>
   </head>
   <body>
-    
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <h3 class="text-center py-3">DATA PERMINTAAN KOMODITAS</h3>
 
-          <table class="table table-bordered">
-            <thead>
+  <img src="./dist/img/Kayuh_Baimbai.png" width="20%" height="20%" align="left"/>
+        <p align="center"><b>
+
+        <font size="4">PEMERINTAH KOTA BANJARMASIN</font> <br>
+        <font size="4">DINAS KETAHANAN PANGAN, PERTANIAN DAN PERIKANAN</font> </b><br>
+        <font size="2">Jln. Pangeran Hidayatullah/Lingkar Dalam Utara Telp./fax. 0511-3201327</font><br>
+        <font size="2">Komplek Screen House, Banjarmasin Timur 70239 Email: distankan@yahoo.co.id</font> 
+        <br><br>
+        <hr size="2px" color="black">
+        </p>
+	<center>
+		<h4>DATA LAPORAN PERMINTAAN STOK</h4>
+	</center>
+
+  <table border="1" style="width: 100%">
+  <thead>
               <th>No</th>
               <th>Nama Komoditas</th>
               <th>Satuan</th>
-              <th>Stok</th>
+              <th>Jumlah</th>
               <th>Tanggal</th>
             </thead>
-            <tbody>
+    <tbody>
               <?php if(mysqli_num_rows($result) > 0): ?>
                 <?php $number = 1; ?>
                 <?php while($row = mysqli_fetch_assoc($result)): ?>
@@ -41,16 +50,29 @@
                     <td><?= $number++ ?></td>
                     <td><?= $row['komoditas'] ?></td>
                     <td><?= $row['satuan'] ?></td>
-                    <td><?= $row['stok'] ?></td>
+                    <td><?= $row['jumlah'] ?></td>
                     <td><?= $row['created_at'] ?></td>
                   </tr>
                 <?php endwhile; ?>
               <?php endif; ?>
             </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+	</table>
+  <br>
+	<div style="text-align: center; display: inline-block; float: right;">
+    <h5>
+            Banjarmasin, <?php echo (date('d M Y')); ?>
+			<br>KEPALA DINAS<br>
+			<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br><u>Ir. M. MAKHMUD, MS</u>
+            <br>Pembina Utama Muda
+            <br>NIP. 19650328 198803 1 009
+    </h5> 
+  </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
