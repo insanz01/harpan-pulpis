@@ -333,4 +333,4 @@
     <!-- /.sidebar -->
   </aside>
 
-  <div class="content-wrapper">
+  <div class="content-wrapper <?= ($role_id == 0) ? "bg-aku" : "" ?>">
