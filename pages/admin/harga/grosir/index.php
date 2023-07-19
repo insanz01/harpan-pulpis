@@ -64,6 +64,7 @@
                   <th>Satuan</th>
                   <th>Harga</th>
                   <th>Tanggal</th>
+                  <th>Status</th>
                   <th class="text-right">Opsi</th>
                 </tr>
               </thead>
@@ -236,6 +237,12 @@
                 <td>${res.created_at}</td>
                 
             `;
+
+      if(res.approved_at) {
+        temp += `<td>Terverifikasi</td>`;
+      } else {
+        temp += `<td>Belum Diverifikasi</td>`
+      }
 
       if(role_id == 1) {
         if(res.approved_at == null) {
