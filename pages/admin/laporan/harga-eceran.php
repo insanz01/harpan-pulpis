@@ -63,9 +63,8 @@
             Banjarmasin, <?php echo (date('d M Y')); ?>
 			<br>KEPALA DINAS<br>
 			<br>
-            <br>
-            <br>
-            <br>
+        <br>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://primbon.com/hantu.php" alt="TTD QR">
             <br>
             <br>
             <br><u>Ir. M. MAKHMUD, MS</u>
