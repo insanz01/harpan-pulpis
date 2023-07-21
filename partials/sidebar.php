@@ -242,15 +242,17 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a href="?page=kritik-saran" class="nav-link">
-                <i class="nav-icon fas fa-book-open"></i>
-                <p>
-                  KRITIK SARAN
-                  <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-              </a>
-            </li>
+            <?php if($role_id == 1): ?>
+              <li class="nav-item">
+                <a href="?page=kritik-saran" class="nav-link">
+                  <i class="nav-icon fas fa-book-open"></i>
+                  <p>
+                    KRITIK SARAN
+                    <!-- <span class="right badge badge-danger">New</span> -->
+                  </p>
+                </a>
+              </li>
+            <?php endif; ?>
 
             <?php if($role_id == 1): ?>
               <!-- <li class="nav-header">BAGIAN PIMPINAN</li>

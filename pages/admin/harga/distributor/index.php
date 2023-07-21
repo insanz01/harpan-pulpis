@@ -248,7 +248,7 @@
         if(res.approved_at == null) {
           temp += `
                   <td>
-                    <a href="#" class="btn btn-primary float-right mx-2" role="button">
+                    <a href="#" class="btn btn-primary float-right mx-2" role="button" data-toggle="modal" data-target="#verifikasiModal" onclick="selectVerifikasiData(${res.id})">
                       <i class="fas fa-fw fa-book"></i>
                       Verifikasi
                     </a>
