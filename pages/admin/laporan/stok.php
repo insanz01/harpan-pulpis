@@ -39,7 +39,7 @@
               <th>No</th>
               <th>Nama Komoditas</th>
               <th>Satuan</th>
-              <th>Harga</th>
+              <th>Stok</th>
               <th>Tanggal</th>
             </thead>
     <tbody>
@@ -50,7 +50,7 @@
                     <td><?= $number++ ?></td>
                     <td><?= $row['komoditas'] ?></td>
                     <td><?= $row['satuan'] ?></td>
-                    <td><?= $row['harga'] ?></td>
+                    <td><?= $row['stok'] ?></td>
                     <td><?= $row['created_at'] ?></td>
                   </tr>
                 <?php endwhile; ?>
