@@ -29,7 +29,7 @@
           <div class="card-body">
             <!-- <img src="https://ngepop.id/upload/media/entries/2023-05/31/361-entry-0-1685513035.jpg" class="text-center w-100" alt=""> -->
             <img src="./dist/img/logo_banjarmasin.jpg" class="text-center w-100" alt="">
-            <p class="py-3">Dinas Ketahanan Pangan, Pertanian, dan Perikanan (DKP3) Kota Banjarmasin adalah sebuah lembaga pemerintah yang bertanggung jawab atas pengelolaan sektor pertanian, perikanan, dan ketahanan pangan di Kota Banjarmasin, Indonesia.</p>
+            <!-- <p class="py-3">Dinas Ketahanan Pangan, Pertanian, dan Perikanan (DKP3) Kota Banjarmasin adalah sebuah lembaga pemerintah yang bertanggung jawab atas pengelolaan sektor pertanian, perikanan, dan ketahanan pangan di Kota Banjarmasin, Indonesia.</p> -->
 
             <button class="btn btn-primary btn-block" role="button"  data-toggle="modal" data-target="#kritikSaranModal">KRITIK DAN SARAN</button>
           </div>

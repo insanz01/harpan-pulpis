@@ -38,6 +38,9 @@
     case "agenda-publik":
       include "pages/public/agenda.php";
       break;
+    case "kritik-saran":
+      include "pages/admin/kritik_saran/index.php";
+      break;
     case "komoditas":
       if($action == "tambah") {
         include "pages/admin/komoditas/tambah.php";
