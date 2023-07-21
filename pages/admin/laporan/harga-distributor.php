@@ -1,7 +1,7 @@
 <?php
   include "./database/db.php";
 
-  $query = "SELECT komoditas.id, komoditas.nama, satuan.nama as satuan, komoditas.approved_at, harga_distributor.harga, komoditas.created_at, komoditas.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id JOIN harga_distributor ON harga_distributor.id_komoditas = komoditas.id WHERE komoditas.deleted_at is NULL AND harga_distributor.approved_at <> NULL";
+  $query = "SELECT komoditas.id, komoditas.nama, satuan.nama as satuan, komoditas.approved_at, harga_distributor.harga, komoditas.created_at, komoditas.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id JOIN harga_distributor ON harga_distributor.id_komoditas = komoditas.id WHERE komoditas.deleted_at is NULL AND harga_distributor.approved_at is not NULL";
 
   $result = mysqli_query($connection, $query);
 ?>
