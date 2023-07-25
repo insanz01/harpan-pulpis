@@ -31,7 +31,7 @@
     <div class="col-12">
       <div class="jumbrotron">
         <h3 class="display-3">Selamat Datang di Dashboard <?= $role_user ?></h3>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni culpa sequi, delectus porro recusandae accusamus. Qui unde eum non consequuntur corrupti, velit suscipit neque voluptas, excepturi dolor molestiae, mollitia quia!</p>
+        <!-- <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni culpa sequi, delectus porro recusandae accusamus. Qui unde eum non consequuntur corrupti, velit suscipit neque voluptas, excepturi dolor molestiae, mollitia quia!</p> -->
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
           <div class="inner">
             <h3>150</h3>
 
-            <p>New Orders</p>
+            <p>Data Komoditas</p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>
@@ -59,7 +59,7 @@
           <div class="inner">
             <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-            <p>Bounce Rate</p>
+            <p>Data Ketersediaan</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -74,7 +74,7 @@
           <div class="inner">
             <h3>44</h3>
 
-            <p>User Registrations</p>
+            <p>Data Permintaan</p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
@@ -89,7 +89,7 @@
           <div class="inner">
             <h3>65</h3>
 
-            <p>Unique Visitors</p>
+            <p>Data Inflasi</p>
           </div>
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
