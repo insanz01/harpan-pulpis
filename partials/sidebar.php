@@ -254,7 +254,7 @@
               </li>
             <?php endif; ?>
 
-            <?php if($role_id == 1): ?>
+            <?php if($role_id == 2): ?>
               <!-- <li class="nav-header">BAGIAN PIMPINAN</li>
               <li class="nav-item">
                 <a href="?page=dashboard" class="nav-link">
