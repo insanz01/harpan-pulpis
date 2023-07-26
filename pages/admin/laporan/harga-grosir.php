@@ -64,7 +64,7 @@
 			<br>KEPALA DINAS<br>
 			<br>
             <br>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://primbon.com/hantu.php" alt="TTD QR">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://docs.google.com/document/d/1RaNzveyGzqboGg884gWIyA26_nCE1jTwptyOsV0zSWg/edit?usp=sharing" alt="TTD QR">
             <br>
             <br>
             <br><u>Ir. M. MAKHMUD, MS</u>
