@@ -7,6 +7,12 @@
     $role_id = $_SESSION["SESS_HARPAN_ROLE_ID"];
     $role_name = $_SESSION["SESS_HARPAN_ROLE"];
   }
+
+  $className = "sidebar-dark-primary"
+
+  if($role_id == 0) {
+    $className = "";
+  }
 ?>
 
   <!-- Main Sidebar Container -->
