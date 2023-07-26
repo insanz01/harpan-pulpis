@@ -1,4 +1,17 @@
-  <!-- Preloader -->
+<?php
+  $show_title = true;
+
+  if(isset($_GET['page'])) {
+    $_page = $_GET["page"];
+    if($_page == "") {
+      $show_title = false;
+    }
+  } else {
+    $show_title = false;
+  }
+?>
+
+<!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
   </div>
@@ -44,7 +57,9 @@
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <h5 class="nav-link">Sistem Informasi Harga Pangan Pokok untuk Peningkatan Aksesibilitas Konsumen di Pasar Antasari</h5>
+        <?php if($show_title): ?>
+          <h5 class="nav-link">Sistem Informasi Harga Pangan Pokok untuk Peningkatan Aksesibilitas Konsumen di Pasar Antasari</h5>
+        <?php endif; ?>
         <!-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
