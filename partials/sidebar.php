@@ -8,15 +8,22 @@
     $role_name = $_SESSION["SESS_HARPAN_ROLE"];
   }
 
-  $className = "sidebar-dark-primary"
+  $className = "sidebar-dark-primary";
 
   if($role_id == 0) {
-    $className = "";
+    $className = "pastel-sidebar";
   }
 ?>
 
+  <style>
+    .pastel-sidebar {
+      background: lightblue;
+      color: black !important;
+    }
+  </style>
+
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar <?= $className ?> elevation-4">
     <?php if($role_id != 0): ?>
       <!-- Brand Logo -->
       <!-- <a href="index3.html" class="brand-link">
