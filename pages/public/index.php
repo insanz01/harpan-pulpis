@@ -20,7 +20,7 @@
   <div class="container-fluid">
 
     <div class="jumbotron-fluid">
-      <p class="text-center h2">Selamat Datang di Sistem Informasi Harga Pangan Pasar Pangeran Antasari</p>
+      <p class="text-center h2">Selamat Datang di Sistem Informasi Harga Pangan Pasar Antasari</p>
     </div>
     <!-- /.row (main row) -->
   </div><!-- /.container-fluid -->
