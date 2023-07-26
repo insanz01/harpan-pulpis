@@ -1,5 +1,6 @@
 <?php
   include "config/config.php";
+  include "controller/dashboard.controller.php";
   
   $role_user = "";
   if(isset($_SESSION["SESS_HARPAN_ROLE"])) {
@@ -42,7 +43,7 @@
         <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>150</h3>
+            <h3><?= $totalKomoditas ?></h3>
 
             <p>Data Komoditas</p>
           </div>
@@ -57,7 +58,7 @@
         <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>53<sup style="font-size: 20px">%</sup></h3>
+            <h3><?= $totalStok ?><sup style="font-size: 20px">%</sup></h3>
 
             <p>Data Ketersediaan</p>
           </div>
@@ -72,7 +73,7 @@
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3>44</h3>
+            <h3><?= $totalPermintaan ?></h3>
 
             <p>Data Permintaan</p>
           </div>
@@ -87,7 +88,7 @@
         <!-- small box -->
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3>65</h3>
+            <h3><?= $totalInflasi ?></h3>
 
             <p>Data Inflasi</p>
           </div>
