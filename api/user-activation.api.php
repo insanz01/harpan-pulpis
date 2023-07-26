@@ -7,7 +7,7 @@ include "../helper/validate.php";
 include "../database/db.php";
 
 $id = validate_input($connection, $_GET['user_id']);
-$state = validate_input($connection, $_GET['user_id']);
+$state = validate_input($connection, $_GET['state']);
 
 $query = "UPDATE user SET aktif = $state WHERE id = $id";
 
