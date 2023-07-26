@@ -167,6 +167,28 @@
     case "aktifasi":
       include "pages/pimpinan/aktifasi/index.php";
       break;
+    case "satuan":
+      if($action == "tambah") {
+        include "pages/admin/satuan/tambah.php";
+      } else if($action == "edit") {
+        $id = $_GET["id"];
+
+        include "pages/admin/satuan/edit.php";
+      } else {
+        include "pages/admin/satuan/index.php";
+      }
+      break;
+    case "admin-agenda":
+      if($action == "tambah") {
+        include "pages/admin/agenda/tambah.php";
+      } else if($action == "edit") {
+        $id = $_GET["id"];
+
+        include "pages/admin/agenda/edit.php";
+      } else {
+        include "pages/admin/agenda/index.php";
+      }
+      break;
     default:
       if(empty($_SESSION["SESS_HARPAN_LOGIN"])) {
         include "pages/public/index.php";

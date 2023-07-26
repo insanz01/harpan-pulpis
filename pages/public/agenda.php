@@ -23,6 +23,31 @@
       <div class="col-12">
         <h1 class="text-center">Agenda Pasar Murah</h1>
       </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-bordered custom-table">
+              <thead>
+                <th>#</th>
+                <th>Lokasi Pasar Murah</th>
+                <th>Tanggal Kegiatan</th>
+              </thead>
+              <tbody>
+                <?php if(mysqli_num_rows($result) > 0): ?>
+                  <?php $number = 1 ?>
+                  <?php while($row = mysqli_fetch_assoc($result)): ?>
+                    <tr>
+                      <td><?= $number++ ?></td>
+                      <td><?= $row['lokasi'] ?></td>
+                      <td><?= $row['tanggal'] ?></td>
+                    </tr>
+                  <?php endwhile; ?>
+                <?php endif; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Main row -->
 
