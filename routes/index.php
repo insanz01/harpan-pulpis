@@ -45,6 +45,11 @@
         include "pages/auth/login.php";
         $is_login = true;
       }
+
+      if($_GET["page"] == "register") {
+        include "pages/auth/registrasi.php";
+        $is_login = true;
+      }
   
       if($_GET["page"] == "login-pimpinan") {
         include "pages/auth/pimpinan/login.php";

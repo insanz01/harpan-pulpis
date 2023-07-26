@@ -164,6 +164,9 @@
         include "pages/admin/inflasi/index.php";
       }
       break;
+    case "aktifasi":
+      include "pages/pimpinan/aktifasi/index.php";
+      break;
     default:
       if(empty($_SESSION["SESS_HARPAN_LOGIN"])) {
         include "pages/public/index.php";

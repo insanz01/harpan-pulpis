@@ -267,6 +267,18 @@
               </li>
             <?php endif; ?>
 
+            <?php if($role_id == 1): ?>
+              <li class="nav-item">
+                <a href="?page=aktifasi" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>
+                    AKTIFASI USER
+                    <!-- <span class="right badge badge-danger">New</span> -->
+                  </p>
+                </a>
+              </li>
+            <?php endif; ?>
+
             <?php if($role_id == 2): ?>
               <!-- <li class="nav-header">BAGIAN PIMPINAN</li>
               <li class="nav-item">

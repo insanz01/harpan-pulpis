@@ -31,19 +31,29 @@
       <div class="card-body login-card-body">
         <center><img width="170px" src="dist/img/neraca.jpg"></center>
         <h1></h1>
-        <p class="login-box-msg">Masukkan Username dan Password</p>
+        <p class="login-box-msg">Buat akun baru</p>
 
         <small id="error-msg" class="text-danger text-center"></small>
 
-        <form action="#" onsubmit="await login(this)" method="post">
+        <form action="#" onsubmit="await register(this)" method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="12345XX" name="username" id="username">
+            <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" id="nama">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user-ninja"></span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Username" name="username" id="username">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
               </div>
             </div>
           </div>
+
           <div class="input-group mb-3">
             <input type="password" class="form-control" placeholder="Password" name="password" id="password">
             <div class="input-group-append">
@@ -64,7 +74,7 @@
 
           <div class="row">
             <div class="col-12 form-group">
-              <a href="?page=register">Registrasi akun baru</a>
+              <a href="?page=login">Sudah punya akun ?</a>
             </div>
           </div>
 
@@ -76,7 +86,7 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="button" onclick="login()" class="btn btn-primary btn-block">Sign In</button>
+              <button type="button" onclick="login()" class="btn btn-primary btn-block">Sign Up</button>
             </div>
             <!-- /.col -->
           </div>
@@ -93,7 +103,7 @@
   <script src="dist/js/adminlte.min.js"></script>
 
   <script>
-    const doLogin = async (data) => {
+    const doRegister = async (data) => {
       console.log("<?= $base_url ?>/api/login.api.php");
 
       var bodyFormData = new FormData();
@@ -102,7 +112,8 @@
       bodyFormData.append("password", data.password);
       bodyFormData.append("loginType", data.loginType)
 
-      return await axios.post("<?= $base_url ?>api/login.api.php", {
+      return await axios.post("<?= $base_url ?>api/register.api.php", {
+        nama: data.nama,
         username: data.username,
         password: data.password,
         loginType: data.loginType
@@ -113,27 +124,27 @@
       }).then(res => res.data);
     }
 
-    const login = async () => {
+    const register = async () => {
+      const nama = document.getElementById("nama").value;
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
-
+      
       const loginType = document.getElementById('login_type').value;
 
       const data = {
+        nama,
         username,
         password,
         loginType
       };
 
-      const result = await doLogin(data);
+      const result = await doRegister(data);
 
       console.log(result);
 
       if(result.status == true) {
         console.log(result);
-        window.location.href = "<?= $base_url ?>index.php?page=dashboard";
-      } else {
-        document.getElementById("error-msg").innerText = "Username atau Password anda salah";
+        window.location.href = "<?= $base_url ?>index.php?page=login";
       }
     }
 
