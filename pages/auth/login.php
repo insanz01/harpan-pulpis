@@ -56,8 +56,8 @@
           <div class="row">
             <div class="col-12 form-group">
               <select name="login_type" id="login_type" class="form-control">
-                <option value="1">Admin / Pimpinan</option>
-                <option value="2">Pegawai</option>
+                <option value="1">Pimpinan</option>
+                <option value="2">Admin</option>
               </select>
             </div>
           </div>
