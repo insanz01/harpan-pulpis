@@ -86,7 +86,7 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="button" onclick="login()" class="btn btn-primary btn-block">Sign Up</button>
+              <button type="button" onclick="register()" class="btn btn-primary btn-block">Sign Up</button>
             </div>
             <!-- /.col -->
           </div>
@@ -128,7 +128,7 @@
       const nama = document.getElementById("nama").value;
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
-      
+
       const loginType = document.getElementById('login_type').value;
 
       const data = {

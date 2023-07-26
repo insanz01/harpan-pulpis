@@ -10,7 +10,7 @@ $username = validate_input($connection, $_POST["username"]);
 $password = $_POST["password"];
 $loginType = validate_input($connection, $_POST["loginType"]);
 
-$query = "SELECT id, username, id_role, password FROM user WHERE username = '$username' AND id_role = $loginType";
+$query = "SELECT id, username, id_role, password FROM user WHERE username = '$username' AND id_role = $loginType AND aktif = 1";
 
 $result = mysqli_query($connection, $query);
 
