@@ -12,22 +12,27 @@ $resultKomoditas = mysqli_query($connection, $totalKomoditasQuery);
 $totaKomoditas = 0;
 if($resultKomoditas->num_rows > 0) {
   $totalKomoditas = $resultKomoditas->fetch_assoc();
+  $totalKomoditas = $totalKomoditas["total"];
 }
 
 $resultStok = mysqli_query($connection, $totalStokQuery);
 $totaStok = 0;
 if($resultStok->num_rows > 0) {
   $totalStok = $resultStok->fetch_assoc();
+  $totalStok = $totalStok["total"];
+
 }
 
 $resultPermintaan = mysqli_query($connection, $totalPermintaanQuery);
 $totaPermintaan = 0;
 if($resultPermintaan->num_rows > 0) {
   $totalPermintaan = $resultPermintaan->fetch_assoc();
+  $totalPermintaan = $totalPermintaan["total"];
 }
 
 $resultInflasi = mysqli_query($connection, $totalInflasiQuery);
 $totaInflasi = 0;
 if($resultInflasi->num_rows > 0) {
   $totalInflasi = $resultInflasi->fetch_assoc();
+  $totalInflasi = $totalInflasi["total"];
 }
