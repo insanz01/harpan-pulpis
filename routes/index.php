@@ -38,7 +38,7 @@
     if(isset($_GET["page"])) {
       if($_GET["page"] == "logout") {
         session_destroy();
-        header("location:index.php?page=harga-eceran-publik");
+        header("location:index.php");
       }
   
       if($_GET["page"] == "login") {
