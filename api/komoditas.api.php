@@ -3,7 +3,7 @@
 include "../helper/helper.php";
 include "../database/db.php";
 
-$query = "SELECT komoditas.id, komoditas.nama, satuan.nama as satuan, komoditas.approved_at, komoditas.created_at, komoditas.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id WHERE komoditas.deleted_at is NULL";
+$query = "SELECT komoditas.id, komoditas.nama, komoditas.satuan, komoditas.approved_at, komoditas.created_at, komoditas.updated_at FROM komoditas WHERE komoditas.deleted_at is NULL";
 
 $result = mysqli_query($connection, $query);
 

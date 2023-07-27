@@ -33,9 +33,10 @@
             </div>
             <div class="form-group">
               <label for="">Satuan</label>
-              <select name="satuan" class="form-control" id="id_satuan">
+              <input type="text" class="form-control" name="satuan" id="satuan">
+              <!-- <select name="satuan" class="form-control" id="id_satuan">
                 <option value="">- PILIH SATUAN -</option>
-              </select>
+              </select> -->
             </div>
             <div class="form-group">
               <label for="">Tanggal</label>

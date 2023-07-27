@@ -41,9 +41,10 @@
             </div>
             <div class="form-group">
               <label for="">Satuan</label>
-              <select name="satuan" class="form-control" id="id_satuan">
+              <!-- <select name="satuan" class="form-control" id="id_satuan">
                 <option value="">- PILIH SATUAN -</option>
-              </select>
+              </select> -->
+              <input type="text" class="form-control" name="satuan" id="satuan">
             </div>
             <div class="form-group">
               <label for="">Tanggal</label>
@@ -130,9 +131,10 @@
     console.log(komoditasData);
 
     if(result.status && komoditasData.status) {
-      await renderSelectOption('id_satuan', result.data, komoditasData.data);
+      // await renderSelectOption('id_satuan', result.data, komoditasData.data);
 
       setValue("nama", komoditasData.data[0].nama);
+      setValue("satuan", komoditasData.data[0].satuan);
     }
   })
 </script>
