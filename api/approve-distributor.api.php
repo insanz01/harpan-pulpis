@@ -11,6 +11,10 @@ $tanggal = date("Y-m-d H:i:s", time());
 
 $query = "UPDATE harga_distributor SET approved_at = '$tanggal' WHERE id = $id";
 
+if($id == -1) {
+  $query = "UPDATE harga_distributor SET approved_at = '$tanggal' WHERE approved_at is null";
+}
+
 $result = mysqli_query($connection, $query);
 
 $data = null;

@@ -45,6 +45,12 @@
               Tambah
             </a>
           <?php endif; ?>
+          <?php if($role_id == 1): ?>
+            <a href="#!" class="btn btn-success float-right mx-2" role="button" data-toggle="modal" data-target="#verifikasiModal" onclick="selectVerifikasiData(-1)">
+              <i class="fas fa-fw fa-plus"></i>
+              VERIFIKASI
+            </a>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -244,14 +250,14 @@
 
       if(role_id == 1) {
         if(res.approved_at == null) {
-          temp += `
-                  <td>
-                    <a href="#" class="btn btn-primary float-right mx-2" role="button" data-toggle="modal" data-target="#verifikasiModal" onclick="selectVerifikasiData(${res.id})">
-                      <i class="fas fa-fw fa-book"></i>
-                      Verifikasi
-                    </a>
-                  </td>
-                </tr>`;
+          // temp += `
+          //         <td>
+          //           <a href="#" class="btn btn-primary float-right mx-2" role="button" data-toggle="modal" data-target="#verifikasiModal" onclick="selectVerifikasiData(${res.id})">
+          //             <i class="fas fa-fw fa-book"></i>
+          //             Verifikasi
+          //           </a>
+          //         </td>
+          //       </tr>`;
         } else {
           temp += `
                   <td>

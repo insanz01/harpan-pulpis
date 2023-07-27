@@ -48,7 +48,7 @@
             </a>
           <?php endif; ?>
           <?php if($role_id == 1): ?>
-            <a href="?page=distributor&action=tambah" class="btn btn-success float-right mx-2" role="button">
+            <a href="#!" class="btn btn-success float-right mx-2" role="button" data-toggle="modal" data-target="#verifikasiModal" onclick="selectVerifikasiData(-1)">
               <i class="fas fa-fw fa-plus"></i>
               VERIFIKASI
             </a>
