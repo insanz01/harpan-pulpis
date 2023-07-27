@@ -3,12 +3,12 @@
 include "../helper/helper.php";
 include "../database/db.php";
 
-$query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, komoditas.nama as komoditas, satuan.nama as satuan, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE stok_komoditas.deleted_at is NULL AND stok_komoditas.approved_at is not null";
+$query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, komoditas.nama as komoditas, komoditas.satuan, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id WHERE stok_komoditas.deleted_at is NULL AND stok_komoditas.approved_at is not null";
 
 if(isset($_GET["id"])) {
   $id = $_GET["id"];
 
-  $query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, komoditas.nama as komoditas, satuan.nama as satuan, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE stok_komoditas.deleted_at is NULL AND stok_komoditas.id = $id";
+  $query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, komoditas.nama as komoditas, komoditas.satuan, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id WHERE stok_komoditas.deleted_at is NULL AND stok_komoditas.id = $id";
 }
 
 $result = mysqli_query($connection, $query);

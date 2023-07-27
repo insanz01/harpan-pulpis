@@ -3,7 +3,7 @@
 include "../helper/helper.php";
 include "../database/db.php";
 
-$query = "SELECT harga_produsen.id, komoditas.nama, harga_produsen.harga, satuan.nama as satuan, harga_produsen.approved_at, harga_produsen.created_at, harga_produsen.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id JOIN harga_produsen ON komoditas.id = harga_produsen.id_komoditas";
+$query = "SELECT harga_produsen.id, komoditas.nama, harga_produsen.harga, komoditas.satuan, harga_produsen.approved_at, harga_produsen.created_at, harga_produsen.updated_at FROM komoditas JOIN harga_produsen ON komoditas.id = harga_produsen.id_komoditas";
 
 $result = mysqli_query($connection, $query);
 

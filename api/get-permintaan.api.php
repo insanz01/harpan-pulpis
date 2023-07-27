@@ -3,12 +3,12 @@
 include "../helper/helper.php";
 include "../database/db.php";
 
-$query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE permintaan.deleted_at is NULL";
+$query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id WHERE permintaan.deleted_at is NULL";
 
 if(isset($_GET["id"])) {
   $id = $_GET["id"];
 
-  $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE permintaan.deleted_at is NULL AND permintaan.id = $id";
+  $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id WHERE permintaan.deleted_at is NULL AND permintaan.id = $id";
 }
 
 $result = mysqli_query($connection, $query);
