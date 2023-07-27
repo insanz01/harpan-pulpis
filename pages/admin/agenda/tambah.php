@@ -29,7 +29,7 @@
           <div class="card-body">
             <div class="form-group">
               <label for="">Lokasi Agenda</label>
-              <input type="text" name="lokasi" id="lokasi">
+              <input type="text" name="lokasi" id="lokasi" class="form-control">
             </div>
             <div class="form-group">
               <label for="">Tanggal</label>

@@ -3,12 +3,12 @@
 include "../helper/helper.php";
 include "../database/db.php";
 
-$query = "SELECT komoditas.id, komoditas.nama, satuan.nama as satuan, komoditas.approved_at, komoditas.created_at, komoditas.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id WHERE komoditas.deleted_at is NULL";
+$query = "SELECT komoditas.id, komoditas.nama, komoditas.satuan, komoditas.approved_at, komoditas.created_at, komoditas.updated_at FROM komoditas WHERE komoditas.deleted_at is NULL";
 
 if(isset($_GET["id"])) {
   $id = $_GET["id"];
 
-  $query = "SELECT komoditas.id, komoditas.nama, satuan.nama as satuan, komoditas.approved_at, komoditas.created_at, komoditas.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id WHERE komoditas.deleted_at is NULL AND komoditas.id = $id";
+  $query = "SELECT komoditas.id, komoditas.nama, komoditas.satuan, komoditas.approved_at, komoditas.created_at, komoditas.updated_at FROM komoditas WHERE komoditas.deleted_at is NULL AND komoditas.id = $id";
 }
 
 
