@@ -260,7 +260,7 @@
                 <a href="?page=kritik-saran" class="nav-link">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
-                    KRITIK SARAN
+                    Kritik Saran
                     <!-- <span class="right badge badge-danger">New</span> -->
                   </p>
                 </a>
@@ -282,7 +282,9 @@
                   <i class="nav-icon fas fa-users"></i>
                   <p>
                     AKTIFASI USER
-                    <!-- <span class="right badge badge-danger">New</span> -->
+                    <?php if($notifikasi_register > 0): ?>
+                      <span class="right badge badge-danger"><?= $notifikasi_register ?></span>
+                    <?php endif; ?>
                   </p>
                 </a>
               </li>
