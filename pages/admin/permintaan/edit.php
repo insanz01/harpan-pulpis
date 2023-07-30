@@ -61,7 +61,7 @@
 
 <script>
   const saveData = async (data) => {
-    return await axios.post(`<?= $base_url ?>api/add-permintaan.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/edit-permintaan.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }

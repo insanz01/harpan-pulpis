@@ -33,7 +33,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <input type="hidden" name="id" id="id_edit">
+            <input type="hidden" name="id" id="id_edit" value="<?= $id_edit ?>">
 
             <div class="form-group">
               <label for="">Nama Komoditi</label>
@@ -101,6 +101,8 @@
     let temp = `<option value="">- PILIH -</option>`
 
     data.forEach(res => {
+      console.log("res.id", res.id);
+      console.log("id_komoditas", id_komoditas);
       if(id_komoditas == res.id) {
         temp += `<option value="${res.id}" selected>${res.nama}</option>`
       } else {
@@ -120,7 +122,7 @@
   }
 
   const getData = async () => {
-    return await axios.get(`<?= $base_url ?>api/get-nasional.api.php`).then(res => res.data);
+    return await axios.get(`<?= $base_url ?>api/get-nasional.api.php?id=<?= $id_edit ?>`).then(res => res.data);
   }
 
   const showData = async () => {

@@ -80,6 +80,7 @@
                 <td>${index + 1}</td>
                 <td>${res.nama}</td>
                 <td>${res.satuan}</td>
+                <td>${res.harga}</td>
                 <td>${res.created_at}</td>
               </tr>
             `;

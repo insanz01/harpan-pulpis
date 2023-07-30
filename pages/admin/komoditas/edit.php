@@ -63,9 +63,10 @@
 
 <script>
   const saveData = async (data) => {
-    return await axios.post(`<?= $base_url ?>api/add-komoditas.api.php`, {
+    return await axios.post(`<?= $base_url ?>api/edit-komoditas.api.php`, {
+      id: data.id,
       nama: data.nama,
-      id_satuan: data.id_satuan,
+      satuan: data.satuan,
       tanggal: data.tanggal,
     },{
       headers: {
@@ -83,13 +84,15 @@
   }
 
   const submitData = async () => {
+    const id = document.getElementById("id_edit").value;
     const nama = document.getElementById("nama").value;
-    const id_satuan = document.getElementById("id_satuan").value;
+    const satuan = document.getElementById("satuan").value;
     const tanggal = document.getElementById("tanggal").value;
 
     const data = {
+      id,
       nama,
-      id_satuan,
+      satuan,
       tanggal
     }
 

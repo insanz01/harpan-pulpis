@@ -10,7 +10,7 @@ $nama = validate_input($connection, $_POST["nama"]);
 $satuan = validate_input($connection, $_POST["satuan"]);
 $tanggal = validate_input($connection, $_POST["tanggal"]);
 
-$query = "INSERT INTO komoditas (nama, satuan) VALUES ('$nama', $satuan)";
+$query = "INSERT INTO komoditas (nama, satuan, created_at, updated_at) VALUES ('$nama', '$satuan', '$tanggal', '$tanggal')";
 
 $result = mysqli_query($connection, $query);
 

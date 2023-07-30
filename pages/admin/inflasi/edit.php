@@ -33,6 +33,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
+            <input type="hidden" id="id_edit" name="id_edit" value="<?= $id_edit ?>">
             <div class="form-group">
               <label for="">Nama Komoditi</label>
               <select name="id_komoditas" class="form-control" id="id_komoditas">
@@ -65,7 +66,7 @@
 
 <script>
   const saveData = async (data) => {
-    return await axios.post(`<?= $base_url ?>api/add-inflasi.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/edit-inflasi.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
@@ -103,12 +104,14 @@
   }
 
   const submitData = async () => {
+    const id = document.getElementById("id_edit").value;
     const nominal = document.getElementById("nominal").value;
     const nilai = document.getElementById("nilai").value;
     const id_permintaan = document.getElementById("id_komoditas").value;
     const tanggal = document.getElementById("tanggal").value;
 
     const data = {
+      id,
       nominal,
       nilai,
       id_permintaan,
@@ -159,6 +162,7 @@
     if(komoditiResult.status && inflasiData.status) {
       await renderSelectOption('id_komoditas', komoditiResult.data, inflasiData.data);
 
+      setValue("nominal", inflasiData.data[0].nominal);
       setValue("nominal", inflasiData.data[0].nominal);
       setValue("nilai", inflasiData.data[0].nilai);
     }

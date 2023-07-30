@@ -134,7 +134,7 @@
   let VERIFIKASI_ID = 0;
 
   const loadData = async () => {
-    return await axios.get(`<?= $base_url ?>/api/admin-permintaan.api.php`).then(res => res.data);
+    return await axios.get(`<?= $base_url ?>api/admin-permintaan.api.php`).then(res => res.data);
   }
 
   const selectDeleteData = (delete_id) => {
@@ -142,7 +142,7 @@
   }
 
   const doDelete = async (data) => {
-    return await axios.post(`<?= $base_url ?>/api/delete-permintaan.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/delete-permintaan.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
@@ -169,7 +169,7 @@
   }
 
   const doVerifikasi = async (data) => {
-    return await axios.post(`<?= $base_url ?>/api/approve-permintaan.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/approve-permintaan.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }

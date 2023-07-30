@@ -120,7 +120,7 @@
   }
 
   const getData = async () => {
-    return await axios.get(`<?= $base_url ?>api/get-grosir.api.php`).then(res => res.data);
+    return await axios.get(`<?= $base_url ?>api/get-grosir.api.php?id=<?= $id_edit ?>`).then(res => res.data);
   }
 
   const showData = async () => {
