@@ -1,6 +1,6 @@
 <?php
 
-include "helper/helper.php";
+// include "helper/helper.php";
 include "database/db.php";
 
 $query = "SELECT COUNT(*) total FROM user WHERE aktif = 0";

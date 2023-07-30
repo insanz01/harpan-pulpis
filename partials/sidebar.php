@@ -1,4 +1,5 @@
 <?php
+  include "controller/notifikasi-register.controller.php";
   // session_start();
   $role_id = 0;
   $role_name = "Publik";
