@@ -1,7 +1,7 @@
 <?php
   include "./database/db.php";
 
-  $query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE stok_komoditas.deleted_at is NULL";
+  $query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id WHERE stok_komoditas.deleted_at is NULL";
 
   $result = mysqli_query($connection, $query);
 ?>
@@ -64,7 +64,7 @@
 			<br>KEPALA DINAS<br>
 			<br>
       <br>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://primbon.com/hantu.php" alt="TTD QR">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://docs.google.com/document/d/1RaNzveyGzqboGg884gWIyA26_nCE1jTwptyOsV0zSWg/edit?usp=sharing" alt="TTD QR">
             <br>
             <br>
             <br><u>Ir. M. MAKHMUD, MS</u>

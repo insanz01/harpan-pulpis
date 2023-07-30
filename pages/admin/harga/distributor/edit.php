@@ -74,7 +74,7 @@
   }
 
   const submitData = async () => {
-    const id = documentn.getElementById("id_edit").value;
+    const id = document.getElementById("id_edit").value;
     const harga = document.getElementById("harga").value;
     const id_komoditas = document.getElementById("id_komoditas").value;
     const tanggal = document.getElementById("tanggal").value;
