@@ -1,5 +1,6 @@
 <?php
   include "config/config.php";
+  include "controller/kurva.controller.php";
 
   $role_id = 0;
   if(isset($_SESSION["SESS_HARPAN_ROLE_ID"])) {
@@ -77,6 +78,26 @@
               </thead>
               <tbody id="tabel-permintaan">
     
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-bordered custom-table">
+              <thead>
+                <th>Komoditas (Rp)</th>
+                <?php foreach($week_dates as $k): ?>
+                  <th><?= $k ?></th>
+                <?php endforeach; ?>
+              </thead>
+              <tbody>
+
               </tbody>
             </table>
           </div>
