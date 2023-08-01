@@ -97,7 +97,18 @@
                 <?php endforeach; ?>
               </thead>
               <tbody>
-
+                  <?php foreach($week_datas as $data): ?>
+                    <tr>
+                      <td><?= $data[0] ?></td>
+                      <td><?= number_format($data[1], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[2], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[3], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[4], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[5], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[6], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[7], 0, ',', '.') ?></td>
+                    </tr>
+                  <?php endforeach; ?>
               </tbody>
             </table>
           </div>

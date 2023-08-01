@@ -25,3 +25,31 @@ for ($i = 0; $i < 7; $i++) {
 
 $week_datas = array();
 $week_data = array();
+
+include "database/db.php";
+
+$queryKomoditas = "SELECT id, nama FROM komoditas";
+$resultKomoditas = mysqli_query($connection, $queryKomoditas);
+
+if(mysqli_num_rows($resultKomoditas) > 0) {
+  while($row = mysqli_fetch_assoc($resultKomoditas)) {
+    
+    array_push($week_data, $row["nama"]);
+
+    foreach($week_dates as $date) {
+      $queryPermintaan = "SELECT p.id, p.id_komoditas, k.nama, p.jumlah, hn.harga, p.created_at FROM permintaan p JOIN komoditas k ON p.id_komoditas = k.id JOIN harga_nasional hn ON hn.id_komoditas = k.id WHERE DATE(hn.created_at) = '$date' AND p.id_komoditas = $row[id]";
+
+      $resultPermintaan = mysqli_query($connection, $queryPermintaan);
+      
+      $total_data = 0;
+      if($resultPermintaan->num_rows > 0) {
+        $permintaan = $resultPermintaan->fetch_assoc();
+        $total_data = $permintaan["harga"];
+      }
+
+      array_push($week_data, $total_data);
+    }
+  }
+
+  array_push($week_datas, $week_data);
+}
