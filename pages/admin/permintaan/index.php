@@ -63,7 +63,7 @@
       <div class="col-12 mx-auto">
         <div class="card">
           <div class="card-body">
-            <table class="table table-bordered custom-table">
+            <!-- <table class="table table-bordered custom-table">
               <thead>
                 <tr>
                   <th>#</th>
@@ -79,7 +79,8 @@
               <tbody id="tabel-permintaan">
     
               </tbody>
-            </table>
+            </table> -->
+            <canvas id="myChart"></canvas>
           </div>
         </div>
       </div>
@@ -91,7 +92,7 @@
           <div class="card-body">
             <table class="table table-bordered custom-table">
               <thead>
-                <th>Komoditas (Rp)</th>
+                <th>Komoditas</th>
                 <?php foreach($week_dates as $k): ?>
                   <th><?= $k ?></th>
                 <?php endforeach; ?>
@@ -160,6 +161,53 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const getPermintaanChart = async () => {
+    return await axios.get(`<?= $base_url ?>api/chart-permintaan.api.php`).then(res => res.data);
+  }
+
+  window.addEventListener('load', async () => {
+    const result = await getPermintaanChart();
+
+    console.log("result", result);
+    let labels = [""];
+    let data = [0];
+
+    if(result.status) {
+      result.data.forEach(res => {
+        labels.push(res.nama);
+        data.push(res.total);
+      })
+    }
+
+    labels.push("");
+    data.push(0);
+    
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: '# of Permintaan',
+          data: data,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  })
+</script>
 
 <script>
   let DELETE_ID = 0;

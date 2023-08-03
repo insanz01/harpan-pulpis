@@ -6,14 +6,23 @@ include "../helper/helper.php";
 include "../helper/validate.php";
 include "../database/db.php";
 
-$query = "SELECT DATE(created_at) AS tanggal, DAYOFWEEK(created_at) AS hari, COUNT(*) AS jumlah_transaksi FROM harga_nasional WHERE created_at >= DATE_SUB(NOW(), INTERVAL 1 WEEK) GROUP BY DATE(created_at) ORDER BY DATE(created_at) ASC";
+$query = "SELECT p.id_komoditas as id, k.nama, p.jumlah FROM permintaan p JOIN komoditas k ON p.id_komoditas = k.id WHERE DATE(p.created_at) = DATE(NOW())";
 
 $result = mysqli_query($connection, $query);
 
-$data = null;
+$data = [];
 
-// if($result) {
-//   $data['tanggal'] = 
-// }
+if(mysqli_num_rows($result) > 0) {
 
-?>
+  while($row = mysqli_fetch_assoc($result)) {
+    $val = [
+      "id" => $row['id'],
+      "nama" => $row['nama'],
+      "total" => $row['jumlah']
+    ];
+
+    array_push($data, $val);
+  }
+}
+
+to_json($data);
