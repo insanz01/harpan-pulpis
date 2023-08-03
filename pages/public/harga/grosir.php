@@ -1,5 +1,7 @@
 <?php
   include "config/config.php";
+
+  include "controller/publik-grosir-harga.controller.php";
 ?>
 
 <div class="content-header">
@@ -24,6 +26,26 @@
   <div class="container-fluid">
 
     <div class="row pt-4">
+      <div class="col-4"></div>
+      <div class="col-4"></div>
+      <div class="col-4">
+        <form id="filter-tanggal" action="?page=harga-grosir-publik" method="post">
+          <div class="form-group">
+            <label for="filter_tanggal">Filter Tanggal</label>
+            <input type="date" name="filter_tanggal" class="form-control" onchange="pilihTanggal(this)" value="<?= $filter_tanggal ?>">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const pilihTanggal = () => {
+        const myForm = document.getElementById("filter-tanggal");
+        myForm.submit();
+      }
+    </script>
+
+    <div class="row pt-4">
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -31,14 +53,25 @@
             <table class="table table-striped custom-table">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Nama Komoditi</th>
-                  <th>Satuan</th>
-                  <th>Harga</th>
-                  <th>Tanggal</th>
+                  <th>Komoditas</th>
+                  <?php foreach($week_dates as $k): ?>
+                    <th><?= $k ?></th>
+                  <?php endforeach; ?>
                 </tr>
               </thead>
-              <tbody id="table-harga">
+              <tbody>
+                <?php foreach($week_datas as $data): ?>
+                  <tr>
+                    <td><?= $data[0] ?></td>
+                    <td><?= number_format($data[1], 0, ',', '.') ?></td>
+                    <td><?= number_format($data[2], 0, ',', '.') ?></td>
+                    <td><?= number_format($data[3], 0, ',', '.') ?></td>
+                    <td><?= number_format($data[4], 0, ',', '.') ?></td>
+                    <td><?= number_format($data[5], 0, ',', '.') ?></td>
+                    <td><?= number_format($data[6], 0, ',', '.') ?></td>
+                    <td><?= number_format($data[7], 0, ',', '.') ?></td>
+                  </tr>
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>
@@ -46,7 +79,7 @@
       </div>
     </div>
     <!-- Main row -->
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-body">
@@ -54,7 +87,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- /.row (main row) -->
   </div><!-- /.container-fluid -->
 </section>

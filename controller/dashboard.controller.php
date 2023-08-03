@@ -20,7 +20,6 @@ $totalStok = 0;
 if($resultStok->num_rows > 0) {
   $totalStok = $resultStok->fetch_assoc();
   $totalStok = $totalStok["total"];
-
 }
 
 $resultPermintaan = mysqli_query($connection, $totalPermintaanQuery);
