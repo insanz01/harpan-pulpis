@@ -5,14 +5,14 @@
   $dataFilterBulan = $_POST["data_filter_bulan"];
   $dataFilterPekan = $_POST["data_filter_pekan"];
 
-  $query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, satuan.nama as satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_eceran.deleted_at is NULL AND harga_eceran.approved_at is not NULL";
+  $query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, komoditas.satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id WHERE harga_eceran.deleted_at is NULL AND harga_eceran.approved_at is not NULL";
 
   if($tipeFilter == "BULANAN") {
-    $query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, satuan.nama as satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_eceran.deleted_at is NULL AND harga_eceran.approved_at is not NULL AND MONTH(harga_eceran.created_at) = $dataFilterBulan";
+    $query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, komoditas.satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id WHERE harga_eceran.deleted_at is NULL AND harga_eceran.approved_at is not NULL AND MONTH(harga_eceran.created_at) = $dataFilterBulan";
   } else if($tipeFilter == "MINGGUAN") {
     $weekNumber = date("W", strtotime($dataFilterPekan));
 
-    $query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, satuan.nama as satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_eceran.deleted_at is NULL AND harga_eceran.approved_at is not NULL AND WEEK(harga_eceran.created_at) = $weekNumber";
+    $query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, komoditas.satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id WHERE harga_eceran.deleted_at is NULL AND harga_eceran.approved_at is not NULL AND WEEK(harga_eceran.created_at) = $weekNumber";
   }
 
   $result = mysqli_query($connection, $query);

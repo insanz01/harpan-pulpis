@@ -5,14 +5,14 @@
   $dataFilterBulan = $_POST["data_filter_bulan"];
   $dataFilterPekan = $_POST["data_filter_pekan"];
 
-  $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE permintaan.deleted_at is NULL";
+  $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id WHERE permintaan.deleted_at is NULL";
 
   if($tipeFilter == "BULANAN") {
-    $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE permintaan.deleted_at is NULL AND MONTH(permintaan.created_at) = $dataFilterBulan";
+    $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id WHERE permintaan.deleted_at is NULL AND MONTH(permintaan.created_at) = $dataFilterBulan";
   } else if($tipeFilter == "MINGGUAN") {
     $weekNumber = date("W", strtotime($dataFilterPekan));
 
-    $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE permintaan.deleted_at is NULL AND WEEK(permintaan.created_at) = $weekNumber";
+    $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id WHERE permintaan.deleted_at is NULL AND WEEK(permintaan.created_at) = $weekNumber";
   }
 
   $result = mysqli_query($connection, $query);
