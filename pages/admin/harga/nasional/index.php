@@ -1,5 +1,6 @@
 <?php
   include "config/config.php";
+  include "controller/admin-harga-nasional.controller.php";
 
   $role_id = 0;
   if(isset($_SESSION["SESS_HARPAN_ROLE_ID"])) {
@@ -83,6 +84,37 @@
       </div>
     </div>
     <!-- /.row -->
+
+    <div class="row mt-2">
+      <div class="col-12 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-bordered custom-table">
+              <thead>
+                <th>Komoditas</th>
+                <?php foreach($week_dates as $k): ?>
+                  <th><?= $k ?></th>
+                <?php endforeach; ?>
+              </thead>
+              <tbody>
+                  <?php foreach($week_datas as $data): ?>
+                    <tr>
+                      <td><?= $data[0] ?></td>
+                      <td><?= number_format($data[1], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[2], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[3], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[4], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[5], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[6], 0, ',', '.') ?></td>
+                      <td><?= number_format($data[7], 0, ',', '.') ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div><!-- /.container-fluid -->
 </section>
 
