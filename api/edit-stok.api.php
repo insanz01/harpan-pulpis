@@ -11,7 +11,7 @@ $id_komoditas = validate_input($connection, $_POST["id_komoditas"]);
 $stok = validate_input($connection, $_POST["stok"]);
 $tanggal = validate_input($connection, $_POST["tanggal"]);
 
-$query = "UPDATE stok_komoditas SET id_komoditas = '$id_komoditas', stok = $stok, updated_at = '$tanggal' WHERE id = $id";
+$query = "UPDATE stok_komoditas SET id_komoditas = '$id_komoditas', stok = $stok, created_at = '$tanggal', updated_at = '$tanggal' WHERE id = $id";
 
 $result = mysqli_query($connection, $query);
 

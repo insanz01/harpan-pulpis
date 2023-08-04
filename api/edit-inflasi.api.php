@@ -12,7 +12,7 @@ $nominal = validate_input($connection, $_POST["nominal"]);
 $nilai = validate_input($connection, $_POST["nilai"]);
 $tanggal = validate_input($connection, $_POST["tanggal"]);
 
-$query = "UPDATE inflasi SET id_permintaan = '$id_permintaan', nominal = $nominal, nilai = '$nilai', updated_at = '$tanggal' WHERE id = $id";
+$query = "UPDATE inflasi SET id_permintaan = '$id_permintaan', nominal = $nominal, nilai = '$nilai', created_at = '$tanggal', updated_at = '$tanggal' WHERE id = $id";
 
 $result = mysqli_query($connection, $query);
 

@@ -11,7 +11,7 @@ $nama = validate_input($connection, $_POST["nama"]);
 $satuan = validate_input($connection, $_POST["satuan"]);
 $tanggal = validate_input($connection, $_POST["tanggal"]);
 
-$query = "UPDATE komoditas SET nama = '$nama', satuan = '$satuan', updated_at = '$tanggal' WHERE id = $id";
+$query = "UPDATE komoditas SET nama = '$nama', satuan = '$satuan', created_at = '$tanggal', updated_at = '$tanggal' WHERE id = $id";
 
 $result = mysqli_query($connection, $query);
 
