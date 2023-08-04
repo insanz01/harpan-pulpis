@@ -10,7 +10,7 @@ $id_komoditas = validate_input($connection, $_POST["id_komoditas"]);
 $harga = validate_input($connection, $_POST["harga"]);
 $tanggal = validate_input($connection, $_POST["tanggal"]);
 
-$query = "INSERT INTO harga_distributor (id_komoditas, harga) VALUES ('$id_komoditas', $harga)";
+$query = "INSERT INTO harga_distributor (id_komoditas, harga, created_at) VALUES ('$id_komoditas', $harga, '$tanggal')";
 
 $result = mysqli_query($connection, $query);
 

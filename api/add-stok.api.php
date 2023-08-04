@@ -10,7 +10,7 @@ $id_komoditas = validate_input($connection, $_POST["id_komoditas"]);
 $stok = validate_input($connection, $_POST["stok"]);
 $tanggal = validate_input($connection, $_POST["tanggal"]);
 
-$query = "INSERT INTO stok_komoditas (id_komoditas, stok) VALUES ('$id_komoditas', $stok)";
+$query = "INSERT INTO stok_komoditas (id_komoditas, stok, created_at) VALUES ('$id_komoditas', $stok, '$tanggal')";
 
 $result = mysqli_query($connection, $query);
 

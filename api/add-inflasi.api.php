@@ -11,7 +11,7 @@ $nominal = validate_input($connection, $_POST["nominal"]);
 $nilai = validate_input($connection, $_POST["nilai"]);
 $tanggal = validate_input($connection, $_POST["tanggal"]);
 
-$query = "INSERT INTO inflasi (id_permintaan, nominal, nilai) VALUES ('$id_permintaan', $nominal, '$nilai')";
+$query = "INSERT INTO inflasi (id_permintaan, nominal, nilai, created_at) VALUES ('$id_permintaan', $nominal, '$nilai', '$tanggal')";
 
 $result = mysqli_query($connection, $query);
 
