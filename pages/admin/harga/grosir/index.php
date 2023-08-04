@@ -1,6 +1,7 @@
 <?php
   include "config/config.php";
   include "controller/admin-harga-grosir.controller.php";
+  include "controller/get-grosir.controller.php";
 
   $role_id = 0;
   if(isset($_SESSION["SESS_HARPAN_ROLE_ID"])) {
@@ -75,8 +76,36 @@
                   <th class="text-right">Opsi</th>
                 </tr>
               </thead>
-              <tbody id="tabel-harga">
-    
+              <tbody>
+                <?php $number = 1; ?>
+                <?php foreach($data as $dt): ?>
+                  <tr>
+                    <td><?= $number++ ?></td>
+                    <td><?= $dt['nama'] ?></td>
+                    <td><?= $dt['satuan'] ?></td>
+                    <td><?= $dt['harga'] ?></td>
+                    <td><?= $dt['created_at'] ?></td>
+                    <td>
+                      <?php if($dt['approved_at']): ?>
+                        Terverifikasi
+                      <?php else: ?>
+                        Belum Diverifikasi
+                      <?php endif; ?>
+                    </td>
+                    <td>
+                      <?php if($role_id != 1): ?>
+                        <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $dt[id] ?>)">
+                          <i class="fas fa-fw fa-trash"></i>
+                          Hapus
+                        </a>
+                        <a href="?page=grosir&action=edit&id=<?= $dt[id] ?>" class="btn btn-primary float-right mx-2" role="button">
+                          <i class="fas fa-fw fa-edit"></i>
+                          Ubah
+                        </a>
+                      <?php endif; ?>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>
