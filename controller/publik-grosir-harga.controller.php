@@ -40,12 +40,14 @@ while ($current_date <= $end_date) {
 $week_datas = array();
 $week_data = array();
 
-$queryKomoditas = "SELECT id, nama FROM komoditas";
+$queryKomoditas = "SELECT id, nama FROM komoditas WHERE deleted_at is null";
 $resultKomoditas = mysqli_query($connection, $queryKomoditas);
 
 if(mysqli_num_rows($resultKomoditas) > 0) {
   while($row = mysqli_fetch_assoc($resultKomoditas)) {
     
+    $week_data = [];
+
     array_push($week_data, $row["nama"]);
 
     foreach($week_dates as $date) {
@@ -61,9 +63,9 @@ if(mysqli_num_rows($resultKomoditas) > 0) {
 
       array_push($week_data, $total_harga);
     }
-  }
 
-  array_push($week_datas, $week_data);
+    array_push($week_datas, $week_data);
+  }
 }
 
 // var_dump($currentWeek);

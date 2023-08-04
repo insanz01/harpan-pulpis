@@ -129,7 +129,7 @@
   }
 
   window.addEventListener('load', async () => {
-    const komoditiResult = await loadPermintaan();
+    const komoditiResult = await loadKomoditas();
 
     console.log(komoditiResult);
 

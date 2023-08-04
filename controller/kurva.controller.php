@@ -39,11 +39,13 @@ $week_data = array();
 
 include "database/db.php";
 
-$queryKomoditas = "SELECT id, nama FROM komoditas";
+$queryKomoditas = "SELECT id, nama FROM komoditas WHERE deleted_at is null";
 $resultKomoditas = mysqli_query($connection, $queryKomoditas);
 
 if(mysqli_num_rows($resultKomoditas) > 0) {
   while($row = mysqli_fetch_assoc($resultKomoditas)) {
+    
+    $week_data = [];
     
     array_push($week_data, $row["nama"]);
 
@@ -60,7 +62,7 @@ if(mysqli_num_rows($resultKomoditas) > 0) {
 
       array_push($week_data, $total_data);
     }
-  }
 
-  array_push($week_datas, $week_data);
+    array_push($week_datas, $week_data);
+  }
 }
