@@ -12,6 +12,8 @@ $tanggal = validate_input($connection, $_POST["tanggal"]);
 
 $query = "INSERT INTO harga_grosir (id_komoditas, harga) VALUES ('$id_komoditas', $harga)";
 
+var_dump($query); die;
+
 $result = mysqli_query($connection, $query);
 
 $data = null;
