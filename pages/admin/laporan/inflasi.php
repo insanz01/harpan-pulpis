@@ -1,7 +1,19 @@
 <?php
   include "./database/db.php";
 
+  $tipeFilter = $_POST["tipe_filter"];
+  $dataFilterBulan = $_POST["data_filter_bulan"];
+  $dataFilterPekan = $_POST["data_filter_pekan"];
+
   $query = "SELECT inflasi.id, komoditas.nama, inflasi.nominal, satuan.nama as satuan, inflasi.nilai, harga_nasional.harga, inflasi.created_at, inflasi.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id JOIN permintaan ON permintaan.id_komoditas = komoditas.id JOIN inflasi ON permintaan.id = inflasi.id_permintaan JOIN harga_nasional ON harga_nasional.id_komoditas = komoditas.id WHERE inflasi.deleted_at is NULL";
+
+  if($tipeFilter == "BULANAN") {
+    $query = "SELECT inflasi.id, komoditas.nama, inflasi.nominal, satuan.nama as satuan, inflasi.nilai, harga_nasional.harga, inflasi.created_at, inflasi.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id JOIN permintaan ON permintaan.id_komoditas = komoditas.id JOIN inflasi ON permintaan.id = inflasi.id_permintaan JOIN harga_nasional ON harga_nasional.id_komoditas = komoditas.id WHERE inflasi.deleted_at is NULL AND MONTH(inflasi.created_at) = $dataFilterBulan";
+  } else {
+    $weekNumber = date("W", strtotime($dataFilterPekan));
+
+    $query = "SELECT inflasi.id, komoditas.nama, inflasi.nominal, satuan.nama as satuan, inflasi.nilai, harga_nasional.harga, inflasi.created_at, inflasi.updated_at FROM komoditas JOIN satuan ON komoditas.id_satuan = satuan.id JOIN permintaan ON permintaan.id_komoditas = komoditas.id JOIN inflasi ON permintaan.id = inflasi.id_permintaan JOIN harga_nasional ON harga_nasional.id_komoditas = komoditas.id WHERE inflasi.deleted_at is NULL AND WEEK(inflasi.created_at) = $weekNumber";
+  }
 
   $result = mysqli_query($connection, $query);
 ?>

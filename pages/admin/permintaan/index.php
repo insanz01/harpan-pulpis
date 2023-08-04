@@ -63,7 +63,7 @@
       <div class="col-12 mx-auto">
         <div class="card">
           <div class="card-body">
-            <!-- <table class="table table-bordered custom-table">
+            <table class="table table-bordered custom-table">
               <thead>
                 <tr>
                   <th>#</th>
@@ -79,14 +79,15 @@
               <tbody id="tabel-permintaan">
     
               </tbody>
-            </table> -->
+            </table>
+
             <canvas id="myChart"></canvas>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-12 mx-auto">
         <div class="card">
           <div class="card-body">
@@ -115,7 +116,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- /.row -->
   </div><!-- /.container-fluid -->
 </section>

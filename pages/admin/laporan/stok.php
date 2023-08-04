@@ -1,7 +1,19 @@
 <?php
   include "./database/db.php";
 
+  $tipeFilter = $_POST["tipe_filter"];
+  $dataFilterBulan = $_POST["data_filter_bulan"];
+  $dataFilterPekan = $_POST["data_filter_pekan"];
+
   $query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id WHERE stok_komoditas.deleted_at is NULL";
+
+  if($tipeFilter == "BULANAN") {
+    $query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id WHERE stok_komoditas.deleted_at is NULL AND MONTH(stok_komoditas.created_at) = $dataFilterBulan";
+  } else {
+    $weekNumber = date("W", strtotime($dataFilterPekan));
+
+    $query = "SELECT stok_komoditas.id, stok_komoditas.stok, stok_komoditas.id_komoditas, komoditas.satuan, komoditas.nama as komoditas, stok_komoditas.approved_at, stok_komoditas.created_at, stok_komoditas.updated_at FROM stok_komoditas JOIN komoditas ON stok_komoditas.id_komoditas = komoditas.id WHERE stok_komoditas.deleted_at is NULL AND WEEK(stok_komoditas.created_at) = $weekNumber";
+  }
 
   $result = mysqli_query($connection, $query);
 ?>

@@ -312,6 +312,54 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
+                  <a href="#!" class="nav-link"  data-toggle="modal" data-target="#laporanModal" data-id="harga-eceran" onclick="printLaporan(this)">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Eceran</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="harga-grosir" onclick="printLaporan(this)">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Grosir</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="harga-nasional" onclick="printLaporan(this)">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Nasional</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="harga-distributor" onclick="printLaporan(this)">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Distributor</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="harga-produsen" onclick="printLaporan(this)">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Harga Produsen</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="stok" onclick="printLaporan(this)">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Stok</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="permintaan" onclick="printLaporan(this)">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Permintaan</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="inflasi" onclick="printLaporan(this)">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Data Inflasi</p>
+                  </a>
+                </li>
+                <!-- <li class="nav-item">
                   <a href="?page=laporan-harga-eceran&type=laporan" class="nav-link" target="_blank">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Harga Eceran</p>
@@ -358,7 +406,7 @@
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Inflasi</p>
                   </a>
-                </li>
+                </li>  -->
               </ul>
             </li>
             <?php endif; ?>
@@ -381,5 +429,121 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <!-- Modal -->
+  <div class="modal fade" id="laporanModal" tabindex="-1" aria-labelledby="laporanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="laporanModalLabel">Cetak Laporan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="filter-laporan" action="#!" method="post">
+          <div class="modal-body">
+            <input type="hidden" id="filter-target" name="filter_target">
+  
+            <div class="form-group">
+              <label for="tipe-filter">Tipe Filter</label>
+              <select name="tipe_filter" id="tipe-filter" class="form-control" onchange="pilihFilter(this)">
+                <option value="MINGGUAN">MINGGUAN</option>
+                <option value="BULANAN">BULANAN</option>
+              </select>
+            </div>
+  
+            <div class="form-group hidden" id="filter-bulan">
+              <label for="data-filter-bulan">Filter Data</label>
+              <select name="data_filter_bulan" id="data-filter-bulan" class="form-control">
+                <option value="1">JANUARI</option>
+                <option value="2">FEBRUARI</option>
+                <option value="3">MARET</option>
+                <option value="4">APRIL</option>
+                <option value="5">MEI</option>
+                <option value="6">JUNI</option>
+                <option value="7">JULI</option>
+                <option value="8">AGUSTUS</option>
+                <option value="9">SEPTEMEBR</option>
+                <option value="10">OKTOBER</option>
+                <option value="11">NOPEMBER</option>
+                <option value="12">DESEMBER</option>
+              </select>
+            </div>
+  
+            <div class="form-group" id="filter-pekan">
+              <label for="data-filter-pekan">Filter Data</label>
+              <input type="date" class="form-control" name="data_filter_pekan" id="data-filter-pekan">
+            </div>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-primary">Cetak</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const printLaporan = (target) => {
+      const targetFilter = target.getAttribute("data-id");
+
+      document.getElementById("filter-target").value = targetFilter;
+
+      let targetLaporan = "";
+
+      switch(targetFilter) {
+        case "harga-eceran":
+          targetLaporan = "?page=laporan-harga-eceran&type=laporan";
+          break;
+        case "harga-grosir":
+          targetLaporan = "?page=laporan-harga-grosir&type=laporan";
+          break;
+        case "harga-nasional":
+          targetLaporan = "?page=laporan-harga-nasional&type=laporan";
+          break;
+        case "harga-distributor":
+          targetLaporan = "?page=laporan-harga-distributor&type=laporan";
+          break;
+        case "harga-produsen":
+          targetLaporan = "?page=laporan-harga-produsen&type=laporan";
+          break;
+        case "stok":
+          targetLaporan = "?page=laporan-stok&type=laporan";
+          break;
+        case "permintaan":
+          targetLaporan = "?page=laporan-permintaan&type=laporan";
+          break;
+        case "inflasi":
+          targetLaporan = "?page=laporan-inflasi&type=laporan";
+          break;
+      }
+
+      const filterLaporan = document.getElementById('filter-laporan');
+      filterLaporan.setAttribute("action", targetLaporan)
+    }
+
+    const pilihFilter = (target) => {
+      const value = target.value;
+
+      const kolomBulan = document.getElementById("filter-bulan");
+      const kolomPekan = document.getElementById("filter-pekan");
+
+      if(value === "MINGGUAN") {
+        kolomBulan.classList.add("hidden");
+        kolomPekan.classList.remove("hidden");
+      } else {
+        kolomBulan.classList.remove("hidden");
+        kolomPekan.classList.add("hidden");
+      }
+    }
+  </script>
 
   <div class="content-wrapper <?= ($role_id == 0) ? "bg-aku" : "" ?>">
