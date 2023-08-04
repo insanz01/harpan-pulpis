@@ -33,6 +33,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
+            <input type="hidden" id="id-edit" value="<?= $id_edit ?>">
             <div class="form-group">
               <label for="">Nama Komoditi</label>
               <select name="id_komoditas" class="form-control" id="id_komoditas">
@@ -77,11 +78,13 @@
   }
 
   const submitData = async () => {
+    const id = document.getElementById("id-edit").value;
     const jumlah = document.getElementById("jumlah").value;
     const id_komoditas = document.getElementById("id_komoditas").value;
     const tanggal = document.getElementById("tanggal").value;
 
     const data = {
+      id,
       jumlah,
       id_komoditas,
       tanggal
