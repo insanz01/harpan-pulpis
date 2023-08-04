@@ -6,7 +6,7 @@ include "../helper/helper.php";
 include "../helper/validate.php";
 include "../database/db.php";
 
-$query = "SELECT p.id_komoditas as id, k.nama, p.jumlah FROM permintaan p JOIN komoditas k ON p.id_komoditas = k.id WHERE DATE(p.created_at) = DATE(NOW())";
+$query = "SELECT p.id_komoditas as id, k.nama, p.jumlah FROM permintaan p JOIN komoditas k ON p.id_komoditas = k.id WHERE WEEK(p.created_at) = WEEK(NOW())";
 
 $result = mysqli_query($connection, $query);
 
