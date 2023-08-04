@@ -9,7 +9,7 @@
 
   if($tipeFilter == "BULANAN") {
     $query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, satuan.nama as satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_eceran.deleted_at is NULL AND harga_eceran.approved_at is not NULL AND MONTH(harga_eceran.created_at) = $dataFilterBulan";
-  } else {
+  } else if($tipeFilter == "MINGGUAN") {
     $weekNumber = date("W", strtotime($dataFilterPekan));
 
     $query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, satuan.nama as satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_eceran.deleted_at is NULL AND harga_eceran.approved_at is not NULL AND WEEK(harga_eceran.created_at) = $weekNumber";

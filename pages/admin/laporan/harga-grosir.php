@@ -9,7 +9,7 @@
 
   if($tipeFilter == "BULANAN") {
     $query = "SELECT harga_grosir.id, harga_grosir.harga, komoditas.id as id_komoditas, komoditas.nama as komoditas, satuan.nama as satuan, harga_grosir.approved_at, harga_grosir.created_at, harga_grosir.updated_at FROM harga_grosir JOIN komoditas ON harga_grosir.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_grosir.deleted_at is NULL AND harga_grosir.approved_at is not NULL AND MONTH(harga_grosir.created_at) = $dataFilterBulan";
-  } else {
+  } else if($tipeFilter == "MINGGUAN") {
     $weekNumber = date("W", strtotime($dataFilterPekan));
 
     $query = "SELECT harga_grosir.id, harga_grosir.harga, komoditas.id as id_komoditas, komoditas.nama as komoditas, satuan.nama as satuan, harga_grosir.approved_at, harga_grosir.created_at, harga_grosir.updated_at FROM harga_grosir JOIN komoditas ON harga_grosir.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_grosir.deleted_at is NULL AND harga_grosir.approved_at is not NULL AND WEEK(harga_grosir.created_at) = $weekNumber";

@@ -9,7 +9,7 @@
 
   if($tipeFilter == "BULANAN") {
     $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE permintaan.deleted_at is NULL AND MONTH(permintaan.created_at) = $dataFilterBulan";
-  } else {
+  } else if($tipeFilter == "MINGGUAN") {
     $weekNumber = date("W", strtotime($dataFilterPekan));
 
     $query = "SELECT permintaan.id, permintaan.jumlah, permintaan.id_komoditas, satuan.nama as satuan, komoditas.nama as komoditas, permintaan.approved_at, permintaan.created_at, permintaan.updated_at FROM permintaan JOIN komoditas ON permintaan.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE permintaan.deleted_at is NULL AND WEEK(permintaan.created_at) = $weekNumber";
