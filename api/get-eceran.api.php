@@ -3,7 +3,7 @@
 include "../helper/helper.php";
 include "../database/db.php";
 
-$query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, satuan.nama as satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id JOIN satuan ON komoditas.id_satuan = satuan.id WHERE harga_eceran.deleted_at is NULL";
+$query = "SELECT harga_eceran.id, harga_eceran.harga, komoditas.nama as komoditas, komoditas.id as id_komoditas, komoditas.satuan, harga_eceran.approved_at, harga_eceran.created_at, harga_eceran.updated_at FROM harga_eceran JOIN komoditas ON harga_eceran.id_komoditas = komoditas.id WHERE harga_eceran.deleted_at is NULL";
 
 if(isset($_GET["id"])) {
   $id = $_GET["id"];
