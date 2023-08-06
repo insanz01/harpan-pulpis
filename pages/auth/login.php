@@ -37,7 +37,7 @@
 
         <form action="#" onsubmit="await login(this)" method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="12345XX" name="username" id="username">
+            <input type="text" class="form-control" placeholder="Username" name="username" id="username">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -56,8 +56,8 @@
           <div class="row">
             <div class="col-12 form-group">
               <select name="login_type" id="login_type" class="form-control">
-                <option value="1">Pimpinan</option>
-                <option value="2">Admin</option>
+                <option value="1">Pimpinan/Admin</option>
+                <option value="2">Pegawai</option>
               </select>
             </div>
           </div>

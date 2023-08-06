@@ -1,6 +1,6 @@
 <?php
   include "config/config.php";
-  include "controller/komoditas.controller.php";
+  include "controller/kategori-komoditas.controller.php";
 
   $role_id = 0;
   if(isset($_SESSION["SESS_HARPAN_ROLE_ID"])) {
@@ -41,7 +41,7 @@
             Cetak
           </a> -->
           <?php if($role_id == 2): ?>
-            <a href="?page=komoditas&action=tambah" class="btn btn-success float-right mx-2" role="button">
+            <a href="?page=kategori-komoditas&action=tambah" class="btn btn-success float-right mx-2" role="button">
               <i class="fas fa-fw fa-plus"></i>
               Tambah
             </a>
@@ -59,32 +59,28 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Nama Komoditi</th>
-                  <th>Kategori</th>
-                  <th>Merk</th>
+                  <th>Nama Kategori</th>
                   <?php if($role_id == 2): ?>
                     <th class="text-right">Opsi</th>
                   <?php endif; ?>
                 </tr>
               </thead>
               <tbody>
-                <?php $number = 1 ?>
+                <?php $number = 1; ?>
                 <?php foreach($data as $datum): ?>
                   <tr>
                     <td><?= $number++ ?></td>
                     <td><?= $datum['nama'] ?></td>
-                    <td><?= $datum['kategori'] ?></td>
-                    <td><?= $datum['merk'] ?></td>
                     <?php if($role_id == 2): ?>
                       <td>
-                        <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $datum['id'] ?>)">
-                          <i class="fas fa-fw fa-trash"></i>
-                          Hapus
-                        </a>
-                        <a href="?page=komoditas&action=edit&id=<?= $datum['id'] ?>" class="btn btn-primary float-right mx-2" role="button">
-                          <i class="fas fa-fw fa-edit"></i>
-                          Ubah
-                        </a>
+                      <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $datum['id'] ?>)">
+                        <i class="fas fa-fw fa-trash"></i>
+                        Hapus
+                      </a>
+                      <a href="index.php?page=kategori-komoditas&action=edit&id=<?= $datum['id'] ?>" class="btn btn-primary float-right mx-2" role="button">
+                        <i class="fas fa-fw fa-edit"></i>
+                        Ubah
+                      </a>
                       </td>
                     <?php endif; ?>
                   </tr>
@@ -190,7 +186,7 @@
   }
 
   const doDelete = async (data) => {
-    return await axios.post(`<?= $base_url ?>api/delete-komoditas.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/delete-kategori-komoditas.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }

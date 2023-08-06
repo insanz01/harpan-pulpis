@@ -9,14 +9,17 @@
   if(isset($_GET["id"])) {
     $id_edit = $_GET["id"];
 
-    $query = "SELECT * FROM komoditas WHERE id = $id_edit";
+    $query = "SELECT * FROM kategori_barang WHERE id = $id_edit";
 
     $result = mysqli_query($connection, $query);
 
     if(mysqli_num_rows($result) > 0) {
       $row = mysqli_fetch_assoc($result);
 
-      $data = $row;
+      $data = [
+        "id" => $row['id'],
+        "nama" => $row["nama"]
+      ];
     }
   }
 ?>
@@ -25,12 +28,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Komoditas</h1>
+        <h1 class="m-0">Kategori Komoditas</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Komoditas</a></li>
-          <li class="breadcrumb-item active">Edit Komoditas</li>
+          <li class="breadcrumb-item"><a href="#">Kategori Komoditas</a></li>
+          <li class="breadcrumb-item active">Edit Kategori Komoditas</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -49,19 +52,11 @@
             <input type="hidden" id="id_edit" value="<?= $id_edit; ?>">
 
             <div class="form-group">
-              <label for="">Nama Komoditi</label>
-              <input type="text" class="form-control" placeholder="misal: telur" id="nama">
+              <label for="">Nama Kategori</label>
+              <input type="text" class="form-control" placeholder="misal: minyak" id="nama" value="<?= $data['nama'] ?>">
             </div>
             <div class="form-group">
-              <label for="">Kategori</label>
-              <input type="text" class="form-control" name="kategori" id="kategori">
-            </div>
-            <div class="form-group">
-              <label for="">Merk</label>
-              <input type="text" class="form-control" name="merk" id="merk">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Komoditas</button>
+              <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Kategori Komoditas</button>
             </div>
           </div>
         </div>
@@ -75,9 +70,7 @@
   const saveData = async (data) => {
     return await axios.post(`<?= $base_url ?>api/edit-komoditas.api.php`, {
       id: data.id,
-      nama: data.nama,
-      kategori: data.kategori,
-      merk: data.merk,
+      nama: data.nama
     },{
       headers: {
         "Content-Type": "multipart/form-data"
@@ -96,14 +89,10 @@
   const submitData = async () => {
     const id = document.getElementById("id_edit").value;
     const nama = document.getElementById("nama").value;
-    const kategori = document.getElementById("kategori").value;
-    const merk = document.getElementById("merk").value;
 
     const data = {
       id,
-      nama,
-      kategori,
-      merk
+      nama
     }
 
     console.log(data);
@@ -111,7 +100,7 @@
     const result = await saveData(data);
 
     if(result.status) {
-      window.location.href = "<?= $base_url ?>index.php?page=komoditas"
+      window.location.href = "<?= $base_url ?>index.php?page=kategori-komoditas"
     }
   }
 

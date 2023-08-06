@@ -7,10 +7,8 @@ include "../helper/validate.php";
 include "../database/db.php";
 
 $nama = validate_input($connection, $_POST["nama"]);
-$kategori = validate_input($connection, $_POST["kategori"]);
-$merk = validate_input($connection, $_POST["merk"]);
 
-$query = "INSERT INTO komoditas (nama, kategori, merk) VALUES ('$nama', '$kategori', '$merk')";
+$query = "INSERT INTO kategori_barang (nama) VALUES ('$nama')";
 
 $result = mysqli_query($connection, $query);
 
@@ -18,8 +16,7 @@ $data = null;
 
 if ($result) {
   $data['nama'] = $nama;
-  $data['kategori'] = $kategori;
-  $data['merk'] = $merk;
+  $data['created_at'] = date('Y-m-d', time());
   
   to_json($data);
   return;

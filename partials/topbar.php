@@ -58,7 +58,7 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <?php if($show_title): ?>
-          <h5 class="nav-link">Sistem Informasi Harga Pangan Pokok untuk Peningkatan Aksesibilitas Konsumen di Pasar Antasari</h5>
+          <h5 class="nav-link">Sistem Informasi Harga Pangan Pokok di Kabupaten Pulang Pisau</h5>
         <?php endif; ?>
         <!-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>

@@ -41,6 +41,21 @@
     case "kritik-saran":
       include "pages/admin/kritik_saran/index.php";
       break;
+    case "kategori-komoditas":
+      if($action == "tambah") {
+        include "pages/admin/kategori-komoditas/tambah.php";
+      } else if($action == "edit") {
+        if(isset($_GET["id"])) {
+          $id = $_GET["id"];
+          
+          include "pages/admin/kategori-komoditas/edit.php";
+        } else {
+          include "pages/admin/kategori-komoditas/index.php";
+        }
+      } else {
+        include "pages/admin/kategori-komoditas/index.php";
+      }
+      break;
     case "komoditas":
       if($action == "tambah") {
         include "pages/admin/komoditas/tambah.php";

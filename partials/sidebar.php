@@ -219,6 +219,14 @@
             </li>
 
             <li class="nav-header">MASTER DATA</li>
+            <!-- <li class="nav-item">
+              <a href="?page=kategori-komoditas" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Kategori Komoditas
+                </p>
+              </a>
+            </li> -->
             <li class="nav-item">
               <a href="?page=komoditas" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
