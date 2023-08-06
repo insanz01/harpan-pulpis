@@ -192,7 +192,7 @@
   }
 
   const doDelete = async (data) => {
-    return await axios.post(`<?= $base_url ?>api/delete-sembako.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/delete-detail-sembako.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
