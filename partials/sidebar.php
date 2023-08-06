@@ -42,7 +42,7 @@
             <img src="dist/img/logo.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?= "DKP3 KOTA BANJARMASIN" ?></a>
+            <a href="#" class="d-block"><?= "MONITORING" ?></a>
           </div>
         </div>
       <?php endif; ?>
@@ -173,6 +173,15 @@
             </li>
             <li class="nav-header">MASTER DATA HARGA</li>
             <li class="nav-item">
+              <a href="?page=sembako" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Data Harga Sembako
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="?page=eceran" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
@@ -232,6 +241,15 @@
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Data Komoditas
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="?page=pasar" class="nav-link">
+                <i class="nav-icon fas fa-store"></i>
+                <p>
+                  Data Pasar
                   <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>

@@ -71,6 +71,51 @@
         include "pages/admin/komoditas/index.php";
       }
       break;
+    case "pasar":
+      if($action == "tambah") {
+        include "pages/admin/pasar/tambah.php";
+      } else if($action == "edit") {
+        if(isset($_GET["id"])) {
+          $id = $_GET["id"];
+          
+          include "pages/admin/pasar/edit.php";
+        } else {
+          include "pages/admin/pasar/index.php";
+        }
+      } else {
+        include "pages/admin/pasar/index.php";
+      }
+      break;
+    case "sembako":
+      if($action == "tambah") {
+        include "pages/admin/sembako/tambah.php";
+      } else if($action == "edit") {
+        if(isset($_GET["id"])) {
+          $id = $_GET["id"];
+          
+          include "pages/admin/sembako/edit.php";
+        } else {
+          include "pages/admin/sembako/index.php";
+        }
+      } else {
+        include "pages/admin/sembako/index.php";
+      }
+      break;
+    case "sembako-detail":
+      if($action == "tambah") {
+        include "pages/admin/sembako/detail/tambah.php";
+      } else if($action == "edit") {
+        if(isset($_GET["id"])) {
+          $id = $_GET["id"];
+          
+          include "pages/admin/sembako/detail/edit.php";
+        } else {
+          include "pages/admin/sembako/detail/index.php";
+        }
+      } else {
+        include "pages/admin/sembako/detail/index.php";
+      }
+      break;
     case "eceran":
       if($action == "tambah") {
         include "pages/admin/harga/eceran/tambah.php";
