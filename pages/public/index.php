@@ -19,8 +19,16 @@
 <section class="content">
   <div class="container-fluid">
 
-    <div class="jumbotron-fluid">
-      <p class="text-center h2">Selamat Datang di Sistem Informasi Harga Pangan Pasar Antasari</p>
+    <div class="row">
+      <div class="col-10 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <div class="jumbotron-fluid">
+              <p class="text-center display-4">Selamat Datang di Sistem Informasi Harga Pangan Kabupaten Pulang Pisau</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- /.row (main row) -->
   </div><!-- /.container-fluid -->

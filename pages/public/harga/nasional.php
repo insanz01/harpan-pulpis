@@ -8,12 +8,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Dashboard</h1>
+        <h1 class="m-0"></h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Harga Nasional</li>
+          <li class="breadcrumb-item"><a href="#"></a></li>
+          <li class="breadcrumb-item active"></li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -31,7 +31,7 @@
       <div class="col-4">
         <form id="filter-tanggal" action="?page=harga-nasional-publik" method="post">
           <div class="form-group">
-            <label for="filter_tanggal">Filter Tanggal</label>
+            <label for="filter_tanggal" class="text-white">Filter Tanggal</label>
             <input type="date" name="filter_tanggal" class="form-control" onchange="pilihTanggal(this)" value="<?= $filter_tanggal ?>">
           </div>
         </form>

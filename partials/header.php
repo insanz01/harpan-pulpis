@@ -35,7 +35,7 @@
 
   <style>
     .bg-aku {
-      background-image: url('dist/img/latar.jpg');
+      background-image: url('dist/img/market-bg.jpg');
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: 100% 100%;
