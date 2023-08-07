@@ -181,51 +181,6 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="?page=eceran" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Data Harga Eceran
-                  <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="?page=grosir" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Data Harga Grosir
-                  <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="?page=nasional" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Data Harga Nasional
-                  <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="?page=distributor" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Data Harga Distributor
-                  <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="?page=produsen" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Data Harga Produsen
-                  <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-              </a>
-            </li>
 
             <li class="nav-header">MASTER DATA</li>
             <!-- <li class="nav-item">
@@ -254,21 +209,19 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="?page=stok" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Data Ketersediaan
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <a href="?page=permintaan" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Data Permintaan
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
             </li>
@@ -277,10 +230,9 @@
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Data Inflasi
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
-            </li>
+            </li> -->
 
             <?php if($role_id != 0): ?>
               <li class="nav-item">
