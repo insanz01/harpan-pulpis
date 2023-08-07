@@ -244,15 +244,14 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="?page=admin-agenda" class="nav-link">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     Agenda Pasar Murah
-                    <!-- <span class="right badge badge-danger">New</span> -->
                   </p>
                 </a>
-              </li>
+              </li> -->
             <?php endif; ?>
 
             <?php if($role_id == 1): ?>
@@ -289,54 +288,54 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a href="#!" class="nav-link"  data-toggle="modal" data-target="#laporanModal" data-id="harga-eceran" onclick="printLaporan(this)">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Harga Eceran</p>
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                   <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="harga-grosir" onclick="printLaporan(this)">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Harga Grosir</p>
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                   <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="harga-nasional" onclick="printLaporan(this)">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Harga Nasional</p>
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                   <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="harga-distributor" onclick="printLaporan(this)">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Harga Distributor</p>
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                   <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="harga-produsen" onclick="printLaporan(this)">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Harga Produsen</p>
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                   <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="stok" onclick="printLaporan(this)">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Stok</p>
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                   <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="permintaan" onclick="printLaporan(this)">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Permintaan</p>
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                   <a href="#!" class="nav-link" data-toggle="modal" data-target="#laporanModal" data-id="inflasi" onclick="printLaporan(this)">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Data Inflasi</p>
                   </a>
-                </li>
+                </li> -->
                 <!-- <li class="nav-item">
                   <a href="?page=laporan-harga-eceran&type=laporan" class="nav-link" target="_blank">
                     <i class="far fa-circle nav-icon"></i>
