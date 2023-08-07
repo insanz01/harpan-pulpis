@@ -73,28 +73,30 @@
               </thead>
               <tbody>
                 <?php $number = 1 ?>
-                <?php foreach($data['harga'] as $datum): ?>
-                  <tr>
-                    <td><?= $number++ ?></td>
-                    <td><?= $datum['nama_bahan'] ?></td>
-                    <td><?= $datum['harga_pedagang_1'] ?></td>
-                    <td><?= $datum['harga_pedagang_2'] ?></td>
-                    <td><?= $datum['harga_pedagang_3'] ?></td>
-                    <td><?= $datum['harga_pedagang_4'] ?></td>
-                    <?php if($role_id == 2): ?>
-                      <td>
-                        <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $datum['id'] ?>)">
-                          <i class="fas fa-fw fa-trash"></i>
-                          Hapus
-                        </a>
-                        <a href="?page=sembako-detail&action=edit&id=<?= $datum['id'] ?>" class="btn btn-primary float-right mx-2" role="button">
-                          <i class="fas fa-fw fa-edit"></i>
-                          Ubah
-                        </a>
-                      </td>
-                    <?php endif; ?>
-                  </tr>
-                <?php endforeach; ?>
+                <?php if(isset($data['harga'])): ?>
+                  <?php foreach($data['harga'] as $datum): ?>
+                    <tr>
+                      <td><?= $number++ ?></td>
+                      <td><?= $datum['nama_bahan'] ?></td>
+                      <td><?= $datum['harga_pedagang_1'] ?></td>
+                      <td><?= $datum['harga_pedagang_2'] ?></td>
+                      <td><?= $datum['harga_pedagang_3'] ?></td>
+                      <td><?= $datum['harga_pedagang_4'] ?></td>
+                      <?php if($role_id == 2): ?>
+                        <td>
+                          <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $datum['id'] ?>)">
+                            <i class="fas fa-fw fa-trash"></i>
+                            Hapus
+                          </a>
+                          <a href="?page=sembako-detail&action=edit&id_sembako=<?= $data['id'] ?>&id=<?= $datum['id'] ?>" class="btn btn-primary float-right mx-2" role="button">
+                            <i class="fas fa-fw fa-edit"></i>
+                            Ubah
+                          </a>
+                        </td>
+                      <?php endif; ?>
+                    </tr>
+                  <?php endforeach; ?>
+                <?php endif; ?>
               </tbody>
             </table>
           </div>

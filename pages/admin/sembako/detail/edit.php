@@ -25,9 +25,9 @@
     }
   }
 
-  $queryHargaSembako = "SELECT * FROM harga_komoditas WHERE id = $id";
+  $queryHargaSembako = "SELECT * FROM harga_sembako WHERE id = $id";
 
-  $resultHargaSembako = mysqli_query($connection, $query);
+  $resultHargaSembako = mysqli_query($connection, $queryHargaSembako);
 
   $hargaSembako = [];
   if($resultHargaSembako) {
