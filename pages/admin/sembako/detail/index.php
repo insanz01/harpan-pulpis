@@ -41,7 +41,7 @@
             Cetak
           </a> -->
           <?php if($role_id == 2): ?>
-            <a href="?page=sembako-detail&action=tambah" class="btn btn-success float-right mx-2" role="button">
+            <a href="?page=sembako-detail&action=tambah&id_pasar=<?= $id_pasar ?>&id_sembako=<?= $data['id'] ?>" class="btn btn-success float-right mx-2" role="button">
               <i class="fas fa-fw fa-plus"></i>
               Tambah
             </a>

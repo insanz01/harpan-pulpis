@@ -7,6 +7,11 @@
     $id_sembako = $_GET["id_sembako"];
   }
 
+  $id_pasar = 0;
+  if(isset($_GET["id_pasar"])) {
+    $id_pasar = $_GET["id_pasar"];
+  }
+
   $query = "SELECT * FROM komoditas WHERE deleted_at is NULL";
 
   $result = mysqli_query($connection, $query);
@@ -46,7 +51,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <input type="hidden" name="id_sembako" value="<?= $id_sembako ?>">
+            <input type="hidden" name="id_sembako" id="id_sembako" value="<?= $id_sembako ?>">
             <div class="form-group">
               <label for="">Komoditas</label>
               <select name="id_komoditas" id="id_komoditas" class="form-control">
@@ -78,7 +83,7 @@
               <input type="number" class="form-control" name="harga_pedagang_4" id="harga_pedagang_4">
             </div>
             <div class="form-group">
-              <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Sembako</button>
+              <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Harga Sembako</button>
             </div>
           </div>
         </div>
@@ -106,6 +111,7 @@
   }
 
   const submitData = async () => {
+
     const id_sembako = document.getElementById("id_sembako").value;
     const id_komoditas = document.getElementById("id_komoditas").value;
     const satuan = document.getElementById("satuan").value;
@@ -130,7 +136,7 @@
     const result = await saveData(data);
 
     if(result.status) {
-      window.location.href = "<?= $base_url ?>index.php?page=sembako-detail&id_sembako=<?= $id_sembako ?>"
+      window.location.href = "<?= $base_url ?>index.php?page=sembako-detail&id=<?= $id_pasar ?>"
     }
   }
 </script>
