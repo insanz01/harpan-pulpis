@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Agu 2023 pada 09.12
+-- Waktu pembuatan: 15 Agu 2023 pada 09.47
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -409,6 +409,7 @@ CREATE TABLE `sembako` (
   `id` int(11) NOT NULL,
   `id_pasar` int(11) NOT NULL,
   `petugas` varchar(255) NOT NULL,
+  `file` varchar(255) NOT NULL,
   `approved_at` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
@@ -419,8 +420,8 @@ CREATE TABLE `sembako` (
 -- Dumping data untuk tabel `sembako`
 --
 
-INSERT INTO `sembako` (`id`, `id_pasar`, `petugas`, `approved_at`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Palui; Waluh', NULL, '2023-08-06 17:55:59', '2023-08-06 17:55:59', NULL);
+INSERT INTO `sembako` (`id`, `id_pasar`, `petugas`, `file`, `approved_at`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Palui; Waluh', '', NULL, '2023-08-06 17:55:59', '2023-08-06 17:55:59', NULL);
 
 -- --------------------------------------------------------
 
