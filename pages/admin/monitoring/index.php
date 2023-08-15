@@ -69,7 +69,7 @@
                       <td><?= $number++ ?></td>
                       <td><?= $row['petugas'] ?></td>
                       <td><?= $row['pasar'] ?></td>
-                      <td><?= $row['tanggal'] ?></td>
+                      <td><?= date('d M Y', strtotime($row['tanggal'])) ?></td>
                       <?php if($role_id == 1): ?>
                         <td>
                           <?php if(!$row['approved_at']): ?>
