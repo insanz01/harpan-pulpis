@@ -48,7 +48,11 @@
       include "pages/admin/statistik/hasil.php";
       break;
     case "monitoring-pasar":
-      include "pages/admin/monitoring/pasar.php";
+      if($action == "tambah") {
+        include "pages/admin/monitoring/pasar.php";
+      } else {
+        include "pages/admin/monitoring/index.php";
+      }
       break;
     case "kategori-komoditas":
       if($action == "tambah") {
