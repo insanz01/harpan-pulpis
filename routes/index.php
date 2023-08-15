@@ -41,8 +41,8 @@
         case "laporan-permintaan-monitoring-pasar":
           include "pages/admin/laporan/permintaan-monitoring-pasar.php";
           break;
-        case "laporan-pasar":
-          include "pages/admin/laporan/pasar.php";
+        case "laporan-monitoring-sembako-pasar":
+          include "pages/admin/laporan/monitoring-sembako-pasar.php";
           break;
         case "laporan-monitoring-sembako-detail":
           include "pages/admin/laporan/monitoring-sembako-detail.php";
