@@ -17,7 +17,7 @@ $result = mysqli_query($connection, $query);
 $data = null;
 
 if($result) {
-  $data['id_pasar'] = $id_pesan;
+  $data['id_pasar'] = $id_pasar;
   $data['petugas'] = $petugas;
   $data['created_at'] = date('Y-m-d H:i:s');
 

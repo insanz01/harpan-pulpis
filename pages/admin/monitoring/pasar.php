@@ -71,10 +71,6 @@
     }).then(res => res.data);
   }
 
-  const loadKomoditas = async () => {
-    return await axios.get(`<?= $base_url ?>api/komoditas.api.php`).then(res => res.data);
-  }
-
   const submitData = async () => {
     const id_pasar = document.getElementById("id_pasar").value;
     const petugas = document.getElementById("petugas").value;

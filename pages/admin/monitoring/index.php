@@ -72,7 +72,9 @@
                       <td><?= $row['tanggal'] ?></td>
                       <?php if($role_id == 1): ?>
                         <td>
-                          <a href="#!" class="btn btn-primary" role="button">VERIFIKASI</a>
+                          <?php if(!$row['approved_at']): ?>
+                            <a href="#!" onclick="verifikasiData(<?= $row['id'] ?>)" class="btn btn-primary" role="button">VERIFIKASI</a>
+                          <?php endif; ?>
                         </td>
                       <?php endif; ?>
                     </tr>
@@ -87,3 +89,24 @@
     <!-- /.row -->
   </div><!-- /.container-fluid -->
 </section>
+
+<script>
+  const doVerification = async (id) => {
+    return await axios.post(`<?= $base_url ?>api/approve-monitoring.api.php`, {
+      id
+    },{
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(res => res.data);
+  }
+
+  const verifikasiData = async (id) => {
+    const result = await doVerification(id);
+
+    if(result.status) {
+      console.log(result.data);
+      location.reload();
+    }
+  }
+</script>
