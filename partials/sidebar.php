@@ -199,15 +199,18 @@
                 </p>
               </a>
             </li> -->
-            <li class="nav-item">
-              <a href="?page=statistik-harga" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Statistik Harga
-                  <!-- <span class="right badge badge-danger">New</span> -->
-                </p>
-              </a>
-            </li>
+            <?php if($role_id == 2): ?>
+              <li class="nav-item">
+                <a href="?page=statistik-harga" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Statistik Harga
+                    <!-- <span class="right badge badge-danger">New</span> -->
+                  </p>
+                </a>
+              </li>
+            <?php endif; ?>
+
             <li class="nav-item">
               <a href="?page=komoditas" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
