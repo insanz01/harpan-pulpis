@@ -38,6 +38,9 @@
         case "laporan-agenda-pasar-murah":
           include "pages/admin/laporan/agenda-pasar-murah.php";
           break;
+        case "laporan-permintaan-monitoring-pasar":
+          include "pages/admin/laporan/permintaan-monitoring-pasar.php";
+          break;
       }
     }
   } else {

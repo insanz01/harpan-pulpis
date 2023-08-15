@@ -12,12 +12,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Data Monitoring</h1>
+        <h1 class="m-0">Data Permintaan Monitoring</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Data</a></li>
-          <li class="breadcrumb-item active">Monitoring</li>
+          <li class="breadcrumb-item active">Permintaan Monitoring</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -42,7 +42,13 @@
           <label for="laporan-periode">Laporan Periode</label>
           <input type="date" class="form-control">
         </div>     -->
-        <a href="?page=monitoring-pasar&action=tambah" class="btn btn-primary float-right" role="button">TAMBAH</a>
+        <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="permintaan-monitoring-pasar" onclick="printLaporan(this)">
+          <i class="fas fa-fw fa-print"></i>
+          Cetak
+        </a>
+        <?php if($role_id == 1): ?>
+          <a href="?page=monitoring-pasar&action=tambah" class="btn btn-primary float-right" role="button">TAMBAH</a>
+        <?php endif; ?>
       </div>
     </div>
     
@@ -57,6 +63,7 @@
                 <th>Petugas</th>
                 <th>Pasar</th>
                 <th>Tanggal</th>
+                <th>Status</th>
                 <?php if($role_id == 1): ?>
                   <th>Opsi</th>
                 <?php endif; ?>
@@ -70,6 +77,13 @@
                       <td><?= $row['petugas'] ?></td>
                       <td><?= $row['pasar'] ?></td>
                       <td><?= date('d M Y', strtotime($row['tanggal'])) ?></td>
+                      <td>
+                        <?php if($row['approved_at']): ?>
+                          Terverifikasi
+                        <?php else: ?>
+                          Belum Diverifikasi
+                        <?php endif; ?>  
+                      </td>
                       <?php if($role_id == 1): ?>
                         <td>
                           <?php if(!$row['approved_at']): ?>

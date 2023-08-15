@@ -7,15 +7,18 @@
   $dataFilterPekanAwal = $_POST["data_filter_pekan_awal"];
   $dataFilterPekanAkhir = $_POST["data_filter_pekan_akhir"];
 
-  $query = "SELECT * FROM agenda_pasar_murah";
+  // $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null WHERE  permintaan_monitor.approved_at is not null";
+  $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null";
 
   if($tipeFilter == "BULANAN") {
-    $query = "SELECT * FROM agenda_pasar_murah WHERE MONTH(agenda_pasar_murah.created_at) = $dataFilterBulan";
+    // $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null WHERE MONTH(permintaan_monitor.created_at) = $dataFilterBulan AND permintaan_monitor.approved_at is not null";
+    $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null AND MONTH(pm.created_at) = $dataFilterBulan";
   } else if($tipeFilter == "MINGGUAN") {
     // $weekNumber = date("W", strtotime($dataFilterPekan));
 
-    // $query = "SELECT * FROM agenda_pasar_murah WHERE WEEK(agenda_pasar_murah.created_at) = $weekNumber";
-    $query = "SELECT * FROM agenda_pasar_murah WHERE ((DATE(agenda_pasar_murah.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(agenda_pasar_murah.created_at) = '$dataFilterPekanAwal' OR DATE(agenda_pasar_murah.created_at) = '$dataFilterPekanAkhir')";
+    // $query = "SELECT * FROM permintaan_monitor WHERE WEEK(permintaan_monitor.created_at) = $weekNumber";
+    // $query = "SELECT * FROM permintaan_monitor WHERE ((DATE(permintaan_monitor.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(permintaan_monitor.created_at) = '$dataFilterPekanAwal' OR DATE(permintaan_monitor.created_at) = '$dataFilterPekanAkhir') AND permintaan_monitor.approved_at is not null";
+    $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null AND ((DATE(pm.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(pm.created_at) = '$dataFilterPekanAwal' OR DATE(pm.created_at) = '$dataFilterPekanAkhir')";
   }
 
   $result = mysqli_query($connection, $query);
@@ -46,43 +49,32 @@
         <hr size="2px" color="black">
         </p>
 	<center>
-		<h4>DATA LAPORAN AGENDA PASAR MURAH</h4>
+		<h4>DATA LAPORAN PERMINTAAN MONITOR</h4>
 	</center>
 
   <table border="1" style="width: 100%">
   <thead>
-              <th>No</th>
-              <th>Nama Pasar</th>
+              <th>#</th>
+              <th>Petugas</th>
+              <th>Pasar</th>
               <th>Tanggal</th>
-              <th>Jam Kegiatan</th>
-              <th>Item Komoditas</th>
+              <th>Status</th>
             </thead>
     <tbody>
               <?php if(mysqli_num_rows($result) > 0): ?>
                 <?php $number = 1; ?>
                 <?php while($row = mysqli_fetch_assoc($result)): ?>
-                  <?php
-                      $items = [];
-                      $arrAssoc = json_decode($row['item_komoditas'], true);
-
-                      if($arrAssoc) {
-                        foreach($arrAssoc as $arr) {
-                          $temp_item = "<span class='badge badge-sm badge-primary badge-pill ml-1'>$arr[name]</span>";
-  
-                          array_push($items, $temp_item);
-                        }
-                      }
-                    ?>
                   <tr>
                     <td><?= $number++ ?></td>
-                    <td><?= $row['lokasi'] ?></td>
-                    <td><?= $row['created_at'] ?></td>
-                    <td><?= $row['tanggal'] ?></td>
-                    <td><?= $row['jam_kegiatan'] ?></td>
+                    <td><?= $row['petugas'] ?></td>
+                    <td><?= $row['pasar'] ?></td>
+                    <td><?= date('d M Y', strtotime($row['tanggal'])) ?></td>
                     <td>
-                      <?php foreach($items as $item): ?>
-                        <?= $item; ?>
-                      <?php endforeach; ?>  
+                      <?php if($row['approved_at']): ?>
+                        Terverifikasi
+                      <?php else: ?>
+                        Belum Diverifikasi
+                      <?php endif; ?>  
                     </td>
                   </tr>
                 <?php endwhile; ?>

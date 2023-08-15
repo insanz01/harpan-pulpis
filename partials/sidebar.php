@@ -536,8 +536,11 @@
           targetLaporan = "?page=laporan-kritik-saran&type=laporan";
           break;
         case "agenda-pasar-murah":
-        targetLaporan = "?page=laporan-agenda-pasar-murah&type=laporan";
-        break;
+          targetLaporan = "?page=laporan-agenda-pasar-murah&type=laporan";
+          break;
+        case "permintaan-monitoring-pasar":
+          targetLaporan = "?page=laporan-permintaan-monitoring-pasar&type=laporan";
+          break;
       }
 
       const filterLaporan = document.getElementById('filter-laporan');
