@@ -44,9 +44,14 @@
       </div>
       <div class="col-4">
         <div class="form-group">
-          <a href="?page=admin-agenda&action=tambah" class="btn btn-info float-right" role="button">
-            <i class="fas fa-fw fa-print"></i>
+          <a href="?page=admin-agenda&action=tambah" class="btn btn-primary float-right" role="button">
+            <i class="fas fa-fw fa-plus"></i>
             Tambah
+          </a>
+
+          <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="agenda-pasar-murah" onclick="printLaporan(this)">
+            <i class="fas fa-fw fa-print"></i>
+            Cetak
           </a>
         </div>
       </div>
@@ -62,16 +67,36 @@
                 <th>#</th>
                 <th>Lokasi Pasar Murah</th>
                 <th>Tanggal Kegiatan</th>
+                <th>Jam Kegiatan</th>
+                <th>Item Komoditas</th>
                 <th>Aksi</th>
               </thead>
               <tbody>
                 <?php if(mysqli_num_rows($result) > 0): ?>
                   <?php $number = 1 ?>
                   <?php while($row = mysqli_fetch_assoc($result)): ?>
+                    <?php
+                      $items = [];
+                      $arrAssoc = json_decode($row['item_komoditas'], true);
+
+                      if($arrAssoc) {
+                        foreach($arrAssoc as $arr) {
+                          $temp_item = "<span class='badge badge-sm badge-primary badge-pill ml-1'>$arr[name]</span>";
+  
+                          array_push($items, $temp_item);
+                        }
+                      }
+                    ?>
                     <tr>
                       <td><?= $number++ ?></td>
                       <td><?= $row['lokasi'] ?></td>
                       <td><?= $row['tanggal'] ?></td>
+                      <td><?= $row['jam_kegiatan'] ?></td>
+                      <td>
+                        <?php foreach($items as $item): ?>
+                          <?= $item; ?>
+                        <?php endforeach; ?>
+                      </td>
                       <td>
                         <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $row['id'] ?>)">
                           <i class="fas fa-fw fa-trash"></i>

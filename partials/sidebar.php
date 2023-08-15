@@ -535,6 +535,9 @@
         case "kritik-saran":
           targetLaporan = "?page=laporan-kritik-saran&type=laporan";
           break;
+        case "agenda-pasar-murah":
+        targetLaporan = "?page=laporan-agenda-pasar-murah&type=laporan";
+        break;
       }
 
       const filterLaporan = document.getElementById('filter-laporan');

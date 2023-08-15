@@ -87,11 +87,13 @@
     const tanggal = document.getElementById("tanggal").value;
     const jam = document.getElementById("jam").value;
 
+    const item_komoditas = JSON.stringify(selectedItems);
+
     const data = {
       lokasi,
       tanggal,
       jam_kegiatan: jam,
-      item_komoditas: selectedItems
+      item_komoditas,
     }
 
     console.log(data);
