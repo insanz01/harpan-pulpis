@@ -481,7 +481,12 @@
   
             <div class="form-group" id="filter-pekan">
               <label for="data-filter-pekan">Filter Data</label>
-              <input type="date" class="form-control" name="data_filter_pekan" id="data-filter-pekan">
+              <br>
+              <small>Tanggal Awal</small>
+              <input type="date" class="form-control mb-2" name="data_filter_pekan_awal" id="data-filter-pekan-awal">
+
+              <small>Tanggal Akhir</small>
+              <input type="date" class="form-control" name="data_filter_pekan_akhir" id="data-filter-pekan-akhir">
             </div>
   
           </div>
@@ -527,6 +532,9 @@
         case "inflasi":
           targetLaporan = "?page=laporan-inflasi&type=laporan";
           break;
+        case "kritik-saran":
+          targetLaporan = "?page=laporan-kritik-saran&type=laporan";
+          break;
       }
 
       const filterLaporan = document.getElementById('filter-laporan');
@@ -542,8 +550,11 @@
       if(value === "MINGGUAN") {
         kolomBulan.classList.add("hidden");
         kolomPekan.classList.remove("hidden");
-      } else {
+      } else if(value === "BULANAN") {
         kolomBulan.classList.remove("hidden");
+        kolomPekan.classList.add("hidden");
+      } else {
+        kolomBulan.classList.add("hidden");
         kolomPekan.classList.add("hidden");
       }
     }
