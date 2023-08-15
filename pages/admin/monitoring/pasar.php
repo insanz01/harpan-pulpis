@@ -51,7 +51,7 @@
               </div>
               <div class="form-group">
                 <!-- <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Data Statistik</button> -->
-                <button class="btn btn-success btn-block" type="submit" role="button">Data Statistik</button>
+                <button class="btn btn-success btn-block" type="submit" role="button" onclick="submitData()">Tambah Data Monitoring</button>
               </div>
             <!-- </form> -->
           </div>

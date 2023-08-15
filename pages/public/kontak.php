@@ -3,7 +3,7 @@
   include_once "config/config.php";
 ?>
 
-<div class="content-header">
+<div class="content-header text-white">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
@@ -32,7 +32,7 @@
             <img src="./dist/img/logo_banjarmasin.jpg" class="text-center w-100" alt="">
             <!-- <p class="py-3">Dinas Ketahanan Pangan, Pertanian, dan Perikanan (DKP3) Kota Banjarmasin adalah sebuah lembaga pemerintah yang bertanggung jawab atas pengelolaan sektor pertanian, perikanan, dan ketahanan pangan di Kota Banjarmasin, Indonesia.</p> -->
 
-            <button class="btn btn-primary btn-block" role="button"  data-toggle="modal" data-target="#kritikSaranModal">KRITIK DAN SARAN</button>
+            <button class="btn btn-primary btn-block" role="button"  data-toggle="modal" data-target="#kritikSaranModal" onclick="generateNewCaptcha()">KRITIK DAN SARAN</button>
           </div>
         </div>
       </div>
@@ -88,6 +88,12 @@
 </div>
 
 <script defer>
+  let captchaCode = `<?= $_SESSION["code"] ?>`;
+
+  const generateNewCaptcha = () => {
+    captchaCode = `<?= $_SESSION["code"] ?>`;
+  }
+
   const loadData = async () => {
     return await axios.get(`<?= $base_url ?>/api/publik-stok.api.php`).then(res => res.data);
   }
@@ -101,14 +107,14 @@
   }
 
   const kirimKritikSaran = async () => {
-    const kritikSaran = document.getElementById('kritik_saran').value;
+    const kritik_saran = document.getElementById('kritik_saran').value;
     const nama = document.getElementById('nama').value;
     const alamat = document.getElementById('alamat').value;
     const no_hp = document.getElementById('no_hp').value;
     const email = document.getElementById('email').value;
     const captcha = document.getElementById('captcha').value;
 
-    const captchaSession = `<?= $_SESSION["code"] ?>`;
+    const captchaSession = captchaCode;
 
     if(captchaSession != captcha) {
       console.log(captchaSession);
@@ -117,8 +123,12 @@
     }
 
     const data = {
-      "kritik_saran": kritikSaran,
-      nama, alamat, no_hp, email, captcha
+      kritik_saran,
+      nama, 
+      alamat, 
+      no_hp, 
+      email, 
+      captcha,
     }
 
     const result = await saveKritikSaran(data);
