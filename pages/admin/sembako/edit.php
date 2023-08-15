@@ -59,7 +59,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <input type="hidden" name="id_edit" value="<?= $id_edit ?>">
+            <input type="hidden" id="id_edit" name="id_edit" value="<?= $id_edit ?>">
             <div class="form-group">
               <label for="">Pasar</label>
               <select name="id_pasar" id="id_pasar" class="form-control">
@@ -103,6 +103,8 @@
     const id = document.getElementById("id_edit").value;
     const id_pasar = document.getElementById("id_pasar").value;
     const petugas = document.getElementById("petugas").value;
+
+    console.log("id", id)
 
     const data = {
       id,
