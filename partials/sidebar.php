@@ -110,15 +110,14 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="?page=stok-publik" class="nav-link">
                 <i class="nav-icon fas fa-box"></i>
                 <p>
                   Data Ketersediaan
-                  <!-- <span class="right badge badge-danger">New</span> -->
                 </p>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a href="?page=agenda-publik" class="nav-link">
                 <i class="nav-icon fas fa-list"></i>

@@ -1,6 +1,6 @@
 <?php
   include "config/config.php";
-  include "controller/sembako.controller.php";
+  include "controller/sembako-detail.controller.php";
 ?>
 
 <div class="content-header">
@@ -38,36 +38,36 @@
 
     <!-- Small boxes (Stat box) -->
     <div class="row">
-
       <div class="col-12 mx-auto">
         <div class="card">
           <div class="card-body">
+            <h3><?= $data['nama_pasar'] ?></h3>
+            <h5><?= $data['petugas'] ?></h5>
             <table class="table table-bordered custom-table">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Nama Pasar</th>
-                  <th>Petugas</th>
-                  <th>Tanggal</th>
-                  <th>Opsi</th>
+                  <th>Nama Bahan Pokok</th>
+                  <th>Harga Pedagang 1</th>
+                  <th>Harga Pedagang 2</th>
+                  <th>Harga Pedagang 3</th>
+                  <th>Harga Pedagang 4</th>
                 </tr>
               </thead>
               <tbody>
                 <?php $number = 1 ?>
-                <?php foreach($data as $datum): ?>
-                  <tr>
-                    <td><?= $number++ ?></td>
-                    <td><?= $datum['nama_pasar'] ?></td>
-                    <td><?= $datum['petugas'] ?></td>
-                    <td><?= $datum['created_at'] ?></td>
-                    <td>
-                      <a href="?page=sembako-detail-publik&id=<?= $datum['id'] ?>" class="btn btn-info float-right mx-2" role="button">
-                        <i class="fas fa-fw fa-book"></i>
-                        Detail
-                      </a>
-                    </td>
-                  </tr>
-                <?php endforeach; ?>
+                <?php if(isset($data['harga'])): ?>
+                  <?php foreach($data['harga'] as $datum): ?>
+                    <tr>
+                      <td><?= $number++ ?></td>
+                      <td><?= $datum['nama_bahan'] ?></td>
+                      <td><?= $datum['harga_pedagang_1'] ?></td>
+                      <td><?= $datum['harga_pedagang_2'] ?></td>
+                      <td><?= $datum['harga_pedagang_3'] ?></td>
+                      <td><?= $datum['harga_pedagang_4'] ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                <?php endif; ?>
               </tbody>
             </table>
           </div>

@@ -20,6 +20,15 @@
     case "kontak-kami":
       include "pages/public/kontak.php";
       break;
+    case "sembako-publik":
+      include "pages/public/harga/sembako.php";
+      break;
+    case "sembako-detail-publik":
+      if(isset($_GET["id"])) {
+        $id = $_GET["id"];
+        include "pages/public/harga/detail_sembako.php";
+      }
+      break;
     case "harga-publik":
       include "pages/public/index.php";
       break;
