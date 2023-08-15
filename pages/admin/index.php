@@ -58,9 +58,9 @@
         <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3><?= $totalStok ?><sup style="font-size: 20px"></sup></h3>
+            <h3><?= $totalPasar ?><sup style="font-size: 20px"></sup></h3>
 
-            <p>Data Ketersediaan</p>
+            <p>Data Pasar</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -75,7 +75,7 @@
           <div class="inner">
             <h3><?= $totalPermintaan ?></h3>
 
-            <p>Data Permintaan</p>
+            <p>Permintaan Monitoring</p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
@@ -88,9 +88,9 @@
         <!-- small box -->
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3><?= $totalInflasi ?></h3>
+            <h3><?= $totalKritikSaran ?></h3>
 
-            <p>Data Inflasi</p>
+            <p>Data Kritik Saran</p>
           </div>
           <div class="icon">
             <i class="ion ion-pie-graph"></i>

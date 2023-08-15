@@ -3,10 +3,10 @@
 include "helper/helper.php";
 include "database/db.php";
 
-$totalKomoditasQuery = "SELECT COUNT(*) as total FROM komoditas";
-$totalStokQuery = "SELECT COUNT(*) as total FROM stok_komoditas";
-$totalPermintaanQuery = "SELECT COUNT(*) as total FROM permintaan";
-$totalInflasiQuery = "SELECT COUNT(*) as total FROM inflasi";
+$totalKomoditasQuery = "SELECT COUNT(*) as total FROM komoditas WHERE deleted_at is NULL";
+$totalPasarQuery = "SELECT COUNT(*) as total FROM pasar WHERE deleted_at is NULL";
+$totalPermintaanQuery = "SELECT COUNT(*) as total FROM permintaan_monitor WHERE deleted_at is NULL";
+$totalKritikSaran = "SELECT COUNT(*) as total FROM kritik_saran";
 
 $resultKomoditas = mysqli_query($connection, $totalKomoditasQuery);
 $totalKomoditas = 0;
@@ -15,11 +15,11 @@ if($resultKomoditas->num_rows > 0) {
   $totalKomoditas = $totalKomoditas["total"];
 }
 
-$resultStok = mysqli_query($connection, $totalStokQuery);
-$totalStok = 0;
-if($resultStok->num_rows > 0) {
-  $totalStok = $resultStok->fetch_assoc();
-  $totalStok = $totalStok["total"];
+$resultPasar = mysqli_query($connection, $totalPasarQuery);
+$totalPasar = 0;
+if($resultPasar->num_rows > 0) {
+  $totalPasar = $resultPasar->fetch_assoc();
+  $totalPasar = $totalPasar["total"];
 }
 
 $resultPermintaan = mysqli_query($connection, $totalPermintaanQuery);
@@ -29,9 +29,9 @@ if($resultPermintaan->num_rows > 0) {
   $totalPermintaan = $totalPermintaan["total"];
 }
 
-$resultInflasi = mysqli_query($connection, $totalInflasiQuery);
-$totalInflasi = 0;
-if($resultInflasi->num_rows > 0) {
-  $totalInflasi = $resultInflasi->fetch_assoc();
-  $totalInflasi = $totalInflasi["total"];
+$resultKritikSaran = mysqli_query($connection, $totalKritikSaran);
+$totalKritikSaran = 0;
+if($resultKritikSaran->num_rows > 0) {
+  $totalKritikSaran = $resultKritikSaran->fetch_assoc();
+  $totalKritikSaran = $totalKritikSaran["total"];
 }
