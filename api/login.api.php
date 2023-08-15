@@ -23,10 +23,10 @@ if ($result->num_rows > 0) {
     $_SESSION['SESS_HARPAN_USERNAME'] = $username;
     $_SESSION['SESS_HARPAN_LOGIN'] = true;
     $_SESSION['SESS_HARPAN_ROLE_ID'] = $row['id_role'];
-    $_SESSION['SESS_HARPAN_ROLE'] = ($row['id_role'] == 1) ? "Pimpinan" : "Administrator";
+    $_SESSION['SESS_HARPAN_ROLE'] = ($row['id_role'] == 1) ? "Administrator / Pimpinan" : "Pegawai";
   
     $data['username'] = $username;
-    $data['role_id'] = ($row['id_role'] == 1) ? "Pimpinan" : "Administrator";
+    $data['role_id'] = ($row['id_role'] == 1) ? "Administrator / Pimpinan" : "Pegawai";
     
     to_json($data);
     return;
