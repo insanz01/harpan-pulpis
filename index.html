@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combo Box with Bootstrap 4</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap-select CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="form-group" id="render-selected">
+
+    </div>
+    <div class="form-group">
+      <select id="fruits" class="form-control" size="3" multiple="multiple" aria-label="label for the select" onchange="lihatHasil(this)">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+        <option value="grape">Grape</option>
+        <option value="strawberry">Strawberry</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap-select JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0/js/bootstrap-select.min.js"></script>
+
+  <script>
+    let selectedItems = [];
+
+    const checkExisting = (data) => {
+      ketemu = false;
+      selectedItems.forEach(res => {
+        if(res.id == data.id) {
+          ketemu = true;
+        }
+      });
+
+      if(!ketemu) {
+        selectedItems.push(data);
+      }
+    }
+
+    const renderSelected = () => {
+      let temp = ``;
+
+      selectedItems.forEach(res => {
+        temp += `<button class="badge badge-sm badge-pill badge-primary mx-1">${res.name}</button>`
+      });
+
+      document.getElementById('render-selected').innerHTML = temp;
+    }
+
+    const lihatHasil = (target) => {
+      var options = target.options;
+
+      // Iterate through the options and print the selected ones
+      for (var i = 0; i < options.length; i++) {
+        const data = {
+          id: options[i].value,
+          name: options[i].label,
+        }
+
+        if (options[i].selected) {
+          console.log(options[i].label)
+          console.log(options[i].value);
+
+          checkExisting(data);
+        }
+      }
+
+      console.table(selectedItems);
+      renderSelected();
+    }
+  </script>
+</body>
+</html>

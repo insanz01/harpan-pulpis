@@ -1,5 +1,6 @@
 <?php
-  include "config/config.php";
+  // session_start();
+  include_once "config/config.php";
 ?>
 
 <div class="content-header">
@@ -52,8 +53,30 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
+          <label for="">Nama</label>
+          <input type="text" name="nama" id="nama" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Alamat</label>
+          <input type="text" name="alamat" id="alamat" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Email</label>
+          <input type="email" name="email" id="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">No HP</label>
+          <input type="text" name="no_hp" id="no_hp" class="form-control">
+        </div>
+        <div class="form-group">
           <label for="">Masukan kritik dan saran anda pada kolom ini</label>
           <textarea name="kritik_saran" id="kritik_saran" class="form-control" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+          <img src="<?= $base_url ?>helper/generate.php" alt="captcha">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="captcha" id="captcha" maxlength="5" placeholder="kode captcha">
         </div>
       </div>
       <div class="modal-footer">
@@ -64,15 +87,13 @@
   </div>
 </div>
 
-<script>
+<script defer>
   const loadData = async () => {
     return await axios.get(`<?= $base_url ?>/api/publik-stok.api.php`).then(res => res.data);
   }
 
   const saveKritikSaran = async (data) => {
-    return await axios.post(`<?= $base_url ?>/api/add-kritik-saran.api.php`, {
-      kritik_saran: data.kritik_saran
-    }, {
+    return await axios.post(`<?= $base_url ?>/api/add-kritik-saran.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
@@ -81,9 +102,23 @@
 
   const kirimKritikSaran = async () => {
     const kritikSaran = document.getElementById('kritik_saran').value;
+    const nama = document.getElementById('nama').value;
+    const alamat = document.getElementById('alamat').value;
+    const no_hp = document.getElementById('no_hp').value;
+    const email = document.getElementById('email').value;
+    const captcha = document.getElementById('captcha').value;
+
+    const captchaSession = `<?= $_SESSION["code"] ?>`;
+
+    if(captchaSession != captcha) {
+      console.log(captchaSession);
+      alert("captcha yang anda masukan salah!");
+      return;
+    }
 
     const data = {
-      "kritik_saran": kritikSaran
+      "kritik_saran": kritikSaran,
+      nama, alamat, no_hp, email, captcha
     }
 
     const result = await saveKritikSaran(data);
@@ -92,40 +127,4 @@
       window.location.href = "<?= $base_url ?>index.php?page=kontak-kami"
     }
   }
-
-  const renderTable = (data) => {
-    const target = document.getElementById('tabel-stok');
-
-    let temp = ``;
-
-    let role_id = `<?= $role_id ?>`;
-
-    data.forEach((res, index) => {
-      temp += `
-              <tr>
-                <td>${index + 1}</td>
-                <td>${res.nama}</td>
-                <td>${res.satuan}</td>
-                <td>${res.stok}</td>
-                <td>${res.created_at}</td>
-              </tr>
-            `;
-    });
-
-    target.innerHTML = temp;
-  }
-
-  const showData = async () => {
-    const result = await loadData();
-
-    console.log("log stok", result);
-
-    if(result.status) {
-      renderTable(result.data);
-    }
-  }
-
-  window.addEventListener("load", async () => {
-    await showData();
-  })
 </script>
