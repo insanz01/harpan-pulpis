@@ -32,7 +32,8 @@
             <img src="./dist/img/logo_banjarmasin.jpg" class="text-center w-100" alt="">
             <!-- <p class="py-3">Dinas Ketahanan Pangan, Pertanian, dan Perikanan (DKP3) Kota Banjarmasin adalah sebuah lembaga pemerintah yang bertanggung jawab atas pengelolaan sektor pertanian, perikanan, dan ketahanan pangan di Kota Banjarmasin, Indonesia.</p> -->
 
-            <button class="btn btn-primary btn-block" role="button"  data-toggle="modal" data-target="#kritikSaranModal" onclick="generateNewCaptcha()">KRITIK DAN SARAN</button>
+            <button class="btn btn-primary btn-block" role="button" data-toggle="modal" data-target="#kritikSaranModal" id="tombol-kritik-saran">KRITIK DAN SARAN</button>
+            <!-- <button class="btn btn-primary btn-block" role="button" data-toggle="modal" data-target="#kritikSaranModal" id="tombol-kritik-saran">KRITIK DAN SARAN</button> -->
           </div>
         </div>
       </div>
@@ -87,8 +88,8 @@
   </div>
 </div>
 
-<script defer>
-  let captchaCode = `<?= $_SESSION["code"] ?>`;
+<script type="text/javascript">
+  let captchaCode = ``;
 
   const getNewSession = async () => {
     return await axios.get(`<?= $base_url ?>helper/get_session.php`).then(res => res.data);
@@ -101,6 +102,14 @@
     
     console.log("captcha code", captchaCode);
   }
+
+  window.addEventListener('load', async () => {
+    await generateNewCaptcha()
+  })
+
+  // const tombolKritikSaran = document.getElementById('tombol-kritik-saran');
+  
+  // tombolKritikSaran.addEventListener('click', generateNewCaptcha);
 
   const loadData = async () => {
     return await axios.get(`<?= $base_url ?>/api/publik-stok.api.php`).then(res => res.data);
