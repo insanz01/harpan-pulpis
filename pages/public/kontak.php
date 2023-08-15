@@ -90,8 +90,16 @@
 <script defer>
   let captchaCode = `<?= $_SESSION["code"] ?>`;
 
-  const generateNewCaptcha = () => {
-    captchaCode = `<?= $_SESSION["code"] ?>`;
+  const getNewSession = async () => {
+    return await axios.get(`<?= $base_url ?>helper/get_session.php`).then(res => res.data);
+  }
+
+  const generateNewCaptcha = async () => {
+    const result = await getNewSession();
+
+    captchaCode = result.data.captcha_code;
+    
+    console.log("captcha code", captchaCode);
   }
 
   const loadData = async () => {
@@ -118,8 +126,8 @@
 
     if(captchaSession != captcha) {
       console.log(captchaSession);
-      // alert("captcha yang anda masukan salah!");
-      // return;
+      alert("captcha yang anda masukan salah!");
+      return;
     }
 
     const data = {
