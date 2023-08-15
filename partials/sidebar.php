@@ -171,7 +171,17 @@
                 </p>
               </a>
             </li>
-            <li class="nav-header">MASTER DATA HARGA</li>
+            <!-- <li class="nav-header">MASTER DATA HARGA</li> -->
+            <!-- <li class="nav-item">
+              <a href="?page=sembako" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Data Harga Sembako
+                </p>
+              </a>
+            </li> -->
+
+            <li class="nav-header">MASTER DATA</li>
             <li class="nav-item">
               <a href="?page=sembako" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
@@ -181,8 +191,6 @@
                 </p>
               </a>
             </li>
-
-            <li class="nav-header">MASTER DATA</li>
             <!-- <li class="nav-item">
               <a href="?page=kategori-komoditas" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
@@ -191,6 +199,15 @@
                 </p>
               </a>
             </li> -->
+            <li class="nav-item">
+              <a href="?page=statistik-harga" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Statistik Harga
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="?page=komoditas" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>

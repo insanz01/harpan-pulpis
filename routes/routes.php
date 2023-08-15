@@ -41,6 +41,12 @@
     case "kritik-saran":
       include "pages/admin/kritik_saran/index.php";
       break;
+    case "statistik-harga":
+      include "pages/admin/statistik/harga.php";
+      break;
+    case "hasil-statistik-harga":
+      include "pages/admin/statistik/hasil.php";
+      break;
     case "kategori-komoditas":
       if($action == "tambah") {
         include "pages/admin/kategori-komoditas/tambah.php";

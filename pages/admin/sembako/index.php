@@ -63,9 +63,7 @@
                   <th>Nama Pasar</th>
                   <th>Petugas</th>
                   <th>Tanggal</th>
-                  <?php if($role_id == 2): ?>
-                    <th class="text-right">Opsi</th>
-                  <?php endif; ?>
+                  <th class="text-right">Opsi</th>
                 </tr>
               </thead>
               <tbody>
@@ -76,12 +74,12 @@
                     <td><?= $datum['nama_pasar'] ?></td>
                     <td><?= $datum['petugas'] ?></td>
                     <td><?= $datum['created_at'] ?></td>
-                    <?php if($role_id == 2): ?>
-                      <td>
-                        <a href="?page=sembako-detail&id=<?= $datum['id'] ?>" class="btn btn-info float-right mx-2" role="button">
-                          <i class="fas fa-fw fa-book"></i>
-                          Detail
-                        </a>
+                    <td>
+                      <a href="?page=sembako-detail&id=<?= $datum['id'] ?>" class="btn btn-info float-right mx-2" role="button">
+                        <i class="fas fa-fw fa-book"></i>
+                        Detail
+                      </a>
+                      <?php if($role_id == 2): ?>
                         <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $datum['id'] ?>)">
                           <i class="fas fa-fw fa-trash"></i>
                           Hapus
@@ -90,8 +88,8 @@
                           <i class="fas fa-fw fa-edit"></i>
                           Ubah
                         </a>
-                      </td>
-                    <?php endif; ?>
+                      <?php endif; ?>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
