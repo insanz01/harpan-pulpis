@@ -112,8 +112,8 @@
 
     if(captchaSession != captcha) {
       console.log(captchaSession);
-      alert("captcha yang anda masukan salah!");
-      return;
+      // alert("captcha yang anda masukan salah!");
+      // return;
     }
 
     const data = {
