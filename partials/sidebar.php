@@ -226,6 +226,15 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="?page=monitoring-pasar" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Monitoring Pasar
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
             <!-- <li class="nav-item">
               <a href="?page=stok" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
@@ -261,14 +270,14 @@
                   </p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a href="?page=admin-agenda" class="nav-link">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     Agenda Pasar Murah
                   </p>
                 </a>
-              </li> -->
+              </li>
             <?php endif; ?>
 
             <?php if($role_id == 1): ?>

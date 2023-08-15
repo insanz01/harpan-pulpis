@@ -42,16 +42,8 @@
           <input type="date" class="form-control">
         </div>     -->
       </div>
-      <div class="col-4">
-        <div class="form-group">
-          <!-- <a href="#" class="btn btn-info float-right" role="button">
-            <i class="fas fa-fw fa-print"></i>
-            Cetak
-          </a> -->
-        </div>
-      </div>
     </div>
-
+    
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-12 mx-auto">
@@ -60,6 +52,10 @@
             <table class="table table-bordered custom-table">
               <thead>
                 <th>#</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Email</th>
+                <th>No HP</th>
                 <th>Kritik/Saran</th>
               </thead>
               <tbody>
@@ -68,6 +64,10 @@
                   <?php while($row = mysqli_fetch_assoc($result)): ?>
                     <tr>
                       <td><?= $number++ ?></td>
+                      <td><?= $row['nama'] ?></td>
+                      <td><?= $row['alamat'] ?></td>
+                      <td><?= $row['email'] ?></td>
+                      <td><?= $row['no_hp'] ?></td>
                       <td><?= $row['pesan'] ?></td>
                     </tr>
                   <?php endwhile; ?>

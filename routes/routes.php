@@ -47,6 +47,9 @@
     case "hasil-statistik-harga":
       include "pages/admin/statistik/hasil.php";
       break;
+    case "monitoring-pasar":
+      include "pages/admin/monitoring/pasar.php";
+      break;
     case "kategori-komoditas":
       if($action == "tambah") {
         include "pages/admin/kategori-komoditas/tambah.php";

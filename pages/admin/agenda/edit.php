@@ -1,5 +1,22 @@
 <?php
   include "config/config.php";
+  include_once "database/db.php";
+
+  $id_agenda = 0;
+  if(isset($_GET["id"])) {
+    $id_agenda = $_GET["id"];
+  }
+
+  $agenda = [];
+
+  $query = "SELECT * FROM agenda_pasar_murah WHERE id = $id_agenda";
+  $result = mysqli_query($connection, $query);
+
+  if($result) {
+    $r = mysqli_fetch_assoc($result);
+
+    $agenda = $r;
+  }
 ?>
 
 <div class="content-header">
@@ -29,12 +46,17 @@
           <div class="card-body">
             <div class="form-group">
               <label for="">Lokasi Agenda</label>
-              <input type="text" name="lokasi" id="lokasi" class="form-control">
+              <input type="text" name="lokasi" id="lokasi" class="form-control" value="<?= $agenda['lokasi'] ?>">
             </div>
             <div class="form-group">
               <label for="">Tanggal</label>
-              <input type="date" class="form-control" value="<?= date('Y-m-d', time()) ?>" id="tanggal">
+              <input type="date" class="form-control" id="tanggal" value="<?= $agenda['tanggal'] ?>">
             </div>
+            <div class="form-group">
+              <label for="">Jam</label>
+              <input type="time" class="form-control" id="jam" value="<?= $agenda['jam_kegiatan'] ?>">
+            </div>
+            
             <div class="form-group">
               <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Agenda Pasar Murah</button>
             </div>
@@ -47,6 +69,8 @@
 </section>
 
 <script>
+  let selectedItems = [];
+
   const saveData = async (data) => {
     return await axios.post(`<?= $base_url ?>api/edit-agenda.api.php`, data, {
       headers: {
@@ -58,10 +82,13 @@
   const submitData = async () => {
     const lokasi = document.getElementById("lokasi").value;
     const tanggal = document.getElementById("tanggal").value;
+    const jam = document.getElementById("jam").value;
 
     const data = {
       lokasi,
-      tanggal
+      tanggal,
+      jam_kegiatan: jam,
+      item_komoditas: selectedItems
     }
 
     console.log(data);
@@ -73,5 +100,49 @@
     if(result.status) {
       window.location.href = "<?= $base_url ?>index.php?page=admin-agenda"
     }
+  }
+
+  const checkExisting = (data) => {
+    ketemu = false;
+    selectedItems.forEach(res => {
+      if(res.id == data.id) {
+        ketemu = true;
+      }
+    });
+
+    if(!ketemu) {
+      selectedItems.push(data);
+    }
+  }
+
+  const renderSelected = () => {
+    let temp = ``;
+
+    selectedItems.forEach(res => {
+      temp += `<button class="badge badge-sm badge-pill badge-primary mx-1">${res.name}</button>`
+    });
+
+    document.getElementById('render-selected').innerHTML = temp;
+  }
+
+  const tambahList = (target) => {
+    var options = target.options;
+
+    for(var i = 0; i < options.length; i++) {
+      const data = {
+        id: options[i].value,
+        name: options[i].label
+      }
+
+      if(options[i].selected) {
+        console.log('value', options[i].value);
+        console.log('label', options[i].label);
+
+        checkExisting(data);
+      }
+    }
+
+    console.table(selectedItems);
+    renderSelected();
   }
 </script>
