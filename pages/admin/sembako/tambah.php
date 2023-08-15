@@ -57,6 +57,10 @@
               <small>Berikan simbol titik koma (;) untuk memisahkan nama petugas</small>
             </div>
             <div class="form-group">
+              <label for="">Dokumentasi</label>
+              <input type="file" class="form-control" name="file_dokumentasi" id="file_dokumentasi" onchange="uploadFile()">
+            </div>
+            <div class="form-group">
               <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Sembako</button>
             </div>
           </div>
@@ -68,6 +72,8 @@
 </section>
 
 <script>
+  let FILENAME = "";
+
   const saveData = async (data) => {
     return await axios.post(`<?= $base_url ?>api/add-sembako.api.php`, {
       id_pasar: data.id_pasar,
@@ -95,5 +101,34 @@
     if(result.status) {
       window.location.href = "<?= $base_url ?>index.php?page=sembako"
     }
+  }
+
+  function uploadFile() {
+      const fileInput = document.getElementById('file_dokumentasi');
+      const file = fileInput.files[0];
+
+      console.log(file);
+
+      if (file) {
+          const formData = new FormData();
+          formData.append('file', file);
+
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', '<?= $base_url ?>helper/upload.php', true);
+
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                  if (xhr.status === 200) {
+                      console.log('File uploaded successfully:', xhr.responseText);
+                  } else {
+                      console.error('Error uploading file:', xhr.status, xhr.statusText);
+                  }
+              }
+          };
+
+          xhr.send(formData);
+      } else {
+          console.error('Please select a file to upload.');
+      }
   }
 </script>
