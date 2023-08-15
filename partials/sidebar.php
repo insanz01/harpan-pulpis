@@ -541,6 +541,9 @@
         case "permintaan-monitoring-pasar":
           targetLaporan = "?page=laporan-permintaan-monitoring-pasar&type=laporan";
           break;
+        case "pasar":
+          targetLaporan = "?page=laporan-pasar&type=laporan";
+          break;
       }
 
       const filterLaporan = document.getElementById('filter-laporan');

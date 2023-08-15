@@ -7,18 +7,15 @@
   $dataFilterPekanAwal = $_POST["data_filter_pekan_awal"];
   $dataFilterPekanAkhir = $_POST["data_filter_pekan_akhir"];
 
-  // $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null WHERE  permintaan_monitor.approved_at is not null";
-  $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null";
+  $query = "SELECT * FROM pasar";
 
   if($tipeFilter == "BULANAN") {
-    // $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null WHERE MONTH(permintaan_monitor.created_at) = $dataFilterBulan AND permintaan_monitor.approved_at is not null";
-    $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null AND MONTH(pm.created_at) = $dataFilterBulan";
+    $query = "SELECT * FROM pasar WHERE MONTH(pasar.created_at) = $dataFilterBulan";
   } else if($tipeFilter == "MINGGUAN") {
     // $weekNumber = date("W", strtotime($dataFilterPekan));
 
-    // $query = "SELECT * FROM permintaan_monitor WHERE WEEK(permintaan_monitor.created_at) = $weekNumber";
-    // $query = "SELECT * FROM permintaan_monitor WHERE ((DATE(permintaan_monitor.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(permintaan_monitor.created_at) = '$dataFilterPekanAwal' OR DATE(permintaan_monitor.created_at) = '$dataFilterPekanAkhir') AND permintaan_monitor.approved_at is not null";
-    $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null AND ((DATE(pm.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(pm.created_at) = '$dataFilterPekanAwal' OR DATE(pm.created_at) = '$dataFilterPekanAkhir')";
+    // $query = "SELECT * FROM pasar WHERE WEEK(pasar.created_at) = $weekNumber";
+    $query = "SELECT * FROM pasar WHERE ((DATE(pasar.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(pasar.created_at) = '$dataFilterPekanAwal' OR DATE(pasar.created_at) = '$dataFilterPekanAkhir')";
   }
 
   $result = mysqli_query($connection, $query);
@@ -34,7 +31,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Laporan Permintaan Monitoring Pasar</title>
+    <title>Laporan Pasar</title>
   </head>
   <body>
 
@@ -49,16 +46,16 @@
         <hr size="2px" color="black">
         </p>
 	<center>
-		<h4>DATA LAPORAN PERMINTAAN MONITOR</h4>
+		<h4>DATA LAPORAN PASAR</h4>
 	</center>
 
   <table border="1" style="width: 100%">
   <thead>
-              <th>#</th>
-              <th>Petugas</th>
-              <th>Pasar</th>
-              <th>Tanggal</th>
-              <th>Status</th>
+              <th>No</th>
+              <th>Nama Pasar</th>
+              <th>Kecamagan</th>
+              <th>Kelurahan</th>
+              <th>Keterangan</th>
             </thead>
     <tbody>
               <?php if(mysqli_num_rows($result) > 0): ?>
@@ -66,16 +63,10 @@
                 <?php while($row = mysqli_fetch_assoc($result)): ?>
                   <tr>
                     <td><?= $number++ ?></td>
-                    <td><?= $row['petugas'] ?></td>
-                    <td><?= $row['pasar'] ?></td>
-                    <td><?= date('d M Y', strtotime($row['tanggal'])) ?></td>
-                    <td>
-                      <?php if($row['approved_at']): ?>
-                        Terverifikasi
-                      <?php else: ?>
-                        Belum Diverifikasi
-                      <?php endif; ?>  
-                    </td>
+                    <td><?= $row['nama'] ?></td>
+                    <td><?= $row['kecamatan'] ?></td>
+                    <td><?= $row['kelurahan'] ?></td>
+                    <td><?= $row['keterangan'] ?></td>
                   </tr>
                 <?php endwhile; ?>
               <?php endif; ?>
