@@ -6,12 +6,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Dashboard</h1>
+        <h1 class="m-0"></h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Agenda Pasar Murah</li>
+          <li class="breadcrumb-item text-white"><a href="#" class="text-white">Home</a></li>
+          <li class="breadcrumb-item text-white">Agenda Pasar Murah</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -25,7 +25,7 @@
 
     <div class="row pt-4">
       <div class="col-12">
-        <h1 class="text-center">Agenda Pasar Murah</h1>
+        <h1 class="text-center text-white">Agenda Pasar Murah</h1>
       </div>
       <div class="col-12">
         <div class="card">
@@ -35,15 +35,35 @@
                 <th>#</th>
                 <th>Lokasi Pasar Murah</th>
                 <th>Tanggal Kegiatan</th>
+                <th>Jam Kegiatan</th>
+                <th>Item Komoditas</th>
               </thead>
               <tbody>
                 <?php if(mysqli_num_rows($result) > 0): ?>
                   <?php $number = 1 ?>
                   <?php while($row = mysqli_fetch_assoc($result)): ?>
+                    <?php
+                      $items = [];
+                      $arrAssoc = json_decode($row['item_komoditas'], true);
+
+                      if($arrAssoc) {
+                        foreach($arrAssoc as $arr) {
+                          $temp_item = "<span class='badge badge-sm badge-primary badge-pill ml-1'>$arr[name]</span>";
+  
+                          array_push($items, $temp_item);
+                        }
+                      }
+                    ?>
                     <tr>
                       <td><?= $number++ ?></td>
                       <td><?= $row['lokasi'] ?></td>
                       <td><?= $row['tanggal'] ?></td>
+                      <td><?= $row['jam_kegiatan'] ?></td>
+                      <td>
+                        <?php foreach($items as $item): ?>
+                          <?= $item; ?>
+                        <?php endforeach; ?>
+                      </td>
                     </tr>
                   <?php endwhile; ?>
                 <?php endif; ?>
