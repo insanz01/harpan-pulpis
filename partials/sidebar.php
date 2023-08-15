@@ -73,12 +73,11 @@
                 </p>
               </a>
             </li> -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="fas fa-home nav-icon"></i>
                 <p>
                   Dashboard
-                  <!-- <i class="fas fa-angle-left right"></i> -->
                 </p>
               </a>
               <ul class="nav nav-treeview">
@@ -101,6 +100,15 @@
                   </a>
                 </li>
               </ul>
+            </li> -->
+            <li class="nav-item">
+              <a href="?page=sembako-publik" class="nav-link">
+                <i class="nav-icon fas fa-box"></i>
+                <p>
+                  Harga Sembako
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
             </li>
             <li class="nav-item">
               <a href="?page=stok-publik" class="nav-link">
@@ -455,6 +463,7 @@
         <form id="filter-laporan" action="#!" method="post">
           <div class="modal-body">
             <input type="hidden" id="filter-target" name="filter_target">
+            <input type="hidden" id="additional-data" name="additional_data">
   
             <div class="form-group">
               <label for="tipe-filter">Tipe Filter</label>
@@ -506,6 +515,13 @@
     const printLaporan = (target) => {
       const targetFilter = target.getAttribute("data-id");
 
+      const additionalData = target.getAttribute("data-additional");
+
+      if(additionalData) {
+        document.getElementById('additional-data').value = additionalData;
+
+      }
+
       document.getElementById("filter-target").value = targetFilter;
 
       let targetLaporan = "";
@@ -546,6 +562,12 @@
           break;
         case "pasar":
           targetLaporan = "?page=laporan-pasar&type=laporan";
+          break;
+        case "monitoring-sembako-pasar":
+          targetLaporan = "?page=laporan-monitoring-sembako-pasar&type=laporan";
+          break;
+        case "monitoring-sembako-detail":
+          targetLaporan = "?page=laporan-monitoring-sembako-detail&type=laporan";
           break;
       }
 

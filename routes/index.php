@@ -44,6 +44,9 @@
         case "laporan-pasar":
           include "pages/admin/laporan/pasar.php";
           break;
+        case "laporan-monitoring-sembako-detail":
+          include "pages/admin/laporan/monitoring-sembako-detail.php";
+          break;
       }
     }
   } else {
