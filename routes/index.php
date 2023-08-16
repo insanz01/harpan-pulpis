@@ -35,6 +35,9 @@
         case "laporan-kritik-saran":
           include "pages/admin/laporan/kritik-saran.php";
           break;
+        case "laporan-pasar":
+          include "pages/admin/laporan/pasar.php";
+          break;
         case "laporan-agenda-pasar-murah":
           include "pages/admin/laporan/agenda-pasar-murah.php";
           break;
