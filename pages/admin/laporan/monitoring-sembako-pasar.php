@@ -15,7 +15,7 @@
     // $weekNumber = date("W", strtotime($dataFilterPekan));
 
     // $query = "SELECT sembako.*, pasar.nama FROM sembako JOIN pasar ON sembako.id_pasar = pasar.id WHERE sembako.deleted_at is NULL AND WEEK(sembako.created_at) = $weekNumber";
-    $query = "SELECT sembako.*, pasar.nama as pasar FROM sembako JOIN pasar ON sembako.id_pasar = pasar.id WHERE sembako.deleted_at is NULL AND ((DATE(sembako.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(sembako.created_at) = '$dataFilterPekanAwal' OR DATE(sembako.created_at) = '$dataFilterPekanAkhir')";
+    $query = "SELECT sembako.*, pasar.nama as pasar FROM sembako JOIN pasar ON sembako.id_pasar = pasar.id WHERE sembako.deleted_at is NULL AND ((DATE(sembako.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir') OR DATE(sembako.created_at) = '$dataFilterPekanAwal' OR DATE(sembako.created_at) = '$dataFilterPekanAkhir')";
   }
 
   $result = mysqli_query($connection, $query);

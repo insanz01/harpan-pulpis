@@ -18,8 +18,10 @@
 
     // $query = "SELECT * FROM permintaan_monitor WHERE WEEK(permintaan_monitor.created_at) = $weekNumber";
     // $query = "SELECT * FROM permintaan_monitor WHERE ((DATE(permintaan_monitor.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(permintaan_monitor.created_at) = '$dataFilterPekanAwal' OR DATE(permintaan_monitor.created_at) = '$dataFilterPekanAkhir') AND permintaan_monitor.approved_at is not null";
-    $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null AND ((DATE(pm.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(pm.created_at) = '$dataFilterPekanAwal' OR DATE(pm.created_at) = '$dataFilterPekanAkhir')";
+    $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null AND ((DATE(pm.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir') OR DATE(pm.created_at) = '$dataFilterPekanAwal' OR DATE(pm.created_at) = '$dataFilterPekanAkhir')";
   }
+
+  var_dump($query);
 
   $result = mysqli_query($connection, $query);
 ?>

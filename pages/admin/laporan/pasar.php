@@ -15,7 +15,7 @@
     // $weekNumber = date("W", strtotime($dataFilterPekan));
 
     // $query = "SELECT * FROM pasar WHERE WEEK(pasar.created_at) = $weekNumber";
-    $query = "SELECT * FROM pasar WHERE ((DATE(pasar.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(pasar.created_at) = '$dataFilterPekanAwal' OR DATE(pasar.created_at) = '$dataFilterPekanAkhir')";
+    $query = "SELECT * FROM pasar WHERE ((DATE(pasar.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir') OR DATE(pasar.created_at) = '$dataFilterPekanAwal' OR DATE(pasar.created_at) = '$dataFilterPekanAkhir')";
   }
 
   $result = mysqli_query($connection, $query);

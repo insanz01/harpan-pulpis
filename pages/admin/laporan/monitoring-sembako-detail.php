@@ -17,7 +17,7 @@
     // $weekNumber = date("W", strtotime($dataFilterPekan));
 
     // $query = "SELECT sembako.*, pasar.nama FROM sembako JOIN pasar ON sembako.id_pasar = pasar.id WHERE sembako.deleted_at is NULL AND WEEK(sembako.created_at) = $weekNumber";
-    $query = "SELECT harga_sembako.*, komoditas.nama as komoditas FROM harga_sembako JOIN komoditas ON harga_sembako.id_komoditas = komoditas.id WHERE harga_sembako.deleted_at is NULL AND harga_sembako.id_sembako = $id_sembako AND ((DATE(harga_sembako.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir)' OR DATE(harga_sembako.created_at) = '$dataFilterPekanAwal' OR DATE(harga_sembako.created_at) = '$dataFilterPekanAkhir') ORDER BY harga_sembako.created_at DESC, harga_sembako.id_komoditas ASC";
+    $query = "SELECT harga_sembako.*, komoditas.nama as komoditas FROM harga_sembako JOIN komoditas ON harga_sembako.id_komoditas = komoditas.id WHERE harga_sembako.deleted_at is NULL AND harga_sembako.id_sembako = $id_sembako AND ((DATE(harga_sembako.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir') OR DATE(harga_sembako.created_at) = '$dataFilterPekanAwal' OR DATE(harga_sembako.created_at) = '$dataFilterPekanAkhir') ORDER BY harga_sembako.created_at DESC, harga_sembako.id_komoditas ASC";
   }
 
   $result = mysqli_query($connection, $query);
