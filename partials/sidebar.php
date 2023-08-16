@@ -315,14 +315,14 @@
                 </a>
               </li> -->
 
-              <li class="nav-header">LAPORAN</li>
+              <!-- <li class="nav-header">LAPORAN</li> -->
               <li class="nav-item">
-              <a href="#" class="nav-link">
+              <!-- <a href="#" class="nav-link">
                 <i class="fas fa-print nav-icon"></i>
                 <p>
                   SEMUA LAPORAN
                 </p>
-              </a>
+              </a> -->
               <ul class="nav nav-treeview">
                 <!-- <li class="nav-item">
                   <a href="#!" class="nav-link"  data-toggle="modal" data-target="#laporanModal" data-id="harga-eceran" onclick="printLaporan(this)">
