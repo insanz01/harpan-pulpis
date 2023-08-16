@@ -1,11 +1,27 @@
 <?php
   include "./database/db.php";
 
-  $tipeFilter = $_POST["tipe_filter"];
-  $dataFilterBulan = $_POST["data_filter_bulan"];
+  $tipeFilter = "";
+  $dataFilterBulan = "";
+
+  if(isset($_POST["tipe_filter"])) {
+    $tipeFilter = $_POST["tipe_filter"];
+  }
+
+  if(isset($_POST["data_filter_bulan"])) {
+    $dataFilterBulan = $_POST["data_filter_bulan"];
+  }
+
   // $dataFilterPekan = $_POST["data_filter_pekan"];
-  $dataFilterPekanAwal = $_POST["data_filter_pekan_awal"];
-  $dataFilterPekanAkhir = $_POST["data_filter_pekan_akhir"];
+  $dataFilterPekanAwal = "";
+  if(isset($_POST["data_filter_pekan_awal"])) {
+    $dataFilterPekanAwal = $_POST["data_filter_pekan_awal"];
+  }
+
+  $dataFilterPekanAkhir = "";
+  if(isset($_POST["data_filter_pekan_akhir"])) {
+    $dataFilterPekanAkhir = $_POST["data_filter_pekan_akhir"];
+  }
 
   $query = "SELECT * FROM pasar";
 

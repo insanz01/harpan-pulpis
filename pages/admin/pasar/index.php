@@ -36,7 +36,11 @@
       </div>
       <div class="col-4">
         <div class="form-group">
-          <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="pasar" onclick="printLaporan(this)">
+          <!-- <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="pasar" onclick="printLaporan(this)">
+            <i class="fas fa-fw fa-print"></i>
+            Cetak
+          </a> -->
+          <a href="?page=laporan-pasar&type=laporan" class="btn btn-info float-right mx-2" role="button">
             <i class="fas fa-fw fa-print"></i>
             Cetak
           </a>
