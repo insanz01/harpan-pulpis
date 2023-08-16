@@ -17,6 +17,18 @@
 
     $agenda = $r;
   }
+
+  $komoditas = [];
+  $komoditasQuery = "SELECT * FROM komoditas WHERE deleted_at is NULL";
+  $komoditasResult = mysqli_query($connection, $komoditasQuery);
+
+  if($komoditasResult) {
+    if(mysqli_num_rows($komoditasResult) > 0) {
+      while($r = mysqli_fetch_assoc($komoditasResult)) {
+        $komoditas[] = $r;
+      }
+    }
+  }
 ?>
 
 <div class="content-header">
@@ -56,6 +68,14 @@
               <label for="">Jam</label>
               <input type="time" class="form-control" id="jam" value="<?= $agenda['jam_kegiatan'] ?>">
             </div>
+            <div class="form-group" id="render-selected"></div>
+            <div class="form-group">
+              <select name="item_komoditas" id="komoditas" class="form-control" size="5" multiple="multiple" aria-label="komoditas" onchange="tambahList(this)">
+                <?php foreach($komoditas as $k): ?>
+                  <option value="<?= $k['id'] ?>"><?= $k['nama'] ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
             
             <div class="form-group">
               <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Agenda Pasar Murah</button>
@@ -84,11 +104,13 @@
     const tanggal = document.getElementById("tanggal").value;
     const jam = document.getElementById("jam").value;
 
+    const item_komoditas = JSON.stringify(selectedItems);
+
     const data = {
       lokasi,
       tanggal,
       jam_kegiatan: jam,
-      item_komoditas: selectedItems
+      item_komoditas,
     }
 
     console.log(data);
@@ -145,4 +167,29 @@
     console.table(selectedItems);
     renderSelected();
   }
+
+  const loadSelectedItems = async (id) => {
+    return await axios.get(`<?= $base_url ?>api/selected-items.api.php?id=${id}`).then(res => res.data);
+  }
+
+  window.addEventListener('load', async () => {
+    const id = `<?= $id_agenda ?>`
+
+    const result = await loadSelectedItems(id);
+
+    if(result.status) {
+      const items = result.data.item_komoditas;
+
+      if(items) {
+
+        const parsedItems = JSON.parse(items);
+  
+        console.log(parsedItems);
+  
+        selectedItems = [...parsedItems];
+  
+        renderSelected();
+      }
+    }
+  })
 </script>
