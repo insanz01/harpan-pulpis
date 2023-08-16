@@ -120,11 +120,19 @@
     }
   }
 
+  const removeItem = (id) => {
+    const temp = selectedItems.filter(res => res.id != id);
+
+    selectedItems = [...temp];
+
+    renderSelected();
+  }
+
   const renderSelected = () => {
     let temp = ``;
 
     selectedItems.forEach(res => {
-      temp += `<button class="badge badge-sm badge-pill badge-primary mx-1">${res.name}</button>`
+      temp += `<button class="badge badge-sm badge-pill badge-primary mx-1" onclick="removeItem(${res.id})">${res.name}</button>`
     });
 
     document.getElementById('render-selected').innerHTML = temp;
