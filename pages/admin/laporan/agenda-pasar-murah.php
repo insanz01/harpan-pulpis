@@ -10,12 +10,12 @@
   $query = "SELECT * FROM agenda_pasar_murah";
 
   if($tipeFilter == "BULANAN") {
-    $query = "SELECT * FROM agenda_pasar_murah WHERE MONTH(agenda_pasar_murah.created_at) = $dataFilterBulan";
+    $query = "SELECT * FROM agenda_pasar_murah WHERE MONTH(agenda_pasar_murah.tanggal) = $dataFilterBulan";
   } else if($tipeFilter == "MINGGUAN") {
     // $weekNumber = date("W", strtotime($dataFilterPekan));
 
-    // $query = "SELECT * FROM agenda_pasar_murah WHERE WEEK(agenda_pasar_murah.created_at) = $weekNumber";
-    $query = "SELECT * FROM agenda_pasar_murah WHERE ((DATE(agenda_pasar_murah.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir') OR DATE(agenda_pasar_murah.created_at) = '$dataFilterPekanAwal' OR DATE(agenda_pasar_murah.created_at) = '$dataFilterPekanAkhir')";
+    // $query = "SELECT * FROM agenda_pasar_murah WHERE WEEK(agenda_pasar_murah.tanggal) = $weekNumber";
+    $query = "SELECT * FROM agenda_pasar_murah WHERE ((DATE(agenda_pasar_murah.tanggal) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir') OR DATE(agenda_pasar_murah.tanggal) = '$dataFilterPekanAwal' OR DATE(agenda_pasar_murah.tanggal) = '$dataFilterPekanAkhir')";
   }
 
   $result = mysqli_query($connection, $query);
@@ -76,7 +76,6 @@
                   <tr>
                     <td><?= $number++ ?></td>
                     <td><?= $row['lokasi'] ?></td>
-                    <td><?= $row['created_at'] ?></td>
                     <td><?= $row['tanggal'] ?></td>
                     <td><?= $row['jam_kegiatan'] ?></td>
                     <td>
