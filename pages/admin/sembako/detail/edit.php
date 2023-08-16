@@ -64,8 +64,8 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <input type="hidden" name="id_edit" value="<?= $id_harga_sembako ?>">
-            <input type="hidden" name="id_sembako" value="<?= $id_sembako ?>">
+            <input type="hidden" name="id_edit" id="id_edit" value="<?= $id_harga_sembako ?>">
+            <input type="hidden" name="id_sembako" id="id_sembako" value="<?= $id_sembako ?>">
             <div class="form-group">
               <label for="">Komoditas</label>
               <select name="id_komoditas" id="id_komoditas" class="form-control">
@@ -126,6 +126,8 @@
   }
 
   const submitData = async () => {
+    console.log("masuk pak eko");
+
     const id = document.getElementById("id_edit").value;
     const id_sembako = document.getElementById("id_sembako").value;
     const id_komoditas = document.getElementById("id_komoditas").value;
@@ -136,6 +138,7 @@
     const harga_pedagang_4 = document.getElementById("harga_pedagang_4").value;
 
     const data = {
+      id,
       id_sembako,
       id_komoditas,
       satuan,
@@ -151,7 +154,7 @@
     const result = await saveData(data);
 
     if(result.status) {
-      window.location.href = "<?= $base_url ?>index.php?page=sembako-detail&id_sembako=<?= $id_sembako ?>"
+      window.location.href = "<?= $base_url ?>index.php?page=sembako-detail&id=<?= $id_sembako ?>"
     }
   }
 </script>
