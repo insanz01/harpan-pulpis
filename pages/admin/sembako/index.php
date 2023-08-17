@@ -36,10 +36,10 @@
       </div>
       <div class="col-4">
         <div class="form-group">
-          <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="monitoring-sembako-pasar" onclick="printLaporan(this)">
+          <!-- <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="monitoring-sembako-pasar" onclick="printLaporan(this)">
             <i class="fas fa-fw fa-print"></i>
             Cetak
-          </a>
+          </a> -->
           <?php if($role_id == 2): ?>
             <a href="?page=sembako&action=tambah" class="btn btn-success float-right mx-2" role="button">
               <i class="fas fa-fw fa-plus"></i>
