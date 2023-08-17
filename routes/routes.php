@@ -56,6 +56,18 @@
     case "hasil-statistik-harga":
       include "pages/admin/statistik/hasil.php";
       break;
+    case "publik-laporan-publik":
+      include "pages/public/laporan.php";
+      break;
+    case "laporan-publik":
+      if($action == "tambah") {
+        include "pages/admin/laporan_publik/tambah.php";
+      } else if($action == "edit") {
+        include "pages/admin/laporan_publik/edit.php";
+      } else {
+        include "pages/admin/laporan_publik/index.php";
+      }
+      break;
     case "monitoring-pasar":
       if($action == "tambah") {
         include "pages/admin/monitoring/pasar.php";

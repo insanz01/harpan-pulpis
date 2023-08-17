@@ -128,6 +128,14 @@
               </a>
             </li>
             <li class="nav-item">
+                <a href="?page=publik-laporan-publik" class="nav-link">
+                  <i class="nav-icon fas fa-book-open"></i>
+                  <p>
+                    Laporan Publik
+                  </p>
+                </a>
+              </li>
+            <li class="nav-item">
               <a href="?page=kontak-kami" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
@@ -285,6 +293,14 @@
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     Agenda Pasar Murah
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?page=laporan-publik" class="nav-link">
+                  <i class="nav-icon fas fa-book-open"></i>
+                  <p>
+                    Laporan Publik
                   </p>
                 </a>
               </li>
