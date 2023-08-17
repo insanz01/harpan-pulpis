@@ -21,7 +21,7 @@
     $query = "SELECT pm.id, pm.id_pasar, p.nama as pasar, pm.petugas, pm.tanggal, pm.approved_at, pm.created_at FROM permintaan_monitor pm JOIN pasar p ON pm.id_pasar = p.id WHERE pm.deleted_at is null AND ((DATE(pm.created_at) BETWEEN '$dataFilterPekanAwal' AND '$dataFilterPekanAkhir') OR DATE(pm.created_at) = '$dataFilterPekanAwal' OR DATE(pm.created_at) = '$dataFilterPekanAkhir')";
   }
 
-  var_dump($query);
+ 
 
   $result = mysqli_query($connection, $query);
 ?>
@@ -40,13 +40,13 @@
   </head>
   <body>
 
-  <img src="./dist/img/Kayuh_Baimbai.png" width="20%" height="20%" align="left"/>
+  <img src="./dist/img/pulpis.png" width="8%" height="8%" align="left"/>
         <p align="center"><b>
 
-        <font size="4">PEMERINTAH KOTA BANJARMASIN</font> <br>
-        <font size="4">DINAS KETAHANAN PANGAN, PERTANIAN DAN PERIKANAN</font> </b><br>
-        <font size="2">Jln. Pangeran Hidayatullah/Lingkar Dalam Utara Telp./fax. 0511-3201327</font><br>
-        <font size="2">Komplek Screen House, Banjarmasin Timur 70239 Email: distankan@yahoo.co.id</font> 
+        <font size="4">PEMERINTAH KABUPATEN PULANG PISAU</font> <br>
+        <font size="4">PERINDUSTRIAN PERDAGANGAN KOPERASI DAN UKM</font> </b><br>
+        <font size="2"> Jalan Mantaren I, Kec. Kahayan Hilir, Kabupaten Pulang Pisau, Kalimantan Tengah</font><br>
+        <font size="2">Email: disperindagkop@gmail.co.id</font>
         <br><br>
         <hr size="2px" color="black">
         </p>
@@ -86,16 +86,16 @@
   <br>
 	<div style="text-align: center; display: inline-block; float: right;">
     <h5>
-            Banjarmasin, <?php echo (date('d M Y')); ?>
+    Pulang Pisau, <?php echo (date('d M Y')); ?>
 			<br>KEPALA DINAS<br>
 			<br>
       <br>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://docs.google.com/document/d/1RaNzveyGzqboGg884gWIyA26_nCE1jTwptyOsV0zSWg/edit?usp=sharing" alt="TTD QR">
+            
             <br>
             <br>
-            <br><u>Ir. M. MAKHMUD, MS</u>
+            <br><u>ELIESER JAYA, S.Sos</u>
             <br>Pembina Utama Muda
-            <br>NIP. 19650328 198803 1 009
+            <br>NIP. 19681010 199009 1 002
     </h5> 
   </div>
 
