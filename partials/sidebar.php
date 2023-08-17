@@ -311,7 +311,7 @@
                 <a href="?page=aktifasi" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
                   <p>
-                    AKTIFASI USER
+                    AKTIVASI USER
                     <?php if($notifikasi_register > 0): ?>
                       <span class="right badge badge-danger"><?= $notifikasi_register ?></span>
                     <?php endif; ?>
@@ -583,6 +583,9 @@
           break;
         case "monitoring-sembako-detail":
           targetLaporan = "?page=laporan-monitoring-sembako-detail&type=laporan";
+          break;
+        case "aktivasi":
+          targetLaporan = "?page=laporan-aktivasi&type=laporan";
           break;
       }
 

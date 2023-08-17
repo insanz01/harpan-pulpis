@@ -12,11 +12,11 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Aktifasi Pengguna</h1>
+        <h1 class="m-0">Aktivasi Pengguna</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Aktifasi</a></li>
+          <li class="breadcrumb-item"><a href="#">Aktivasi</a></li>
           <li class="breadcrumb-item active">User</li>
         </ol>
       </div><!-- /.col -->
@@ -38,10 +38,14 @@
       </div>
       <div class="col-4">
         <div class="form-group">
-          <!-- <a href="#" class="btn btn-info float-right" role="button" data-toggle="modal" data-target="#cetakModal">
+          <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="aktivasi" onclick="printLaporan(this)">
             <i class="fas fa-fw fa-print"></i>
             Cetak
-          </a> -->
+          </a>
+          <a href="?page=laporan-aktivasi&type=laporan" class="btn btn-info float-right mx-2" target="_blank" role="button">
+            <i class="fas fa-fw fa-print"></i>
+            Cetak Semua
+          </a>
           <?php if($role_id == 2): ?>
             <!-- <a href="?page=eceran&action=tambah" class="btn btn-success float-right mx-2" role="button">
               <i class="fas fa-fw fa-plus"></i>
@@ -76,7 +80,7 @@
                       <td><?= $number++ ?></td>
                       <td><?= $row['nama'] ?></td>
                       <td><?= $row['username'] ?></td>
-                      <td><?= ($row['id_role'] == 1) ? 'Pimpinan' : 'Admin' ?></td>
+                      <td><?= ($row['id_role'] == 1) ? 'Pimpinan/Admin' : 'Pegawai' ?></td>
                       <td><?= ($row['aktif'] == 1) ? 'aktif' : 'non-aktif' ?></td>
                       <td>
                         <a href="#!" class="btn btn-outline-success" role="button" onclick="changeActivation(<?= $row['id'] ?>, <?= $row['aktif'] ?>)">

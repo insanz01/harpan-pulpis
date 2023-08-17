@@ -50,6 +50,9 @@
         case "laporan-monitoring-sembako-detail":
           include "pages/admin/laporan/monitoring-sembako-detail.php";
           break;
+        case "laporan-aktivasi":
+          include "pages/admin/laporan/aktivasi.php";
+          break;
       }
     }
   } else {
