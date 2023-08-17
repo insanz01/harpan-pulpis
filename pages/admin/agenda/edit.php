@@ -56,6 +56,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
+            <input type="hidden" id="id_edit" name="id" value="<?= $id_agenda ?>">
             <div class="form-group">
               <label for="">Lokasi Agenda</label>
               <input type="text" name="lokasi" id="lokasi" class="form-control" value="<?= $agenda['lokasi'] ?>">
@@ -100,6 +101,7 @@
   }
 
   const submitData = async () => {
+    const id = document.getElementById("id_edit").value;
     const lokasi = document.getElementById("lokasi").value;
     const tanggal = document.getElementById("tanggal").value;
     const jam = document.getElementById("jam").value;
@@ -107,6 +109,7 @@
     const item_komoditas = JSON.stringify(selectedItems);
 
     const data = {
+      id,
       lokasi,
       tanggal,
       jam_kegiatan: jam,
