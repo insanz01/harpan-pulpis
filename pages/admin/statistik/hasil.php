@@ -72,8 +72,46 @@
     </div>
 
     <div class="row">
-      <div class="col-10 mx-auto">
-        <canvas id="myChart"></canvas>
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col-12">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3 id="harga-tertinggi"></h3>
+
+                <p>Harga Tertinggi</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" id="pedagang-tertinggi" class="small-box-footer">
+                
+              </a>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3 id="harga-terendah"></h3>
+
+                <p>Harga Terendah</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" id="pedagang-terendah" class="small-box-footer">
+                
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -85,6 +123,10 @@
 <script>
   const getHargaPedagang = async (data) => {
     return await axios.get(`<?= $base_url ?>api/harga-pedagang.api.php?id_pasar=${data.id_pasar}&id_komoditas=${data.id_komoditas}`).then(res => res.data);
+  }
+
+  const setInnerHTML = (target, val) => {
+    document.getElementById(target).innerHTML = val;
   }
   
   window.addEventListener('load', async () => {
@@ -110,6 +152,27 @@
     
       const labels = ["", "pedagang 1", "pedagang 2", "pedagang 3", "pedagang 4", ""];
       const data = [0, hasil.harga_pedagang_1, hasil.harga_pedagang_2, hasil.harga_pedagang_3, hasil.harga_pedagang_4, 0];
+
+      const statistik = [
+        parseInt(hasil.harga_pedagang_1),
+        parseInt(hasil.harga_pedagang_2),
+        parseInt(hasil.harga_pedagang_3),
+        parseInt(hasil.harga_pedagang_4),
+      ];
+
+      console.table(statistik)
+
+      const pedagangTertinggi = statistik.indexOf(Math.max(...statistik)) + 1;
+      const pedagangTerendah = statistik.indexOf(Math.min(...statistik)) + 1;
+
+      console.log("pedagang tertinggi", pedagangTertinggi);
+      console.log("pedagang terendah", pedagangTerendah);
+
+      setInnerHTML('harga-tertinggi', Math.max(...statistik));
+      setInnerHTML('harga-terendah', Math.min(...statistik));
+
+      setInnerHTML('pedagang-tertinggi', `Pedagang ${pedagangTertinggi}`);
+      setInnerHTML('pedagang-terendah', `Pedagang ${pedagangTerendah}`);
     
       new Chart(ctx, {
         type: 'bar',
