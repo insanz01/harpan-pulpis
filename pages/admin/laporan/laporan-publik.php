@@ -1,5 +1,6 @@
 <?php
   include "./database/db.php";
+  include "config/config.php";
 
   $tipeFilter = $_POST["tipe_filter"];
   $dataFilterBulan = $_POST["data_filter_bulan"];
