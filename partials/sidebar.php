@@ -584,6 +584,9 @@
         case "monitoring-sembako-detail":
           targetLaporan = "?page=laporan-monitoring-sembako-detail&type=laporan";
           break;
+        case "laporan-publik":
+          targetLaporan = "?page=laporan-laporan-publik&type=laporan";
+          break;
         case "aktivasi":
           targetLaporan = "?page=laporan-aktivasi&type=laporan";
           break;

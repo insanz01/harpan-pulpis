@@ -49,7 +49,7 @@
             Tambah
           </a>
 
-          <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="agenda-pasar-murah" onclick="printLaporan(this)">
+          <a href="#" class="btn btn-info float-right mx-2" role="button" data-toggle="modal" data-target="#laporanModal" data-id="laporan-publik" onclick="printLaporan(this)">
             <i class="fas fa-fw fa-print"></i>
             Cetak
           </a>
