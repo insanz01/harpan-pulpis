@@ -63,10 +63,6 @@
     }).then(res => res.data);
   }
 
-  const loadSatuan = async () => {
-    return await axios.get(`<?= $base_url ?>api/satuan.api.php`).then(res => res.data);
-  }
-
   const submitData = async () => {
     const nama = document.getElementById("nama").value;
     const kategori = document.getElementById("kategori").value;
@@ -86,26 +82,4 @@
       window.location.href = "<?= $base_url ?>index.php?page=komoditas"
     }
   }
-
-  const renderSelectOption = async (target, data) => {
-    const listOpt = document.getElementById(target);
-
-    let temp = `<option value="">- PILIH -</option>`
-
-    data.forEach(res => {
-      temp += `<option value="${res.id}">${res.nama}</option>`
-    });
-
-    listOpt.innerHTML = temp;
-  }
-
-  window.addEventListener('load', async () => {
-    const result = await loadSatuan();
-
-    console.log(result);
-
-    if(result.status) {
-      await renderSelectOption('id_satuan', result.data);
-    }
-  })
 </script>
