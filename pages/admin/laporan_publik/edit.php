@@ -11,7 +11,7 @@
     
     $query = "SELECT * FROM laporan_publik WHERE id = $id_edit";
   
-    $result = mysqli_connect($connection, $query);
+    $result = mysqli_query($connection, $query);
 
     if(mysqli_num_rows($result) > 0) {
       $r = mysqli_fetch_assoc($result);
@@ -62,6 +62,7 @@
             <div class="form-group">
               <label for="">File</label>
               <br>
+              <input type="hidden" id="last-foto" value="<?= $data['foto_kegiatan'] ?>">
               <?php if($data['foto_kegiatan']): ?>
                 <img src="<?= $base_url ?>uploads/<?= $data['foto_kegiatan'] ?>" style="width:100px" alt="Belum ada foto">
               <?php endif; ?>
@@ -94,6 +95,11 @@
     const lokasi = document.getElementById("lokasi").value;
     const tanggal_kegiatan = document.getElementById("tanggal_kegiatan").value;
     const jenis_kegiatan = document.getElementById("jenis_kegiatan").value;
+
+    if(FILENAME == "") {
+      FILENAME = document.getElementById("last-foto").value;
+    }
+
     const foto_kegiatan = FILENAME;
 
     const data = {
