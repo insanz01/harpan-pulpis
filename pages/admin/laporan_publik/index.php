@@ -135,7 +135,7 @@
   }
 
   const doDelete = async (data) => {
-    return await axios.post(`<?= $base_url ?>/api/delete-laporan-publik.api.php`, data, {
+    return await axios.post(`<?= $base_url ?>api/delete-laporan-publik.api.php`, data, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
