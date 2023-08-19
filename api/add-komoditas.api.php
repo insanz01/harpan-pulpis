@@ -12,8 +12,6 @@ $merk = validate_input($connection, $_POST["merk"]);
 
 $query = "INSERT INTO komoditas (nama, kategori, merk) VALUES ('$nama', '$kategori', '$merk')";
 
-var_dump($query);
-
 $result = mysqli_query($connection, $query);
 
 $data = null;
