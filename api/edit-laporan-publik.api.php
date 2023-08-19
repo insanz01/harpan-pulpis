@@ -6,7 +6,7 @@ include "../helper/helper.php";
 include "../helper/validate.php";
 include "../database/db.php";
 
-$id = validate($connection, $_POST["id"]);
+$id = validate_input($connection, $_POST["id"]);
 $lokasi = validate_input($connection, $_POST["lokasi"]);
 $tanggal_kegiatan = validate_input($connection, $_POST["tanggal_kegiatan"]);
 $jenis_kegiatan = validate_input($connection, $_POST["jenis_kegiatan"]);
