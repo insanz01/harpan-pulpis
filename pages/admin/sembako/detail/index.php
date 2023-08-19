@@ -88,7 +88,7 @@
                             <i class="fas fa-fw fa-trash"></i>
                             Hapus
                           </a>
-                          <a href="?page=sembako-detail&action=edit&id_sembako=<?= $data['id'] ?>&id=<?= $datum['id'] ?>" class="btn btn-primary float-right mx-2" role="button">
+                          <a href="?page=sembako-detail&action=edit&id_sembako=<?= $id_sembako ?>&id=<?= $datum['id'] ?>&id_pasar=<?= $id_pasar ?>" class="btn btn-primary float-right mx-2" role="button">
                             <i class="fas fa-fw fa-edit"></i>
                             Ubah
                           </a>

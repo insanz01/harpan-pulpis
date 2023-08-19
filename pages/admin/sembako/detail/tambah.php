@@ -136,7 +136,7 @@
     const result = await saveData(data);
 
     if(result.status) {
-      window.location.href = "<?= $base_url ?>index.php?page=sembako-detail&id=<?= $id_pasar ?>"
+      window.location.href = "<?= $base_url ?>index.php?page=sembako-detail&id=<?= $id_pasar ?>&id_sembako=<?= $id_sembako ?>"
     }
   }
 </script>

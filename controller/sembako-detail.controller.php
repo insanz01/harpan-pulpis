@@ -8,6 +8,11 @@ if(isset($_GET["id"])) {
   $id_pasar = $_GET["id"];
 }
 
+$id_sembako = 0;
+if(isset($_GET["id_sembako"])) {
+  $id_sembako = $_GET["id_sembako"];
+}
+
 $sembakoQuery = "SELECT s.id, p.id as id_pasar, p.nama as nama_pasar, s.petugas FROM sembako s JOIN pasar p ON s.id_pasar = p.id WHERE s.deleted_at is null AND p.id = $id_pasar";
 
 $sembakoResult = mysqli_query($connection, $sembakoQuery);

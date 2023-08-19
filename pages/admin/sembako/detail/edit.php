@@ -12,6 +12,11 @@
     $id_sembako = $_GET["id_sembako"];
   }
 
+  $id_pasar = 0;
+  if(isset($_GET["id_pasar"])) {
+    $id_pasar = $_GET["id_pasar"];
+  }
+
   $query = "SELECT * FROM komoditas WHERE deleted_at is NULL";
 
   $result = mysqli_query($connection, $query);
@@ -154,7 +159,7 @@
     const result = await saveData(data);
 
     if(result.status) {
-      window.location.href = "<?= $base_url ?>index.php?page=sembako-detail&id=<?= $id_sembako ?>"
+      window.location.href = "<?= $base_url ?>index.php?page=sembako-detail&id=<?= $id_pasar ?>&id_sembako=<?= $id_sembako ?>"
     }
   }
 </script>

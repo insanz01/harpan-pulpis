@@ -14,7 +14,7 @@ $harga_pedagang_2 = validate_input($connection, $_POST["harga_pedagang_2"]);
 $harga_pedagang_3 = validate_input($connection, $_POST["harga_pedagang_3"]);
 $harga_pedagang_4 = validate_input($connection, $_POST["harga_pedagang_4"]);
 
-$query = "INSERT INTO harga_sembako (id_sembako, id_komoditas, satuan, harga_pedagang_1, harga_pedagang_2, harga_pedagang_3, harga_pedagang_4) VALUES ($id_sembako, $id_komoditas, '$satuan', $harga_pedagang_1, $harga_pedagang_2, $harga_pedagang_3, $harga_pedagang_3)";
+$query = "INSERT INTO harga_sembako (id_sembako, id_komoditas, satuan, harga_pedagang_1, harga_pedagang_2, harga_pedagang_3, harga_pedagang_4) VALUES ($id_sembako, $id_komoditas, '$satuan', $harga_pedagang_1, $harga_pedagang_2, $harga_pedagang_3, $harga_pedagang_4)";
 
 $result = mysqli_query($connection, $query);
 
