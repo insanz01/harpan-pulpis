@@ -89,7 +89,7 @@
                           <?php if(!$row['approved_at']): ?>
                             <a href="#!" onclick="verifikasiData(<?= $row['id'] ?>)" class="btn btn-primary" role="button">VERIFIKASI</a>
 
-                            <a href="#" class="btn btn-danger float-right" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $row['id'] ?>)">
+                            <a href="#" class="btn btn-danger" role="button" data-toggle="modal" data-target="#hapusModal" onclick="selectDeleteData(<?= $row['id'] ?>)">
                               <i class="fas fa-fw fa-trash"></i>
                               Hapus
                             </a>
