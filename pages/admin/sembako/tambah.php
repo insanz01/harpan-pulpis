@@ -20,12 +20,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Sembako</h1>
+        <h1 class="m-0">Monitoring</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Sembako</a></li>
-          <li class="breadcrumb-item active">Tambah Sembako</li>
+          <li class="breadcrumb-item active">Tambah Data</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -55,11 +55,7 @@
               <label for="">Petugas</label>
               <input type="text" class="form-control" name="petugas" id="petugas">
               <small>Berikan simbol titik koma (;) untuk memisahkan nama petugas</small>
-            </div>
-            <div class="form-group">
-              <label for="">Dokumentasi</label>
-              <input type="file" class="form-control" name="file_dokumentasi" id="file_dokumentasi" onchange="uploadFile()">
-            </div>
+            </div>     
             <div class="form-group">
               <button class="btn btn-success btn-block" type="button" role="button" onclick="submitData()">Simpan Data Sembako</button>
             </div>
