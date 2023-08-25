@@ -9,7 +9,8 @@ include "../database/db.php";
 $nama = validate_input($connection, $_POST["nama"]);
 $username = validate_input($connection, $_POST["username"]);
 $password = $_POST["password"];
-$loginType = validate_input($connection, $_POST["loginType"]);
+// $loginType = validate_input($connection, $_POST["loginType"]);
+$loginType = 2;
 
 $password = password_hash($password, PASSWORD_DEFAULT);
 
