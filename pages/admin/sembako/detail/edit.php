@@ -75,7 +75,7 @@
               <label for="">Komoditas</label>
               <select name="id_komoditas" id="id_komoditas" class="form-control">
                 <?php foreach($komoditas as $k): ?>
-                  <option value="<?= $k['id'] ?>" <?= ($k['id'] == $hargaSembako) ? 'selected': '' ?>>
+                  <option value="<?= $k['id'] ?>" <?= ($k['id'] == $hargaSembako['id_komoditas']) ? 'selected': '' ?>>
                     <?= $k['nama'] ?>
                   </option>
                 <?php endforeach; ?>

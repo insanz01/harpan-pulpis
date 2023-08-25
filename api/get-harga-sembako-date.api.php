@@ -10,7 +10,7 @@ $satuan = validate_input($connection, $_GET["satuan"]);
 
 $satuan = strtoupper($satuan);
 
-$query = "SELECT DISTINCT DATE(harga_sembako.created_at) as tanggal FROM sembako JOIN harga_sembako ON sembako.id = harga_sembako.id_sembako JOIN komoditas ON harga_sembako.id_komoditas = komoditas.id WHERE harga_sembako.id_komoditas = $id_komoditas AND sembako.id_pasar = $id_pasar AND UPPER(harga_sembako.satuan) = '$satuan'";
+$query = "SELECT DISTINCT DATE(harga_sembako.created_at) as tanggal FROM sembako JOIN harga_sembako ON sembako.id = harga_sembako.id_sembako JOIN komoditas ON harga_sembako.id_komoditas = komoditas.id WHERE harga_sembako.id_komoditas = $id_komoditas AND sembako.id_pasar = $id_pasar AND UPPER(harga_sembako.satuan) = '$satuan' AND harga_sembako.deleted_at IS NULL";
 
 $result = mysqli_query($connection, $query);
 

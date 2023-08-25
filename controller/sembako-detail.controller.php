@@ -25,7 +25,7 @@ $data = [
 if($sembakoResult) {
   if(mysqli_num_rows($sembakoResult) > 0) {
     while($row = mysqli_fetch_assoc($sembakoResult)) {
-      $hargaQuery = "SELECT h.id, h.id_sembako, h.id_komoditas, k.nama as nama_bahan, h.satuan, h.harga_pedagang_1, h.harga_pedagang_2, h.harga_pedagang_3, h.harga_pedagang_4 FROM harga_sembako h JOIN sembako s ON h.id_sembako = s.id JOIN komoditas k ON h.id_komoditas = k.id WHERE h.id_sembako = $row[id] AND h.deleted_at is NULL";
+      $hargaQuery = "SELECT h.id, h.id_sembako, h.id_komoditas, k.nama as nama_bahan, h.satuan, h.harga_pedagang_1, h.harga_pedagang_2, h.harga_pedagang_3, h.harga_pedagang_4 FROM harga_sembako h JOIN sembako s ON h.id_sembako = s.id JOIN komoditas k ON h.id_komoditas = k.id WHERE h.id_sembako = $id_sembako AND h.deleted_at is NULL";
 
       $hargaResult = mysqli_query($connection, $hargaQuery);
 
