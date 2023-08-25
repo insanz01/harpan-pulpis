@@ -53,14 +53,14 @@
             </div>
           </div>
           
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-12 form-group">
               <select name="login_type" id="login_type" class="form-control">
                 <option value="1">Pimpinan/Admin</option>
                 <option value="2">Pegawai</option>
               </select>
             </div>
-          </div>
+          </div> -->
 
           <div class="row">
             <div class="col-12 form-group">
