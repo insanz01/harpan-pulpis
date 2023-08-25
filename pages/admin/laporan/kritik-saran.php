@@ -79,8 +79,6 @@
   <br>
 	<div style="text-align: center; display: inline-block; float: right;">
     <h5>
-            Banjarmasin, <?php echo (date('d M Y')); ?>
-			<br>KEPALA DINAS<br>
 			<br>
       <br>
       Pulang Pisau, <?php echo (date('d M Y')); ?>
