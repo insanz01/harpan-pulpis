@@ -96,16 +96,9 @@
     const doLogin = async (data) => {
       console.log("<?= $base_url ?>/api/login.api.php");
 
-      var bodyFormData = new FormData();
-
-      bodyFormData.append("username", data.username);
-      bodyFormData.append("password", data.password);
-      bodyFormData.append("loginType", data.loginType)
-
       return await axios.post("<?= $base_url ?>api/login.api.php", {
         username: data.username,
         password: data.password,
-        loginType: data.loginType
       }, {
         headers: {
           "Content-Type": "multipart/form-data"
@@ -117,12 +110,9 @@
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      const loginType = document.getElementById('login_type').value;
-
       const data = {
         username,
         password,
-        loginType
       };
 
       const result = await doLogin(data);

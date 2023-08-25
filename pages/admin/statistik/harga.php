@@ -31,7 +31,7 @@
             <form action="<?= $base_url ?>index.php?page=hasil-statistik-harga" method="post">
               <div class="form-group">
                 <label for="">Nama Pasar</label>
-                <select name="id_pasar" class="form-control" id="id_pasar" onchange="lihatHarga(this)">
+                <select name="id_pasar" class="form-control" id="id_pasar" onchange="lihatSatuan(this)">
                   <option value="">- PILIH -</option>
                   <?php foreach($pasar as $p): ?>
                     <option value="<?= $p['id'] ?>">
@@ -42,13 +42,25 @@
               </div>
               <div class="form-group">
                 <label for="">Nama Komoditas</label>
-                <select name="id_komoditas" class="form-control" id="id_komoditas" onchange="lihatHarga(this)">
+                <select name="id_komoditas" class="form-control" id="id_komoditas" onchange="lihatSatuan(this)">
                   <option value="">- PILIH -</option>
                   <?php foreach($komoditas as $p): ?>
                     <option value="<?= $p['id'] ?>">
                       <?= $p['nama'] ?>
                     </option>
                   <?php endforeach; ?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Satuan Komoditas</label>
+                <select name="satuan" class="form-control" id="satuan" onchange="lihatTanggal(this)">
+                  <option value="">- PILIH -</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Tanggal Sembako</label>
+                <select name="tanggal_sembako" class="form-control" id="tanggal_sembako" onchange="lihatHarga(this)">
+                  <option value="">- PILIH -</option>
                 </select>
               </div>
               <div class="form-group">
@@ -123,11 +135,31 @@
     listOpt.innerHTML = temp;
   }
 
-  const getHargaPedagang = async (data) => {
-    return await axios.get(`<?= $base_url ?>api/harga-pedagang.api.php?id_pasar=${data.id_pasar}&id_komoditas=${data.id_komoditas}`).then(res => res.data);
+  const renderSelectOptionCustom = async (target, data, srcName) => {
+    const listOpt = document.getElementById(target);
+
+    let temp = `<option value="">- PILIH -</option>`
+
+    data.forEach(res => {
+      temp += `<option value="${res[srcName]}">${res[srcName]}</option>`
+    });
+
+    listOpt.innerHTML = temp;
   }
 
-  const lihatHarga = async (target) => {
+  const getHargaPedagang = async (data) => {
+    return await axios.get(`<?= $base_url ?>api/harga-pedagang.api.php?id_pasar=${data.id_pasar}&id_komoditas=${data.id_komoditas}&satuan=${data.satuan}&tanggal=${data.tanggal}`).then(res => res.data);
+  }
+
+  const getSatuanKomoditas = async (data) => {
+    return await axios.get(`<?= $base_url ?>api/get-harga-sembako-satuan.api.php?id_pasar=${data.id_pasar}&id_komoditas=${data.id_komoditas}`).then(res => res.data);
+  }
+
+  const getTanggalSembako = async (data) => {
+    return await axios.get(`<?= $base_url ?>api/get-harga-sembako-date.api.php?id_pasar=${data.id_pasar}&id_komoditas=${data.id_komoditas}&satuan=${data.satuan}`).then(res => res.data);
+  }
+
+  const lihatSatuan = async (target) => {
     const pasarValue = document.getElementById('id_pasar').value;
     const komoditasValue = document.getElementById('id_komoditas').value;
 
@@ -135,6 +167,48 @@
       const data = {
         id_pasar: pasarValue,
         id_komoditas: komoditasValue,
+      };
+
+      const result = await getSatuanKomoditas(data);
+
+      if(result.status) {
+        renderSelectOptionCustom("satuan", result.data, "satuan")
+      }
+    }
+  }
+
+  const lihatTanggal = async (target) => {
+    const pasarValue = document.getElementById('id_pasar').value;
+    const komoditasValue = document.getElementById('id_komoditas').value;
+    const satuanKomoditasValue = document.getElementById('satuan').value;
+
+    if(pasarValue != "" && komoditasValue != "" && satuanKomoditasValue != "") {
+      const data = {
+        id_pasar: pasarValue,
+        id_komoditas: komoditasValue,
+        satuan: satuanKomoditasValue,
+      };
+
+      const result = await getTanggalSembako(data);
+
+      if(result.status) {
+        renderSelectOptionCustom("tanggal_sembako", result.data, "tanggal")
+      }
+    }
+  }
+
+  const lihatHarga = async (target) => {
+    const pasarValue = document.getElementById('id_pasar').value;
+    const komoditasValue = document.getElementById('id_komoditas').value;
+    const satuanKomoditasValue = document.getElementById('satuan').value;
+    const tanggalSembakoValue = document.getElementById('tanggal_sembako').value;
+
+    if(pasarValue != "" && komoditasValue != "" && satuanKomoditasValue != "" && tanggalSembakoValue != "") {
+      const data = {
+        id_pasar: pasarValue,
+        id_komoditas: komoditasValue,
+        satuan: satuanKomoditasValue,
+        tanggal: tanggalSembakoValue,
       };
 
       const result = await getHargaPedagang(data);
