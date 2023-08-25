@@ -61,7 +61,7 @@
                     <td><?= $datum['petugas'] ?></td>
                     <td><?= $datum['created_at'] ?></td>
                     <td>
-                      <a href="?page=sembako-detail-publik&id=<?= $datum['id'] ?>" class="btn btn-info float-right mx-2" role="button">
+                      <a href="?page=sembako-detail-publik&id_sembako=<?= $datum['id'] ?>&id=<?= $datum['id_pasar'] ?>" class="btn btn-info float-right mx-2" role="button">
                         <i class="fas fa-fw fa-book"></i>
                         Detail
                       </a>
