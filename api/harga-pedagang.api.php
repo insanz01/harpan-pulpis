@@ -30,7 +30,7 @@ if ($result) {
     "harga_pedagang_2" => $row['harga_pedagang_2'],
     "harga_pedagang_3" => $row['harga_pedagang_3'],
     "harga_pedagang_4" => $row['harga_pedagang_4'],
-    "created_at" => $row['created_at'],
+    // "created_at" => $row['created_at'],
   ];
 
     // array_push($data, $temp_data);

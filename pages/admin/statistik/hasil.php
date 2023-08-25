@@ -6,10 +6,16 @@
 
   $id_pasar = 0;
   $id_komoditas = 0;
+  $satuan = "";
+  $tanggal_sembako = "";
 
-  if(isset($_POST['id_pasar']) && isset($_POST['id_komoditas'])) {
+  if(isset($_POST['id_pasar']) && isset($_POST['id_komoditas']) && isset($_POST["satuan"]) && isset($_POST["tanggal_sembako"])) {
     $id_komoditas = $_POST['id_komoditas'];
     $id_pasar = $_POST['id_pasar'];
+    $satuan = $_POST["satuan"];
+    $tanggal_sembako = $_POST["tanggal_sembako"];
+
+    $satuan = strtoupper($satuan);
   }
 
   $role_id = 0;
@@ -17,7 +23,7 @@
     $role_id = $_SESSION["SESS_HARPAN_ROLE_ID"];
   }
 
-  $queryHargaPedagang = "SELECT sembako.id, sembako.id_pasar, sembako.petugas, harga_sembako.id_komoditas, harga_sembako.harga_pedagang_1, harga_sembako.harga_pedagang_2, harga_sembako.harga_pedagang_3, harga_sembako.harga_pedagang_4, harga_sembako.created_at FROM sembako JOIN harga_sembako ON sembako.id = harga_sembako.id_sembako JOIN komoditas ON harga_sembako.id_komoditas = komoditas.id WHERE harga_sembako.deleted_at is NULL AND harga_sembako.id_komoditas = $id_komoditas AND sembako.id_pasar = $id_pasar ORDER BY harga_sembako.id DESC LIMIT 1";
+  $queryHargaPedagang = "SELECT sembako.id, sembako.id_pasar, sembako.petugas, harga_sembako.id_komoditas, harga_sembako.harga_pedagang_1, harga_sembako.harga_pedagang_2, harga_sembako.harga_pedagang_3, harga_sembako.harga_pedagang_4, harga_sembako.created_at FROM sembako JOIN harga_sembako ON sembako.id = harga_sembako.id_sembako JOIN komoditas ON harga_sembako.id_komoditas = komoditas.id WHERE harga_sembako.deleted_at is NULL AND harga_sembako.id_komoditas = $id_komoditas AND sembako.id_pasar = $id_pasar AND UPPER(harga_sembako.satuan) = '$satuan' AND DATE(harga_sembako.created_at) = '$tanggal_sembako' ORDER BY harga_sembako.id DESC LIMIT 1";
 
   $resultHargaPedagang = mysqli_query($connection, $queryHargaPedagang);
 
@@ -122,7 +128,7 @@
 
 <script>
   const getHargaPedagang = async (data) => {
-    return await axios.get(`<?= $base_url ?>api/harga-pedagang.api.php?id_pasar=${data.id_pasar}&id_komoditas=${data.id_komoditas}`).then(res => res.data);
+    return await axios.get(`<?= $base_url ?>api/harga-pedagang.api.php?id_pasar=${data.id_pasar}&id_komoditas=${data.id_komoditas}&satuan=${data.satuan}&tanggal=${data.tanggal_sembako}`).then(res => res.data);
   }
 
   const setInnerHTML = (target, val) => {
@@ -133,12 +139,16 @@
 
     const id_pasar = `<?= $id_pasar ?>`
     const id_komoditas = `<?= $id_komoditas ?>`
+    const satuan = `<?= $satuan ?>`
+    const tanggal_sembako = `<?= $tanggal_sembako ?>`
     // const id_pasar = 1;
     // const id_komoditas = 1;
 
     const data = {
       id_pasar,
       id_komoditas,
+      satuan,
+      tanggal_sembako,
     }
 
     const result = await getHargaPedagang(data);
